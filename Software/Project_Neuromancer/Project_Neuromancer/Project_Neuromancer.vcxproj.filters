@@ -21,9 +21,15 @@
     <ClCompile Include="neuromancer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="matrix.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="neuromancer.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="matrix.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>

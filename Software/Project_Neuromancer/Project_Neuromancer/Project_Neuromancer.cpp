@@ -2,19 +2,27 @@
 //
 
 #include <iostream>
+
+#include "neuromancer.h"
 using namespace std;
+Matrix test_matrix;
+Matrix test_matrix2;
+int ROW_COUNT = 5;
+int COLUMN_COUNT = 5;
+
+//2d vector initialisaiton with a default value
+std::vector<std::vector<float> > fog(ROW_COUNT, std::vector<float>(COLUMN_COUNT, 4));
+vector< vector<float> > bar = { { 1, 1, 1 }, { 2, 2, 2 } };
 
 int main()
 {
-    char c;
-    for (int i = 0; i < 11; i++)
-    {
-        cout << i << endl;
-        cin >> c;
-        cout << c << endl;
-
-    }
+    //this also works post-init
+    bar = { { 1, 1, 1 }, { 2, 2, 2 } };
     cout << "Hello World!\n";
+    test_matrix.set_data(fog);
+    test_matrix.disp_data();
+    test_matrix2.set_data(bar);
+    test_matrix2.disp_data();
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
