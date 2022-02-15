@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31702.278
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Project Neuromancer", "Project Neuromancer.vcxproj", "{EDDD3B0B-7D1C-4F30-861A-40A3F8F399B2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EDDD3B0B-7D1C-4F30-861A-40A3F8F399B2}.Debug|x64.ActiveCfg = Debug|x64
+		{EDDD3B0B-7D1C-4F30-861A-40A3F8F399B2}.Debug|x64.Build.0 = Debug|x64
+		{EDDD3B0B-7D1C-4F30-861A-40A3F8F399B2}.Debug|x86.ActiveCfg = Debug|Win32
+		{EDDD3B0B-7D1C-4F30-861A-40A3F8F399B2}.Debug|x86.Build.0 = Debug|Win32
+		{EDDD3B0B-7D1C-4F30-861A-40A3F8F399B2}.Release|x64.ActiveCfg = Release|x64
+		{EDDD3B0B-7D1C-4F30-861A-40A3F8F399B2}.Release|x64.Build.0 = Release|x64
+		{EDDD3B0B-7D1C-4F30-861A-40A3F8F399B2}.Release|x86.ActiveCfg = Release|Win32
+		{EDDD3B0B-7D1C-4F30-861A-40A3F8F399B2}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B6E4F51F-152D-4834-B8E7-CF6F654B185A}
+	EndGlobalSection
+EndGlobal
