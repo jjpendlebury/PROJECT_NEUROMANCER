@@ -2,7 +2,7 @@
 
 using namespace std;
 
-//comstructor
+//constructor
 //need to write an assign loop to iterate through an array of arrays, and assign values like that
 Matrix::Matrix() {
 };
@@ -13,11 +13,11 @@ void Matrix::set_data(vector< vector<float> > &inputData) {
 }
 
 //method to 
-void Matrix::get_data(vector<float>* data_vec) {
-
+vector<vector<float>> Matrix::get_data() {
+    return data;
 }
 
-//method to display a matrix on to the terminal
+//method to display a matrix on to the terminal 
 void Matrix::disp_data() {
     for (auto i = 0; i < data.size(); i++) {
         for (

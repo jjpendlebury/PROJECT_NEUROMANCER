@@ -1,2 +1,9 @@
-﻿  Project_Neuromancer.cpp
+﻿  neuromancer.cpp
+C:\Users\jjpendlebury\Git\PROJECT_NEUROMANCER\Software\Project Neuromancer\source\neuromancer.cpp(41,59): warning C4244: '+=': conversion from '_Ty' to 'int', possible loss of data
+          with
+          [
+              _Ty=float
+          ]
+  Project_Neuromancer.cpp
+  Generating Code...
   Project Neuromancer.vcxproj -> C:\Users\jjpendlebury\Git\PROJECT_NEUROMANCER\Software\Project Neuromancer\Debug\Project Neuromancer.exe
