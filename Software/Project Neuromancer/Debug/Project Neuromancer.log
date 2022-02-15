@@ -1,6 +1,2 @@
-﻿  matrix.cpp
-C:\Users\jjpendlebury\Git\PROJECT_NEUROMANCER\Software\Project Neuromancer\source\matrix.cpp(22,24): warning C4018: '<': signed/unsigned mismatch
-  neuromancer.cpp
-  Project_Neuromancer.cpp
-  Generating Code...
+﻿  Project_Neuromancer.cpp
   Project Neuromancer.vcxproj -> C:\Users\jjpendlebury\Git\PROJECT_NEUROMANCER\Software\Project Neuromancer\Debug\Project Neuromancer.exe
