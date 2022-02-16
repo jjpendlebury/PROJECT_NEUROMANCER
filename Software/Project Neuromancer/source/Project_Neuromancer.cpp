@@ -7,7 +7,7 @@
 using namespace std;
 Matrix test_matrix;
 Matrix test_matrix2;
-Neuromancer test;
+Neuromancer test(1);
 int ROW_COUNT = 5;
 int COLUMN_COUNT = 5;
 
