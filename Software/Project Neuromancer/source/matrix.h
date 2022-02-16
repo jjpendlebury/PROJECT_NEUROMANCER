@@ -19,6 +19,13 @@ public:
 	void set_data(vector< vector<float> >& inputData);
 	vector<vector<float>> get_data();
 	void disp_data();
+	Matrix	multiply(Matrix matB);						//standard
+	Matrix	multiply(float factor);					//multiply by scalar
+	void	multiply(Matrix matB, int debug);			//debug
+
+	Matrix	operator*(Matrix& matB);
+	Matrix	operator*(float multiplier);
+	void	operator=(vector<vector<float>> input);
 };
 
 
