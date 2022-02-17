@@ -138,6 +138,20 @@ Matrix Matrix::multiply(float factor) {
     blank.set_data(dataA);
     return blank;
 }
+Matrix Matrix::multiply(int factor) {
+    vector<vector<float>> dataA = this->get_data();;
+    for (auto i = 0; i < dataA.size(); i++) {
+        for (
+            auto it = dataA[i].begin(); it != dataA[i].end(); it++)
+            *it *= factor;
+        //cout << *it << " ";
+        cout << endl;
+    }
+    Matrix blank;
+    blank.set_data(dataA);
+    return blank;
+}
+
 
 
 
@@ -149,6 +163,18 @@ Matrix Matrix::operator*(Matrix& matB) {
 }
 
 Matrix Matrix::operator*(float multiplier) {
+    Matrix result = this->multiply(multiplier);
+    return result;
+}
+
+
+Matrix Matrix::operator*(int int_multiplier) {
+    Matrix result = this->multiply(int(int_multiplier));
+    return result;
+}
+
+Matrix Matrix::operator*(double double_multiplier) {
+    float multiplier = double_multiplier;
     Matrix result = this->multiply(multiplier);
     return result;
 }

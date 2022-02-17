@@ -1,3 +1,15 @@
-﻿  neuromancer.cpp
-C:\Users\jjpendlebury\Git\PROJECT_NEUROMANCER\Software\Project Neuromancer\source\neuromancer.cpp(24,39): warning C4305: 'argument': truncation from 'double' to 'float'
+﻿  Project_Neuromancer.cpp
+  matrix.cpp
+C:\Users\jjpendlebury\Git\PROJECT_NEUROMANCER\Software\Project Neuromancer\source\matrix.cpp(22,24): warning C4018: '<': signed/unsigned mismatch
+C:\Users\jjpendlebury\Git\PROJECT_NEUROMANCER\Software\Project Neuromancer\source\matrix.cpp(66,55): warning C4244: '+=': conversion from '_Ty' to 'int', possible loss of data
+          with
+          [
+              _Ty=float
+          ]
+C:\Users\jjpendlebury\Git\PROJECT_NEUROMANCER\Software\Project Neuromancer\source\matrix.cpp(130,24): warning C4018: '<': signed/unsigned mismatch
+C:\Users\jjpendlebury\Git\PROJECT_NEUROMANCER\Software\Project Neuromancer\source\matrix.cpp(143,24): warning C4018: '<': signed/unsigned mismatch
+C:\Users\jjpendlebury\Git\PROJECT_NEUROMANCER\Software\Project Neuromancer\source\matrix.cpp(177,22): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+  neuromancer.cpp
+C:\Users\jjpendlebury\Git\PROJECT_NEUROMANCER\Software\Project Neuromancer\source\neuromancer.cpp(6,20): warning C4305: 'initializing': truncation from 'double' to 'float'
+  Generating Code...
   Project Neuromancer.vcxproj -> C:\Users\jjpendlebury\Git\PROJECT_NEUROMANCER\Software\Project Neuromancer\Debug\Project Neuromancer.exe

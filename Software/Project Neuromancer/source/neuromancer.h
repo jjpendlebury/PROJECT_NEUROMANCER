@@ -7,6 +7,9 @@
 
 class Neuromancer {
 private:
+	//Network Parameters
+	float alpha = 0.025;
+	int trials = 100, episodes = 100, hiddenUnits = 10;
 	//Matrix	multiply(Matrix matA, Matrix matB);						//standard
 	//Matrix	multiply(Matrix& matA, float factor);					//multiply by scalar
 	//void	multiply(Matrix matA, Matrix matB, int debug);			//debug
@@ -15,6 +18,7 @@ private:
 	Matrix	matB;
 	//Overloads
 	Matrix operator*(Matrix& matB);
+
 
 public:
 	Neuromancer(int test = 0);

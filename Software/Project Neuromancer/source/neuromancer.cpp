@@ -3,7 +3,7 @@ using namespace std;
 
 //PRIVATE
 
-
+float d_mult = 3.33;
 
 void Neuromancer::Test() {
     vector< vector<float> > a = { {2, 4, 6} , {2, 3, 5} , {3, 1, 4} };
@@ -19,9 +19,9 @@ void Neuromancer::Test() {
     cout << "MULTIPLY A*B:" << endl;
     matA.multiply(matB, 1);
     cout << endl;
-    Matrix result2 = matA*2.0;
+    Matrix result2 = matA*2;
     result2.disp_data();
-    Matrix result3 = matA.multiply(3.4);
+    Matrix result3 = matA*d_mult;
     result3.disp_data();
 }
 

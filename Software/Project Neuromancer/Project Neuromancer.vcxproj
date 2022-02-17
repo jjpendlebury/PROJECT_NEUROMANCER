@@ -19,11 +19,13 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="RevoluteForwardKinematics2D.cpp" />
     <ClCompile Include="source\matrix.cpp" />
     <ClCompile Include="source\neuromancer.cpp" />
     <ClCompile Include="source\Project_Neuromancer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="RevoluteForwardKinematics2D.h" />
     <ClInclude Include="source\matrix.h" />
     <ClInclude Include="source\neuromancer.h" />
   </ItemGroup>
