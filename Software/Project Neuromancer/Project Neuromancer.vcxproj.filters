@@ -24,7 +24,7 @@
     <ClCompile Include="source\Project_Neuromancer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="RevoluteForwardKinematics2D.cpp">
+    <ClCompile Include="source\RevoluteForwardKinematics2D.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -35,7 +35,7 @@
     <ClInclude Include="source\neuromancer.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="RevoluteForwardKinematics2D.h">
+    <ClInclude Include="source\RevoluteForwardKinematics2D.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>

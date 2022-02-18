@@ -19,15 +19,15 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="RevoluteForwardKinematics2D.cpp" />
     <ClCompile Include="source\matrix.cpp" />
     <ClCompile Include="source\neuromancer.cpp" />
     <ClCompile Include="source\Project_Neuromancer.cpp" />
+    <ClCompile Include="source\RevoluteForwardKinematics2D.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="RevoluteForwardKinematics2D.h" />
     <ClInclude Include="source\matrix.h" />
     <ClInclude Include="source\neuromancer.h" />
+    <ClInclude Include="source\RevoluteForwardKinematics2D.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
