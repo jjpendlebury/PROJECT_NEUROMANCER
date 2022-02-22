@@ -4,8 +4,14 @@ using namespace std;
 
 //constructor
 //need to write an assign loop to iterate through an array of arrays, and assign values like that
-Matrix::Matrix() {
+Matrix::Matrix() { //blank matrix
 };
+
+//preallocated matrix
+Matrix::Matrix(int m, int n) {
+    std::vector<std::vector<float> > temp(m,std::vector<float>(n, 0));
+    data = temp;
+}
 
 //
 void Matrix::set_data(vector< vector<float> > &inputData) {

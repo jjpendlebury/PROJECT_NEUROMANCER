@@ -15,6 +15,7 @@ private:
 
 public:
 	Matrix();
+	Matrix(int m, int n);
 	vector<vector<float>> data;	//a vector of vectors of floats. Because that's not confusing at all
 	void set_data(vector< vector<float> >& inputData);
 	vector<vector<float>> get_data();

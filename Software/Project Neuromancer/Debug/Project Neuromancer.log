@@ -1,4 +1,19 @@
-﻿  neuromancer.cpp
+﻿  Project_Neuromancer.cpp
+C:\Users\jjpendlebury\Git\PROJECT_NEUROMANCER\Software\Project Neuromancer\source\neuromancer.h(12,14): warning C4305: 'initializing': truncation from 'double' to 'float'
+  RevoluteForwardKinematics2D.cpp
+C:\Users\jjpendlebury\Git\PROJECT_NEUROMANCER\Software\Project Neuromancer\source\RevoluteForwardKinematics2D.cpp(5,12): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+  matrix.cpp
+C:\Users\jjpendlebury\Git\PROJECT_NEUROMANCER\Software\Project Neuromancer\source\matrix.cpp(28,24): warning C4018: '<': signed/unsigned mismatch
+C:\Users\jjpendlebury\Git\PROJECT_NEUROMANCER\Software\Project Neuromancer\source\matrix.cpp(72,55): warning C4244: '+=': conversion from '_Ty' to 'int', possible loss of data
+          with
+          [
+              _Ty=float
+          ]
+C:\Users\jjpendlebury\Git\PROJECT_NEUROMANCER\Software\Project Neuromancer\source\matrix.cpp(136,24): warning C4018: '<': signed/unsigned mismatch
+C:\Users\jjpendlebury\Git\PROJECT_NEUROMANCER\Software\Project Neuromancer\source\matrix.cpp(149,24): warning C4018: '<': signed/unsigned mismatch
+C:\Users\jjpendlebury\Git\PROJECT_NEUROMANCER\Software\Project Neuromancer\source\matrix.cpp(183,22): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+  neuromancer.cpp
 C:\Users\jjpendlebury\Git\PROJECT_NEUROMANCER\Software\Project Neuromancer\source\neuromancer.h(12,14): warning C4305: 'initializing': truncation from 'double' to 'float'
 C:\Users\jjpendlebury\Git\PROJECT_NEUROMANCER\Software\Project Neuromancer\source\neuromancer.cpp(6,20): warning C4305: 'initializing': truncation from 'double' to 'float'
+  Generating Code...
   Project Neuromancer.vcxproj -> C:\Users\jjpendlebury\Git\PROJECT_NEUROMANCER\Software\Project Neuromancer\Debug\Project Neuromancer.exe
