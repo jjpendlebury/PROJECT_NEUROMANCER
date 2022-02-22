@@ -23,7 +23,11 @@ void Neuromancer::Test() {
     result2.disp_data();
     Matrix result3 = matA*d_mult;
     result3.disp_data();
-    vector<float> random_vec = GenRandVec(0,100);
+    cout << "10 random numbers between 0 and 100" << endl;
+    vector<float> random_vec = GenRandVec(0,100,10);
+    for (const auto& i : random_vec) std::cout << i << " ";
+    cout << endl << "Default parameters" << endl;
+    random_vec = GenRandVec();
     for (const auto& i : random_vec) std::cout << i << " ";
 }
 
