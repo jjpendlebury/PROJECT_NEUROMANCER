@@ -21,5 +21,7 @@ vector<Matrix> ForwardKinematics(float armLen[2], Matrix theta, float origin[2])
 	theta2 = theta.data[1];
 	float armlen1 = armLen[0];
 	float armlen2 = armLen[1];
+
+
 	return blank;
 }
