@@ -23,6 +23,8 @@ void Neuromancer::Test() {
     result2.disp_data();
     Matrix result3 = matA*d_mult;
     result3.disp_data();
+    vector<float> random_vec = GenRandVec(0,100);
+    for (const auto& i : random_vec) std::cout << i << " ";
 }
 
 

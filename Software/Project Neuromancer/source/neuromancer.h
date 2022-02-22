@@ -3,6 +3,7 @@
 #define NEUROMANCER_H
 
 #include "matrix.h"
+#include "RevoluteForwardKinematics2D.h"
 #include <iostream>
 
 class Neuromancer {
