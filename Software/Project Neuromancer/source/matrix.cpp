@@ -18,7 +18,7 @@ void Matrix::set_data(vector< vector<float> > &inputData) {
     data = inputData;
 }
 
-//method to 
+//method to extract the data from a matrix
 vector<vector<float>> Matrix::get_data() {
     return data;
 }
