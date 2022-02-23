@@ -36,3 +36,8 @@
 *.ipch*
 *.VC.db
 *.suo
+*.tlog
+*.ilk
+*.log
+*.pdb
+*.idb
