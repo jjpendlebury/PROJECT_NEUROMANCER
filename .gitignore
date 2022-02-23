@@ -35,3 +35,4 @@
 *.opendb
 *.ipch*
 *.VC.db
+*.suo
