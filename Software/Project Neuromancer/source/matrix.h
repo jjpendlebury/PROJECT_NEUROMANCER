@@ -20,10 +20,16 @@ public:
 	void set_data(vector< vector<float> >& inputData);
 	vector<vector<float>> get_data();
 	void disp_data();
+
 	Matrix	multiply(Matrix matB);						//standard
 	Matrix	multiply(float factor);					//multiply by scalar
 	Matrix	multiply(int int_factor);					//multiply by scalar (int)
 	void	multiply(Matrix matB, int debug);			//debug
+
+	//trig functions
+	Matrix sine(Matrix input);
+	Matrix cosine(Matrix input);
+	Matrix tangent(Matrix input);
 
 	Matrix	operator*(Matrix& matB);
 	Matrix	operator*(float multiplier);

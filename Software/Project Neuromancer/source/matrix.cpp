@@ -9,6 +9,7 @@ Matrix::Matrix() { //blank matrix
 
 //preallocated matrix
 Matrix::Matrix(int m, int n) {
+
     std::vector<std::vector<float> > temp(m,std::vector<float>(n, 0));
     data = temp;
 }
@@ -158,7 +159,34 @@ Matrix Matrix::multiply(int factor) {
     return blank;
 }
 
+//trig functions
+Matrix Matrix::sine(Matrix input) {
+    vector<vector<float>> dataA = this->get_data();;
+    for (auto i = 0; i < dataA.size(); i++) {
+        for (
+            auto it = dataA[i].begin(); it != dataA[i].end(); it++)
+            *it *= sin(*it);
+        //cout << *it << " ";
+        cout << endl;
+    }
+    Matrix blank;
+    blank.set_data(dataA);
+    return blank;
+}
 
+Matrix Matrix::cosine(Matrix input) {
+    vector<vector<float>> dataA = this->get_data();;
+    for (auto i = 0; i < dataA.size(); i++) {
+        for (
+            auto it = dataA[i].begin(); it != dataA[i].end(); it++)
+            *it *= cos(*it);
+        //cout << *it << " ";
+        cout << endl;
+    }
+    Matrix blank;
+    blank.set_data(dataA);
+    return blank;
+}
 
 
 
