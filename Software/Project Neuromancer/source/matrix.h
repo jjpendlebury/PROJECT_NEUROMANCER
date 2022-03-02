@@ -26,10 +26,15 @@ public:
 	Matrix	multiply(int int_factor);					//multiply by scalar (int)
 	void	multiply(Matrix matB, int debug);			//debug
 
+	//addition
+	Matrix addition(Matrix input);
+	Matrix addition(int offset);
+	Matrix addition(float offset);
+
 	//trig functions
-	Matrix sine(Matrix input);
-	Matrix cosine(Matrix input);
-	Matrix tangent(Matrix input);
+	Matrix sine();
+	Matrix cosine();
+	Matrix tangent();
 
 	Matrix	operator*(Matrix& matB);
 	Matrix	operator*(float multiplier);

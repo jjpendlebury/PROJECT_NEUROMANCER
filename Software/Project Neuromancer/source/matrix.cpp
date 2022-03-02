@@ -146,7 +146,7 @@ Matrix Matrix::multiply(float factor) {
     return blank;
 }
 Matrix Matrix::multiply(int factor) {
-    vector<vector<float>> dataA = this->get_data();;
+    vector<vector<float>> dataA = this->get_data();
     for (auto i = 0; i < dataA.size(); i++) {
         for (
             auto it = dataA[i].begin(); it != dataA[i].end(); it++)
@@ -159,8 +159,48 @@ Matrix Matrix::multiply(int factor) {
     return blank;
 }
 
+//addition
+Matrix Matrix::addition(Matrix input) {
+    vector<vector<float>> dataA = this->get_data();
+    vector<vector<float>> dataB = this->get_data();
+    int r1 = dataA.size();
+    int r2 = dataB.size();
+    int c1 = dataA[0].size();
+    int c2 = dataB[0].size();
+    if (c1 != r2) {
+        cout << "Column of first matrix should be equal to row of second matrix";
+    }
+    for (auto i = 0; i < dataA.size(); i++) {
+        for (
+            auto it = 0; it < dataA.size(); it++)
+            dataA[i][it] += dataB[i][it];
+        //cout << *it << " ";
+        cout << endl;
+    }
+    Matrix blank;
+    blank.set_data(dataA);
+    return blank;
+
+}
+
+Matrix Matrix::addition(int offset) {
+    vector<vector<float>> dataA = this->get_data();
+    vector<vector<float>> dataB = this->get_data();
+    for (auto i = 0; i < dataA.size(); i++) {
+        for (
+            auto it = 0; it < dataB.size(); it++)
+            dataA[i][it] += offset;
+        //cout << *it << " ";
+        cout << endl;
+    }
+    Matrix blank;
+    blank.set_data(dataA);
+    return blank;
+
+}
+
 //trig functions
-Matrix Matrix::sine(Matrix input) {
+Matrix Matrix::sine() {
     vector<vector<float>> dataA = this->get_data();;
     for (auto i = 0; i < dataA.size(); i++) {
         for (
@@ -174,7 +214,7 @@ Matrix Matrix::sine(Matrix input) {
     return blank;
 }
 
-Matrix Matrix::cosine(Matrix input) {
+Matrix Matrix::cosine() {
     vector<vector<float>> dataA = this->get_data();;
     for (auto i = 0; i < dataA.size(); i++) {
         for (
@@ -188,6 +228,19 @@ Matrix Matrix::cosine(Matrix input) {
     return blank;
 }
 
+Matrix Matrix::tangent() {
+    vector<vector<float>> dataA = this->get_data();;
+    for (auto i = 0; i < dataA.size(); i++) {
+        for (
+            auto it = dataA[i].begin(); it != dataA[i].end(); it++)
+            *it *= tan(*it);
+        //cout << *it << " ";
+        cout << endl;
+    }
+    Matrix blank;
+    blank.set_data(dataA);
+    return blank;
+}
 
 
 //overloads
