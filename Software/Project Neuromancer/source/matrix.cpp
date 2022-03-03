@@ -176,7 +176,7 @@ Matrix Matrix::addition(Matrix input) {
     else {
         for (auto i = 0; i < dataA.size(); i++) {
             for (
-                auto it = 0; it < dataA[0].size(); it++)
+                auto it = 0; it < dataA[i].size(); it++)
                 //cout << dataA[i][it] << "+" << dataB[i][it] << endl;
                 dataA[i][it] += dataB[i][it];
             //cout << *it << " ";
