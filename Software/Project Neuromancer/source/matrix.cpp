@@ -162,25 +162,29 @@ Matrix Matrix::multiply(int factor) {
 //addition
 Matrix Matrix::addition(Matrix input) {
     vector<vector<float>> dataA = this->get_data();
-    vector<vector<float>> dataB = this->get_data();
+    vector<vector<float>> dataB = input.get_data();
     int r1 = dataA.size();
     int r2 = dataB.size();
     int c1 = dataA[0].size();
     int c2 = dataB[0].size();
-    if (c1 != r2) {
-        cout << "Column of first matrix should be equal to row of second matrix";
-    }
-    for (auto i = 0; i < dataA.size(); i++) {
-        for (
-            auto it = 0; it < dataA.size(); it++)
-            dataA[i][it] += dataB[i][it];
-        //cout << *it << " ";
-        cout << endl;
-    }
+    cout << "MatA - " << r1 << "," << c1 << endl;
+    cout << "MatB - " << r2 << "," << c2 << endl;
     Matrix blank;
-    blank.set_data(dataA);
+    if ((c1 != c2) || (r1 != r2)) {
+        cout << "For matrix elementwise addition, matrix dimensions must be the same" << endl;
+    }
+    else {
+        for (auto i = 0; i < dataA.size(); i++) {
+            for (
+                auto it = 0; it < dataA[0].size(); it++)
+                //cout << dataA[i][it] << "+" << dataB[i][it] << endl;
+                dataA[i][it] += dataB[i][it];
+            //cout << *it << " ";
+            cout << endl;
+        }
+        blank.set_data(dataA);
+    }
     return blank;
-
 }
 
 Matrix Matrix::addition(int offset) {
@@ -269,3 +273,20 @@ Matrix Matrix::operator*(double double_multiplier) {
 void Matrix::operator=(vector<vector<float>> input) {
     this->set_data(input);
 }
+
+Matrix Matrix::operator+(Matrix input) {
+    Matrix result = this->addition(input);
+    return result;
+}
+
+//Matrix Matrix::operator+(int offset) {
+//    Matrix result = this->addition(offset);
+//    return result;
+//}
+
+//Matrix Matrix::operator+(float offset) {
+//    Matrix result = this->addition(offset);
+//    return result;
+//}
+
+

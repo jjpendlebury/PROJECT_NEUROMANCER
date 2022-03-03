@@ -22,7 +22,7 @@ public:
 	void disp_data();
 
 	Matrix	multiply(Matrix matB);						//standard
-	Matrix	multiply(float factor);					//multiply by scalar
+	Matrix	multiply(float factor);						//multiply by scalar
 	Matrix	multiply(int int_factor);					//multiply by scalar (int)
 	void	multiply(Matrix matB, int debug);			//debug
 
@@ -41,6 +41,9 @@ public:
 	Matrix	operator*(int int_multiplier);
 	Matrix	operator*(double double_multiplier);
 	void	operator=(vector<vector<float>> input);
+	Matrix	operator+(Matrix input);
+	/*Matrix	operator+(int offset);
+	Matrix	operator+(float offset);*/
 };
 
 
