@@ -5,6 +5,8 @@ using namespace std;
 //constructor
 //need to write an assign loop to iterate through an array of arrays, and assign values like that
 Matrix::Matrix() { //blank matrix
+    dims.rows = 0;
+    dims.columns = 0;
 };
 
 //preallocated matrix
@@ -12,11 +14,15 @@ Matrix::Matrix(int m, int n) {
 
     std::vector<std::vector<float> > temp(m,std::vector<float>(n, 0));
     data = temp;
+    dims.rows = m;
+    dims.columns = n;
 }
 
 //
 void Matrix::set_data(vector< vector<float> > &inputData) {
     data = inputData;
+    this->dims.rows = this->data.size();
+    this->dims.columns = this->data[0].size();
 }
 
 //method to extract the data from a matrix
@@ -32,6 +38,21 @@ void Matrix::disp_data() {
             cout << *it << " ";
         cout << endl;
     }
+}
+
+dimensions Matrix::get_dims() {
+    dimensions output = this->dims;
+    return output;
+}
+
+int Matrix::get_rows() {
+    int output = this->dims.rows;
+    return output;
+}
+
+int Matrix::get_cols() {
+    int output = this->dims.columns;
+    return output;
 }
 
 //multiply two matrices
@@ -200,7 +221,21 @@ Matrix Matrix::addition(int offset) {
     Matrix blank;
     blank.set_data(dataA);
     return blank;
+}
 
+Matrix Matrix::addition(float offset) {
+    vector<vector<float>> dataA = this->get_data();
+    vector<vector<float>> dataB = this->get_data();
+    for (auto i = 0; i < dataA.size(); i++) {
+        for (
+            auto it = 0; it < dataB.size(); it++)
+            dataA[i][it] += offset;
+        //cout << *it << " ";
+        cout << endl;
+    }
+    Matrix blank;
+    blank.set_data(dataA);
+    return blank;
 }
 
 //trig functions
@@ -246,6 +281,23 @@ Matrix Matrix::tangent() {
     return blank;
 }
 
+//Matrix processing functions
+Matrix Matrix::transpose() {
+    int t_rows = this->get_cols();      //flip dimensions for transpose
+    int t_cols = this->get_rows();
+    vector< vector<float> > dataA = this->get_data();
+    Matrix output(t_rows, t_cols);
+    for (auto i = 0; i < dataA.size(); i++) {
+        for (
+            auto it = 0; it < dataA[i].size(); it++)
+            output.data[it][i] = dataA[i][it];
+        //cout << *it << " ";
+        cout << endl;
+    }
+    
+    return output;
+};
+
 
 //overloads
 Matrix Matrix::operator*(Matrix& matB) {
@@ -279,14 +331,15 @@ Matrix Matrix::operator+(Matrix input) {
     return result;
 }
 
-//Matrix Matrix::operator+(int offset) {
-//    Matrix result = this->addition(offset);
-//    return result;
-//}
+Matrix Matrix::operator+(int offset) {
+    Matrix result = this->addition(offset);
+    return result;
+}
 
-//Matrix Matrix::operator+(float offset) {
-//    Matrix result = this->addition(offset);
-//    return result;
-//}
+Matrix Matrix::operator+(float offset) {
+
+    Matrix result = this->addition(offset);
+    return result;
+}
 
 

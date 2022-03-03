@@ -10,16 +10,31 @@ using std::vector;
 //class for matrix stuff
 //vector of vectors as a backbone
 //need to write a multiplication method - see neuromancer
+
+struct dimensions {
+	int rows=0;
+	int columns=0;
+};
+
+
+
 class Matrix {
 private:
 
 public:
 	Matrix();
 	Matrix(int m, int n);
+
+	dimensions dims;
+
 	vector<vector<float>> data;	//a vector of vectors of floats. Because that's not confusing at all
 	void set_data(vector< vector<float> >& inputData);
 	vector<vector<float>> get_data();
-	void disp_data();
+	void		disp_data();
+	dimensions	get_dims();
+	int			get_rows();
+	int			get_cols();
+	
 
 	Matrix	multiply(Matrix matB);						//standard
 	Matrix	multiply(float factor);						//multiply by scalar
@@ -36,14 +51,18 @@ public:
 	Matrix cosine();
 	Matrix tangent();
 
+	//Matrix processing funtions
+	Matrix transpose();
+
+	//overloads
 	Matrix	operator*(Matrix& matB);
 	Matrix	operator*(float multiplier);
 	Matrix	operator*(int int_multiplier);
 	Matrix	operator*(double double_multiplier);
 	void	operator=(vector<vector<float>> input);
 	Matrix	operator+(Matrix input);
-	/*Matrix	operator+(int offset);
-	Matrix	operator+(float offset);*/
+	Matrix	operator+(int offset);
+	Matrix	operator+(float offset);
 };
 
 

@@ -22,6 +22,9 @@ void Neuromancer::Test() {
     matA.disp_data();
     cout << "DISPLAY B" << endl;
     matB.disp_data();
+    cout << "TRANSPOSE" << endl;
+    Matrix matAt = matA.transpose();
+    matAt.disp_data();
     cout << "MULTIPLY A*B:" << endl;
     matA.multiply(matB, 1);
     cout << endl;
@@ -40,6 +43,10 @@ void Neuromancer::Test() {
     result4.disp_data();
     result4 = matC + matD;
     result4.disp_data();
+    Matrix test2(1000, 3);
+    test2.disp_data();
+    cout << "rows: " << test2.get_rows() << endl;
+    cout << "cols: " << test2.get_cols() << endl;
 
 }
 
