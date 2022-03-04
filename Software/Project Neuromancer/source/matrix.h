@@ -35,7 +35,13 @@ public:
 	int			get_rows();
 	int			get_cols();
 	
+	//access methods
+	float			access(int i, int j);
+	vector<float>	access(int i, char all); // row 
+	vector<float>	access(char all, int j); // column
 
+
+	//Multiplication methods
 	Matrix	multiply(Matrix matB);						//standard
 	Matrix	multiply(float factor);						//multiply by scalar
 	Matrix	multiply(int int_factor);					//multiply by scalar (int)
@@ -63,6 +69,9 @@ public:
 	Matrix	operator+(Matrix input);
 	Matrix	operator+(int offset);
 	Matrix	operator+(float offset);
+	float			operator()(int i, int j);
+	vector<float>	operator()(int i, char all);
+	vector<float>	operator()(char all, int j);
 };
 
 

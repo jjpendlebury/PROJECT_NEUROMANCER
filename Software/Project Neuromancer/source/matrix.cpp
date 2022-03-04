@@ -55,6 +55,30 @@ int Matrix::get_cols() {
     return output;
 }
 
+//access methods
+
+float Matrix::access(int i, int j) {
+    float output = this->data.at(i).at(j);
+    return output;
+}
+
+vector<float> Matrix::access(int i, char all) {
+    //row access
+    vector<float> output;
+    output.reserve(this->get_cols());             //preallocate the new vector for speed
+    output = this->data.at(i);
+    return output;
+}
+
+vector<float> Matrix::access(char all, int j) {
+    vector<float> output;
+    output.reserve(this->get_rows());
+    for (auto i = 0; i < this->data.size(); i++) {
+        output.push_back(this->access(i, j));
+    }
+    return output;
+}
+
 //multiply two matrices
 //DEBUG variant, prints matrices out
 void Matrix::multiply(Matrix matB, int debug) {
@@ -342,4 +366,17 @@ Matrix Matrix::operator+(float offset) {
     return result;
 }
 
+float Matrix::operator()(int i, int j) {
+    float output = this->access(i, j);
+    return output;
+}
 
+vector<float> Matrix::operator()(int i, char all) {
+    vector<float> output = this->access(i, all);
+    return output;
+}
+
+vector<float> Matrix::operator()(char all, int j) {
+    vector<float> output = this->access(all, j);
+    return output;
+}
