@@ -31,6 +31,7 @@ public:
 	void set_data(vector< vector<float> >& inputData);
 	vector<vector<float>> get_data();
 	void		disp_data();
+	void		disp_vec();
 	dimensions	get_dims();
 	int			get_rows();
 	int			get_cols();

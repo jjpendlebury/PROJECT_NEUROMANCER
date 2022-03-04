@@ -40,6 +40,15 @@ void Matrix::disp_data() {
     }
 }
 
+void Matrix::disp_vec() {
+    for (auto i = 0; i < data.size(); i++) {
+        for (
+            auto it = data[i].begin(); it != data[i].end(); it++)
+            cout << *it << " ";
+        cout << endl;
+    }
+}
+
 dimensions Matrix::get_dims() {
     dimensions output = this->dims;
     return output;
