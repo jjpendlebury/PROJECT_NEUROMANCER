@@ -49,6 +49,11 @@ void Matrix::disp_vec() {
     }
 }
 
+void Matrix::update_dims() {
+    this->dims.rows = data.size();
+    this->dims.columns = data[0].size();
+}
+
 dimensions Matrix::get_dims() {
     dimensions output = this->dims;
     return output;
@@ -137,7 +142,7 @@ void Matrix::multiply(Matrix matB, int debug) {
 
 //Standard variant
 Matrix Matrix::multiply(Matrix matB) {
-    Matrix result;
+    //Matrix result;
     int r1 = 3, c1 = 2, r2 = 2, c2 = 3, i, j, k;
     vector< vector<float> > a = this->get_data();
     vector< vector<float> > b = matB.get_data();
@@ -151,20 +156,7 @@ Matrix Matrix::multiply(Matrix matB) {
         cout << "Column of first matrix should be equal to row of second matrix";
     }
     else {
-        cout << "The first matrix is:" << endl;
-        for (i = 0; i < r1; ++i) {
-            for (j = 0; j < c1; ++j)
-                cout << a[i][j] << " ";
-            cout << endl;
-        }
-        cout << endl;
-        cout << "The second matrix is:" << endl;
-        for (i = 0; i < r2; ++i) {
-            for (j = 0; j < c2; ++j)
-                cout << b[i][j] << " ";
-            cout << endl;
-        }
-        cout << endl;
+
         for (i = 0; i < r1; ++i)
             for (j = 0; j < c2; ++j) {
                 product[i][j] = 0;
@@ -181,6 +173,7 @@ Matrix Matrix::multiply(Matrix matB) {
             cout << endl;
         }
     }
+    Matrix result(r1, c2);
     result.set_data(product);
     return result;
 }
@@ -195,7 +188,7 @@ Matrix Matrix::multiply(float factor) {
         //cout << *it << " ";
         cout << endl;
     }
-    Matrix blank;
+    Matrix blank(this->get_rows(),this->get_cols());
     blank.set_data(dataA);
     return blank;
 }
@@ -208,7 +201,7 @@ Matrix Matrix::multiply(int factor) {
         //cout << *it << " ";
         cout << endl;
     }
-    Matrix blank;
+    Matrix blank(this->get_rows(), this->get_cols());
     blank.set_data(dataA);
     return blank;
 }
@@ -223,7 +216,7 @@ Matrix Matrix::addition(Matrix input) {
     int c2 = dataB[0].size();
     cout << "MatA - " << r1 << "," << c1 << endl;
     cout << "MatB - " << r2 << "," << c2 << endl;
-    Matrix blank;
+    Matrix blank(this->get_rows(), this->get_cols());
     if ((c1 != c2) || (r1 != r2)) {
         cout << "For matrix elementwise addition, matrix dimensions must be the same" << endl;
     }
@@ -251,7 +244,7 @@ Matrix Matrix::addition(int offset) {
         //cout << *it << " ";
         cout << endl;
     }
-    Matrix blank;
+    Matrix blank(this->get_rows(), this->get_cols());
     blank.set_data(dataA);
     return blank;
 }
@@ -266,7 +259,7 @@ Matrix Matrix::addition(float offset) {
         //cout << *it << " ";
         cout << endl;
     }
-    Matrix blank;
+    Matrix blank(this->get_rows(), this->get_cols());
     blank.set_data(dataA);
     return blank;
 }
@@ -281,7 +274,7 @@ Matrix Matrix::sine() {
         //cout << *it << " ";
         cout << endl;
     }
-    Matrix blank;
+    Matrix blank(this->get_rows(), this->get_cols());
     blank.set_data(dataA);
     return blank;
 }
@@ -295,7 +288,7 @@ Matrix Matrix::cosine() {
         //cout << *it << " ";
         cout << endl;
     }
-    Matrix blank;
+    Matrix blank(this->get_rows(), this->get_cols());
     blank.set_data(dataA);
     return blank;
 }
@@ -309,7 +302,7 @@ Matrix Matrix::tangent() {
         //cout << *it << " ";
         cout << endl;
     }
-    Matrix blank;
+    Matrix blank(this->get_rows(), this->get_cols());
     blank.set_data(dataA);
     return blank;
 }
@@ -330,6 +323,13 @@ Matrix Matrix::transpose() {
     
     return output;
 };
+
+float Matrix::determinant() {
+    //check dims
+    
+
+    return output;
+}
 
 
 //overloads

@@ -32,6 +32,7 @@ public:
 	vector<vector<float>> get_data();
 	void		disp_data();
 	void		disp_vec();
+	void		update_dims();
 	dimensions	get_dims();
 	int			get_rows();
 	int			get_cols();
@@ -60,19 +61,20 @@ public:
 
 	//Matrix processing funtions
 	Matrix transpose();
+	float determinant();
 
 	//overloads
-	Matrix	operator*(Matrix& matB);
-	Matrix	operator*(float multiplier);
-	Matrix	operator*(int int_multiplier);
-	Matrix	operator*(double double_multiplier);
-	void	operator=(vector<vector<float>> input);
-	Matrix	operator+(Matrix input);
-	Matrix	operator+(int offset);
-	Matrix	operator+(float offset);
-	float			operator()(int i, int j);
-	vector<float>	operator()(int i, char all);
-	vector<float>	operator()(char all, int j);
+	Matrix	operator*(Matrix& matB);				// Matrix X Matrix
+	Matrix	operator*(float multiplier);			// Matrix X float
+	Matrix	operator*(int int_multiplier);			// Matrix X int
+	Matrix	operator*(double double_multiplier);	// Matrix X double
+	void	operator=(vector<vector<float>> input);	// Matrix set
+	Matrix	operator+(Matrix input);				// Matrix + Matrix
+	Matrix	operator+(int offset);					// Matrix + int
+	Matrix	operator+(float offset);				// Matrix + float
+	float			operator()(int i, int j);		// Access(i,j)
+	vector<float>	operator()(int i, char all);	// Access(row)
+	vector<float>	operator()(char all, int j);	// Access(column)
 };
 
 
