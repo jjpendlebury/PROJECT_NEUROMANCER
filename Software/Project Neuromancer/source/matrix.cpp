@@ -326,7 +326,7 @@ Matrix Matrix::transpose() {
 
 float Matrix::determinant() {
     //check dims
-    
+    float output= 0;
 
     return output;
 }

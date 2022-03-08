@@ -50,6 +50,7 @@ void Neuromancer::Test() {
     cout << "rows: " << test2.get_rows() << endl;
     cout << "cols: " << test2.get_cols() << endl;
 
+    matA.disp_data();
     cout << "matA at (0,0): " << matA(0, 0) << endl;
     cout << "matA row 1: ";
     disp_vec(matA(0, ':'));
