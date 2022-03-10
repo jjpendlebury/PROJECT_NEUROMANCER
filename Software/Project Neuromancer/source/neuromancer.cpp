@@ -56,7 +56,14 @@ void Neuromancer::Test() {
     disp_vec(matA(0, ':'));
     cout << endl << "matA col 1: ";
     disp_vec(matA(':', 1));
-
+    cout << matA.dims.columns << endl;
+    cout << "det(a) =" << matA.determinant() << endl;
+    Matrix mat2(2, 2);
+    mat2 = { {1,2}, {3,4} };
+    mat2.disp_data();
+    cout << mat2.dims.columns << endl;
+    mat2.determinant();
+    cout << "det(Mat2) =" << mat2.determinant() << endl;
 }
 
 void Neuromancer::disp_vec(vector<float> input_vec) {

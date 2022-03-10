@@ -14,6 +14,15 @@ using std::vector;
 struct dimensions {
 	int rows=0;
 	int columns=0;
+
+	int square_check() {
+		if (rows == columns) {
+			return 1;
+		}
+		else {
+			return 0;
+		}
+	}
 };
 
 

@@ -312,7 +312,7 @@ Matrix Matrix::transpose() {
     int t_rows = this->get_cols();      //flip dimensions for transpose
     int t_cols = this->get_rows();
     vector< vector<float> > dataA = this->get_data();
-    Matrix output(t_rows, t_cols);
+    Matrix output(t_rows, t_cols);                      //pre-alloc constructor
     for (auto i = 0; i < dataA.size(); i++) {
         for (
             auto it = 0; it < dataA[i].size(); it++)
@@ -325,8 +325,41 @@ Matrix Matrix::transpose() {
 };
 
 float Matrix::determinant() {
-    //check dims
     float output= 0;
+    int is_square = 0, mat_size = 0;
+    //check dims
+    if (!(this->dims.square_check())) {
+        cout << "Error, non-square matrix" << endl;
+        output = 0xDEAD;
+        return output;
+    }
+    mat_size = this->dims.columns;
+    if (mat_size > 3) {
+        cout << "Error, too large" << endl;
+        output = 0xDEAD;
+        return output;
+    }
+
+    if (mat_size == 2) {
+        output = (this->access(0, 0) * this->access(1, 1)) - (this->access(0, 1) * this->access(1, 0));
+        return output;
+    }
+   
+    if (mat_size == 3) {
+        float a, b, c;
+        a =(this->access(1, 1) * this->access(2, 2)) - (this->access(1, 2) * this->access(2, 1));
+        b = (this->access(1, 0) * this->access(2, 2)) - (this->access(1, 2) * this->access(2, 0));
+        c =  (this->access(1, 0) * this->access(2, 1)) - (this->access(1, 1) * this->access(2, 0));
+        cout << this->access(0, 0) << " *( " <<this->access(1, 1) << " * " << this->access(2, 2) << " - " << this->access(1, 2) << " * " << this->access(2, 1) << ")" << endl;
+        cout << this->access(0, 1) << " *( " << this->access(1, 0) << " * " << this->access(2, 2) << " - " << this->access(1, 2) << " * " << this->access(2, 0) << ")" << endl;
+        cout << this->access(0, 2) << " *( " << this->access(1, 0) << " * " << this->access(2, 1) << " - " << this->access(1, 1) << " * " << this->access(2, 0) << ")" << endl;
+        cout << a << endl;
+        cout << b << endl;
+        cout << c << endl;
+        output = (this->access(0, 0) * a) -(this->access(0, 1) * b) +(this->access(0, 2) * c);
+        return output;
+    }
+
 
     return output;
 }
