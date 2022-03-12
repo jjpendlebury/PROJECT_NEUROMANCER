@@ -38,6 +38,7 @@ public:
 
 	vector<vector<float>> data;	//a vector of vectors of floats. Because that's not confusing at all
 	void set_data(vector< vector<float> >& inputData);
+	void set_data(vector<float> inputVec);
 	vector<vector<float>> get_data();
 	void		disp_data();
 	void		disp_vec();
@@ -70,6 +71,7 @@ public:
 
 	//Matrix processing funtions
 	Matrix transpose();
+	float determinant(int debug);
 	float determinant();
 
 	//overloads
@@ -78,6 +80,7 @@ public:
 	Matrix	operator*(int int_multiplier);			// Matrix X int
 	Matrix	operator*(double double_multiplier);	// Matrix X double
 	void	operator=(vector<vector<float>> input);	// Matrix set
+	void	operator=(vector<float> inputVec);
 	Matrix	operator+(Matrix input);				// Matrix + Matrix
 	Matrix	operator+(int offset);					// Matrix + int
 	Matrix	operator+(float offset);				// Matrix + float

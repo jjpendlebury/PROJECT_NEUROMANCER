@@ -25,6 +25,12 @@ void Matrix::set_data(vector< vector<float> > &inputData) {
     this->dims.columns = this->data[0].size();
 }
 
+void Matrix::set_data(vector<float> inputVec) {
+    data.push_back(inputVec);
+    this->dims.rows = this->data.size();
+    this->dims.columns = this->data[0].size();
+}
+
 //method to extract the data from a matrix
 vector<vector<float>> Matrix::get_data() {
     return data;
@@ -324,7 +330,8 @@ Matrix Matrix::transpose() {
     return output;
 };
 
-float Matrix::determinant() {
+//Debug variant
+float Matrix::determinant(int debug) {
     float output= 0;
     int is_square = 0, mat_size = 0;
     //check dims
@@ -364,6 +371,40 @@ float Matrix::determinant() {
     return output;
 }
 
+//standard variant
+float Matrix::determinant() {
+    float output = 0;
+    int is_square = 0, mat_size = 0;
+    //check dims
+    if (!(this->dims.square_check())) {
+        cout << "Error, non-square matrix" << endl;
+        output = 0xDEAD;
+        return output;
+    }
+    mat_size = this->dims.columns;
+    if (mat_size > 3) {
+        cout << "Error, too large" << endl;
+        output = 0xDEAD;
+        return output;
+    }
+
+    if (mat_size == 2) {
+        output = (this->access(0, 0) * this->access(1, 1)) - (this->access(0, 1) * this->access(1, 0));
+        return output;
+    }
+
+    if (mat_size == 3) {
+        float a, b, c;
+        a = (this->access(1, 1) * this->access(2, 2)) - (this->access(1, 2) * this->access(2, 1));
+        b = (this->access(1, 0) * this->access(2, 2)) - (this->access(1, 2) * this->access(2, 0));
+        c = (this->access(1, 0) * this->access(2, 1)) - (this->access(1, 1) * this->access(2, 0));
+        output = (this->access(0, 0) * a) - (this->access(0, 1) * b) + (this->access(0, 2) * c);
+        return output;
+    }
+
+
+    return output;
+}
 
 //overloads
 Matrix Matrix::operator*(Matrix& matB) {
@@ -390,6 +431,10 @@ Matrix Matrix::operator*(double double_multiplier) {
 
 void Matrix::operator=(vector<vector<float>> input) {
     this->set_data(input);
+}
+
+void Matrix::operator=(vector<float> inputVec) {
+    this->set_data(inputVec);
 }
 
 Matrix Matrix::operator+(Matrix input) {

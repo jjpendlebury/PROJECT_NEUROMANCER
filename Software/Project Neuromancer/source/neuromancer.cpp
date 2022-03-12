@@ -10,6 +10,7 @@ void Neuromancer::Test() {
     vector< vector<float> > b = { {1, 2, 3} , {3, 6, 1} , {3, 1, 4} };
     vector< vector<float> > c = { {1,2}     , {3 , 4  } , { 5, 6 }  };
     vector< vector<float> > d = { {7,8}     , {9 , 10 } , { 11, 12} };
+    vector<float>           e = { 1,2,3 };
     cout << "SET MATRIX A:" << endl;
     matA.set_data(a);
     cout << "SET MATRIX B:" << endl;
@@ -64,6 +65,9 @@ void Neuromancer::Test() {
     cout << mat2.dims.columns << endl;
     mat2.determinant();
     cout << "det(Mat2) =" << mat2.determinant() << endl;
+    Matrix singleVector;
+    singleVector.set_data(e);
+    singleVector.disp_data();
 }
 
 void Neuromancer::disp_vec(vector<float> input_vec) {

@@ -14,13 +14,15 @@ vector<float> GenRandVec(float upper, float lower, int size) {
 
 vector<Matrix> ForwardKinematics(float armLen[2], Matrix theta, float origin[2]) {
 	vector<Matrix> blank;
-	vector<float> theta1, theta2;
+	Matrix theta1, theta2;
+	vector<float> test;
 	Matrix xMat(1, 1000);
 	Matrix yMat(1, 1000);
-	theta1 = theta.data[0];
-	theta2 = theta.data[1];
+	theta1=theta(0, ':'); //need set method for a single vector 
+	theta2=theta(1,':');
 	float armlen1 = armLen[0];
 	float armlen2 = armLen[1];
+	
 
 
 	return blank;
