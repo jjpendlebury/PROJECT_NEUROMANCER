@@ -18,10 +18,16 @@ vector<Matrix> ForwardKinematics(float armLen[2], Matrix theta, float origin[2])
 	vector<float> test;
 	Matrix xMat(1, 1000);
 	Matrix yMat(1, 1000);
-	theta1=theta(0, ':'); //need set method for a single vector 
+	theta1=theta(0, ':');
 	theta2=theta(1,':');
 	float armlen1 = armLen[0];
 	float armlen2 = armLen[1];
+	theta1 = theta1.cosine();
+	theta1 = theta1 * armlen1;
+	theta1 = theta1 + origin[0];
+	theta2 = theta2.sine();
+	theta2 = theta2 * armlen1;
+	theta2 = theta1 + origin[1];
 	
 
 

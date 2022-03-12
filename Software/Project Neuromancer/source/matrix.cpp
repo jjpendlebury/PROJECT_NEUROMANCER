@@ -26,7 +26,8 @@ void Matrix::set_data(vector< vector<float> > &inputData) {
 }
 
 void Matrix::set_data(vector<float> inputVec) {
-    data.push_back(inputVec);
+    data[0].reserve(inputVec.size());
+    data.at(0)=(inputVec);
     this->dims.rows = this->data.size();
     this->dims.columns = this->data[0].size();
 }
