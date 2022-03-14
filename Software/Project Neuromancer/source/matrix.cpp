@@ -439,24 +439,24 @@ Matrix Matrix::operator*(double double_multiplier) {
 
 void Matrix::operator*=(Matrix& matB) {
     Matrix result = this->multiply(matB);
-    this->set_data(result);
+    this->data = result.data;
 }
 
 void Matrix::operator*=(float multiplier) {
     Matrix result = this->multiply(multiplier);
-    return result;
+    this->data = result.data;
 }
 
 
-Matrix Matrix::operator*=(int int_multiplier) {
+void Matrix::operator*=(int int_multiplier) {
     Matrix result = this->multiply(int(int_multiplier));
-    return result;
+    this->data = result.data;
 }
 
-Matrix Matrix::operator*=(double double_multiplier) {
+void Matrix::operator*=(double double_multiplier) {
     float multiplier = double_multiplier;
     Matrix result = this->multiply(multiplier);
-    return result;
+    this->data = result.data;
 }
 
 void Matrix::operator=(vector<vector<float>> input) {
@@ -481,6 +481,22 @@ Matrix Matrix::operator+(float offset) {
 
     Matrix result = this->addition(offset);
     return result;
+}
+
+void Matrix::operator+=(Matrix input) {
+    Matrix result = this->addition(input);
+    this->data = result.data;
+}
+
+void Matrix::operator+=(int offset) {
+    Matrix result = this->addition(offset);
+    this->data = result.data;
+}
+
+void Matrix::operator+=(float offset) {
+
+    Matrix result = this->addition(offset);
+    this->data = result.data;
 }
 
 float Matrix::operator()(int i, int j) {

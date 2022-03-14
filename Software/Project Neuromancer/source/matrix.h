@@ -87,9 +87,16 @@ public:
 
 	void	operator=(vector<vector<float>> input);	// Matrix set
 	void	operator=(vector<float> inputVec);
+
 	Matrix	operator+(Matrix input);				// Matrix + Matrix
 	Matrix	operator+(int offset);					// Matrix + int
 	Matrix	operator+(float offset);				// Matrix + float
+	void	operator+=(Matrix input);				// Matrix + Matrix
+	void	operator+=(int offset);					// Matrix + int
+	void	operator+=(float offset);				// Matrix + float
+
+
+
 	float			operator()(int i, int j);		// Access(i,j)
 	vector<float>	operator()(int i, char all);	// Access(row)
 	vector<float>	operator()(char all, int j);	// Access(column)
