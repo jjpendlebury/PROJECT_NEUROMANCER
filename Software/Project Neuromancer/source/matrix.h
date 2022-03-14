@@ -33,6 +33,7 @@ private:
 public:
 	Matrix();
 	Matrix(int m, int n);
+	Matrix(const Matrix& obj);
 
 	dimensions dims;
 
@@ -79,6 +80,11 @@ public:
 	Matrix	operator*(float multiplier);			// Matrix X float
 	Matrix	operator*(int int_multiplier);			// Matrix X int
 	Matrix	operator*(double double_multiplier);	// Matrix X double
+	void	operator*=(Matrix& matB);				// Matrix X Matrix
+	void	operator*=(float multiplier);			// Matrix X float
+	void	operator*=(int int_multiplier);			// Matrix X int
+	void	operator*=(double double_multiplier);	// Matrix X double
+
 	void	operator=(vector<vector<float>> input);	// Matrix set
 	void	operator=(vector<float> inputVec);
 	Matrix	operator+(Matrix input);				// Matrix + Matrix

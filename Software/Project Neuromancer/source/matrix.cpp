@@ -20,6 +20,11 @@ Matrix::Matrix(int m, int n) {
     dims.columns = n;
 }
 
+//copy constructor
+Matrix::Matrix(const Matrix& obj) { //blank matrix
+    data = obj.data;
+    dims = obj.dims;
+};
 //
 void Matrix::set_data(vector< vector<float> > &inputData) {
     data = inputData;
@@ -427,6 +432,28 @@ Matrix Matrix::operator*(int int_multiplier) {
 }
 
 Matrix Matrix::operator*(double double_multiplier) {
+    float multiplier = double_multiplier;
+    Matrix result = this->multiply(multiplier);
+    return result;
+}
+
+void Matrix::operator*=(Matrix& matB) {
+    Matrix result = this->multiply(matB);
+    this->set_data(result);
+}
+
+void Matrix::operator*=(float multiplier) {
+    Matrix result = this->multiply(multiplier);
+    return result;
+}
+
+
+Matrix Matrix::operator*=(int int_multiplier) {
+    Matrix result = this->multiply(int(int_multiplier));
+    return result;
+}
+
+Matrix Matrix::operator*=(double double_multiplier) {
     float multiplier = double_multiplier;
     Matrix result = this->multiply(multiplier);
     return result;

@@ -27,8 +27,7 @@ vector<Matrix> ForwardKinematics(float armLen[2], Matrix theta, float origin[2])
 	theta1 = theta1 + origin[0];
 	theta2 = theta2.sine();
 	theta2 = theta2 * armlen1;
-	theta2 = theta1 + origin[1];
-	
+	theta2 = theta2 + origin[1];
 
 
 	return blank;

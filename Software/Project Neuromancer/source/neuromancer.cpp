@@ -68,7 +68,9 @@ void Neuromancer::Test() {
     Matrix singleVector;
     singleVector.set_data(e);
     singleVector.disp_data();
-    cout << "cheese" << endl;
+    singleVector *= 2;
+    singleVector.disp_data();
+    cout << "END OF TESTS" << endl;
 }
 
 void Neuromancer::disp_vec(vector<float> input_vec) {
