@@ -5,6 +5,8 @@ using namespace std;
 //constructor
 //need to write an assign loop to iterate through an array of arrays, and assign values like that
 Matrix::Matrix() { //blank matrix
+    std::vector<std::vector<float> > temp(1, std::vector<float>(1, 0));
+    data = temp;
     dims.rows = 0;
     dims.columns = 0;
 };
@@ -27,7 +29,7 @@ void Matrix::set_data(vector< vector<float> > &inputData) {
 
 void Matrix::set_data(vector<float> inputVec) {
     data[0].reserve(inputVec.size());
-    data.at(0)=(inputVec);
+    data[0]=(inputVec);
     this->dims.rows = this->data.size();
     this->dims.columns = this->data[0].size();
 }
