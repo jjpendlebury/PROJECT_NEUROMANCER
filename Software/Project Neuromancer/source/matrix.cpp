@@ -249,12 +249,12 @@ Matrix Matrix::addition(Matrix input) {
 }
 
 Matrix Matrix::addition(int offset) {
+    int input = offset;
     vector<vector<float>> dataA = this->get_data();
-    vector<vector<float>> dataB = this->get_data();
     for (auto i = 0; i < dataA.size(); i++) {
         for (
-            auto it = 0; it < dataB.size(); it++)
-            dataA[i][it] += offset;
+            auto it = 0; it < dataA[i].size(); it++)
+            dataA[i][it] += input;
         //cout << *it << " ";
         cout << endl;
     }
@@ -264,12 +264,12 @@ Matrix Matrix::addition(int offset) {
 }
 
 Matrix Matrix::addition(float offset) {
+    float input = offset;
     vector<vector<float>> dataA = this->get_data();
-    vector<vector<float>> dataB = this->get_data();
     for (auto i = 0; i < dataA.size(); i++) {
         for (
-            auto it = 0; it < dataB.size(); it++)
-            dataA[i][it] += offset;
+            auto it = 0; it < dataA[i].size(); it++)
+            dataA[i][it] += input;
         //cout << *it << " ";
         cout << endl;
     }
@@ -496,6 +496,8 @@ void Matrix::operator+=(int offset) {
 void Matrix::operator+=(float offset) {
 
     Matrix result = this->addition(offset);
+    cout << "intermediary result" << endl;
+    result.disp_data();
     this->data = result.data;
 }
 

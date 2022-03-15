@@ -75,7 +75,8 @@ void Neuromancer::Test() {
     cout << "Copy constructor test:" << endl;
     Matrix singleVector2 = singleVector;
     singleVector2.disp_data();
-
+    singleVector += singleVector2;
+    singleVector.disp_data();
     cout << "END OF TESTS" << endl;
 }
 
