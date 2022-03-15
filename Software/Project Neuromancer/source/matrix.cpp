@@ -221,7 +221,8 @@ Matrix Matrix::multiply(int factor) {
 }
 
 //addition
-Matrix Matrix::addition(Matrix input) {
+//debug
+Matrix Matrix::addition(Matrix input, int debug) {
     vector<vector<float>> dataA = this->get_data();
     vector<vector<float>> dataB = input.get_data();
     int r1 = dataA.size();
@@ -230,6 +231,31 @@ Matrix Matrix::addition(Matrix input) {
     int c2 = dataB[0].size();
     cout << "MatA - " << r1 << "," << c1 << endl;
     cout << "MatB - " << r2 << "," << c2 << endl;
+    Matrix blank(this->get_rows(), this->get_cols());
+    if ((c1 != c2) || (r1 != r2)) {
+        cout << "For matrix elementwise addition, matrix dimensions must be the same" << endl;
+    }
+    else {
+        for (auto i = 0; i < dataA.size(); i++) {
+            for (
+                auto it = 0; it < dataA[i].size(); it++)
+                //cout << dataA[i][it] << "+" << dataB[i][it] << endl;
+                dataA[i][it] += dataB[i][it];
+            //cout << *it << " ";
+            cout << endl;
+        }
+        blank.set_data(dataA);
+    }
+    return blank;
+}
+
+Matrix Matrix::addition(Matrix input) {
+    vector<vector<float>> dataA = this->get_data();
+    vector<vector<float>> dataB = input.get_data();
+    int r1 = dataA.size();
+    int r2 = dataB.size();
+    int c1 = dataA[0].size();
+    int c2 = dataB[0].size();
     Matrix blank(this->get_rows(), this->get_cols());
     if ((c1 != c2) || (r1 != r2)) {
         cout << "For matrix elementwise addition, matrix dimensions must be the same" << endl;
@@ -514,4 +540,13 @@ vector<float> Matrix::operator()(int i, char all) {
 vector<float> Matrix::operator()(char all, int j) {
     vector<float> output = this->access(all, j);
     return output;
+}
+
+std::ostream& operator<<(std::ostream& os, const Matrix& mat) {
+    for (auto i = 0; i < mat.data.size(); i++) {
+        for (
+            auto it = mat.data[i].begin(); it != mat.data[i].end(); it++)
+            os << *it << " ";
+    }
+    return os;
 }

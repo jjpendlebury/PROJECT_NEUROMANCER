@@ -61,6 +61,7 @@ public:
 	void	multiply(Matrix matB, int debug);			//debug
 
 	//addition
+	Matrix addition(Matrix input, int debug);
 	Matrix addition(Matrix input);
 	Matrix addition(int offset);
 	Matrix addition(float offset);
@@ -95,11 +96,11 @@ public:
 	void	operator+=(int offset);					// Matrix + int
 	void	operator+=(float offset);				// Matrix + float
 
-
-
 	float			operator()(int i, int j);		// Access(i,j)
 	vector<float>	operator()(int i, char all);	// Access(row)
 	vector<float>	operator()(char all, int j);	// Access(column)
+
+	friend std::ostream& operator<<(std::ostream& os, const Matrix& mat);
 };
 
 

@@ -76,7 +76,7 @@ void Neuromancer::Test() {
     Matrix singleVector2 = singleVector;
     singleVector2.disp_data();
     singleVector += singleVector2;
-    singleVector.disp_data();
+    cout << singleVector << endl;
     cout << "END OF TESTS" << endl;
 }
 
