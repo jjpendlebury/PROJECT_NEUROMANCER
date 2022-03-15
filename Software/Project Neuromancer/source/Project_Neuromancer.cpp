@@ -5,27 +5,16 @@
 
 #include "neuromancer.h"
 using namespace std;
-Matrix test_matrix;
-Matrix test_matrix2;
-Neuromancer test(1);
-int ROW_COUNT = 5;
-int COLUMN_COUNT = 5;
-
-//2d vector initialisaiton with a default value
-std::vector<std::vector<float> > fog(ROW_COUNT, std::vector<float>(COLUMN_COUNT, 4));
-vector< vector<float> > bar = { { 1, 1 }, {2, 2}    };  
-vector< vector<float> > zog = { { 3, 3 }, {4,4}     };
+Neuromancer test(0);
 
 int main()
 {
-    //this also works post-init
-    //bar = { { 1, 1, 1 }, { 2, 2, 2 } };
-    //cout << "Hello World!\n";
-    //test_matrix.set_data(fog);
-    //test_matrix.disp_data();
-    //test_matrix2.set_data(bar);
-    //test_matrix2.disp_data();
-    
+    float lengths[2] = { 0.4,0.4 };
+    float origin[2] = { 0,0 };
+    Matrix angles(2, 100);
+    angles.data[0] = GenRandVec(0.0f, 3.14f, 100);
+    angles.data[1] = GenRandVec(0.0f, 3.14f, 100);
+    ForwardKinematics(lengths, angles, origin);
 }
 
 

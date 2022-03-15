@@ -440,6 +440,11 @@ float Matrix::determinant() {
     return output;
 }
 
+Matrix Matrix::inverse() { //FINISH LATER
+    Matrix blank;
+    return blank;
+}
+
 //overloads
 Matrix Matrix::operator*(Matrix& matB) {
      Matrix result = this->multiply(matB);

@@ -4,6 +4,8 @@
 
 #include <vector>
 #include <random>
+#include <iostream>
+#include<math.h>
 #include "matrix.h"
 
 float			randomValue(float upper = 1, float lower = 0);

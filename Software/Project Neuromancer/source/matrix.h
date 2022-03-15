@@ -75,6 +75,7 @@ public:
 	Matrix transpose();
 	float determinant(int debug);
 	float determinant();
+	Matrix inverse();
 
 	//overloads
 	Matrix	operator*(Matrix& matB);				// Matrix X Matrix
