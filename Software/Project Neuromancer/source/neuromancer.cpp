@@ -92,6 +92,9 @@ void Neuromancer::disp_vec(vector<int> input_vec) {
     cout << endl;
 }
 
+void Neuromancer::init_network() {
+
+}
 
 
 //public
@@ -102,3 +105,9 @@ Neuromancer::Neuromancer(int test) {
         Test();
     }
 }
+
+float Neuromancer::get_alpha() {
+    float output = alpha;
+    return output;
+}
+
