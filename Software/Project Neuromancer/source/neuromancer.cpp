@@ -97,6 +97,10 @@ void Neuromancer::init_network() {
     //For every entry in the layout vector, pushback a preallocated matrix onto the network vector
     for (auto i = network.begin(); i < network.end(); i++) {
         //edge case for inputs
+        if (i == network.begin()) {
+            temp Matrix(InputDims);
+
+        }
     }
 
 }
