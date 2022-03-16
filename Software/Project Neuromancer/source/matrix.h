@@ -14,6 +14,7 @@ using std::vector;
 struct dimensions {
 	int rows=0;
 	int columns=0;
+	dimensions() {};
 	dimensions(int row_input, int col_input) {
 		rows = row_input;
 		columns = col_input;
@@ -37,6 +38,7 @@ private:
 public:
 	Matrix();
 	Matrix(int m, int n);
+	Matrix(dimensions input_dims);
 	Matrix(const Matrix& obj);
 
 	dimensions dims;

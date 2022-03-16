@@ -20,6 +20,13 @@ Matrix::Matrix(int m, int n) {
     dims.columns = n;
 }
 
+Matrix::Matrix(dimensions input_dims) {
+    dims.rows = input_dims.rows;
+    dims.columns = input_dims.columns;
+    std::vector<std::vector<float> > temp(dims.rows, std::vector<float>(dims.columns, 0));
+    data = temp;
+}
+
 //copy constructor
 Matrix::Matrix(const Matrix& obj) { //blank matrix
     data = obj.data;
