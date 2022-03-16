@@ -37,7 +37,7 @@ public:
 	void	set_alpha(float new_learning_rate);
 
 	vector<layer_type>	get_layout();
-	void				set_layout(vector<layer_type>);
+	void				set_layout(vector<layer_type> input);
 
 
 };

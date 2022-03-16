@@ -111,3 +111,18 @@ float Neuromancer::get_alpha() {
     return output;
 }
 
+void Neuromancer::set_alpha(float new_learning_rate) {
+    this->alpha = new_learning_rate;
+}
+
+vector<layer_type> Neuromancer::get_layout() {
+    vector<layer_type> layout = this->network_layout;
+    return layout; 
+}
+
+void Neuromancer::set_layout(vector<layer_type> input) {
+    this->network_layout = input;
+}
+
+
+
