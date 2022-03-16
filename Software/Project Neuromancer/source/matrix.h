@@ -14,6 +14,10 @@ using std::vector;
 struct dimensions {
 	int rows=0;
 	int columns=0;
+	dimensions(int row_input, int col_input) {
+		rows = row_input;
+		columns = col_input;
+	}
 
 	int square_check() {
 		if (rows == columns) {
