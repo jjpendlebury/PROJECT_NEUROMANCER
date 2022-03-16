@@ -17,6 +17,7 @@ private:
 	//Network Parameters
 	float alpha = 0.025;
 	int trials = 100, episodes = 100, hiddenUnits = 10;
+	dimensions 
 	void	Test();													//test routine
 	void	disp_vec(vector<float> input_vec);
 	void	disp_vec(vector<int> input_vec);
