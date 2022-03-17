@@ -6,6 +6,7 @@ using namespace std;
 float d_mult = 3.33;
 
 void Neuromancer::Test() {
+    Matrix matA, matB;
     vector< vector<float> > a = { {2, 4, 6} , {2, 3, 5} , {3, 1, 4} };
     vector< vector<float> > b = { {1, 2, 3} , {3, 6, 1} , {3, 1, 4} };
     vector< vector<float> > c = { {1,2}     , {3 , 4  } , { 5, 6 }  };
@@ -95,11 +96,21 @@ void Neuromancer::disp_vec(vector<int> input_vec) {
 //Function to set up the network matrices based on the layout
 void Neuromancer::init_network() {
     //For every entry in the layout vector, pushback a preallocated matrix onto the network vector
-    for (auto i = network.begin(); i < network.end(); i++) {
+    for (auto i = network_layout.begin(); i < network_layout.end(); i++) {
         //edge case for inputs
-        if (i == network.begin()) {
-            temp Matrix(InputDims);
-
+        if (i == network_layout.begin()) {
+            Matrix input(InputDims);
+            network.push_back(input);
+        }
+        else if (i == (network_layout.begin() + 1)) {   //second layer
+            Matrix W1(hiddenUnits, InputDims.rows);
+            Matrix Net(hiddenUnits, InputDims.columns);
+            network.push_back(W1);
+            network.push_back(Net);
+        }
+        else if (i == network_layout.end) {                         //output layer
+            Matrix W2(OutputDims.rows, network[i - 1].dims.rows);
+            Matrix Net2(OutputDims);
         }
     }
 
@@ -107,6 +118,9 @@ void Neuromancer::init_network() {
 
 
 //public
+Neuromancer::Neuromancer() {
+}
+//test run
 Neuromancer::Neuromancer(int test) {
     cout << "test = " << test << endl;
     //Matrix test routine
@@ -133,5 +147,8 @@ void Neuromancer::set_layout(vector<layer_type> input) {
     this->network_layout = input;
 }
 
+void display_network() {
+
+}
 
 

@@ -10,7 +10,8 @@
 
 float			randomValue(float upper = 1, float lower = 0);
 vector<float>	GenRandVec(float upper = 1, float lower = 0, int size = 5);
-vector<Matrix>	ForwardKinematics(float armLen[2], Matrix theta, float origin[2] = { 0 }); //returns a vector of matrices
+vector<Matrix>	ForwardKinematics(int debug, float armLen[2], Matrix theta, float origin[2] = { 0 }); //returns a vector of matrices
+vector<Matrix>	ForwardKinematics(float armLen[2], Matrix theta, float origin[2] = { 0 });
 
 
 

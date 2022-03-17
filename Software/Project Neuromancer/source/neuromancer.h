@@ -40,6 +40,8 @@ public:
 	vector<layer_type>	get_layout();
 	void				set_layout(vector<layer_type> input);
 
+	void				display_network();
+
 
 };
 
