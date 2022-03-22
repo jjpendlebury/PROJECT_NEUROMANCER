@@ -96,7 +96,9 @@ void Neuromancer::disp_vec(vector<int> input_vec) {
 //Function to set up the network matrices based on the layout
 void Neuromancer::init_network() {
     //For every entry in the layout vector, pushback a preallocated matrix onto the network vector
+    int current_offset = 0;
     for (int i = 0; i < network.size(); i++) {
+        cout << "cheese" << endl;
         //edge case for inputs
         if (i == 0) {
             Matrix input(InputDims);
@@ -119,7 +121,15 @@ void Neuromancer::init_network() {
             network.push_back(output);
         }
         else {  //every other layer
-            Matrix weight()
+            Matrix weight(hiddenUnits+current_offset, network[i-1].dims.rows);
+            Matrix net(network[i - 1].dims.rows, network[i - 1].dims.columns);
+        }
+        //adjust offset
+        if (i > (network.size() / 2)) {
+            current_offset -= 1;
+        }
+        else {
+            current_offset += 1;
         }
     }
 
@@ -128,6 +138,8 @@ void Neuromancer::init_network() {
 
 //public
 Neuromancer::Neuromancer() {
+    init_network();
+    display_network();
 }
 //test run
 Neuromancer::Neuromancer(int test) {
@@ -135,6 +147,13 @@ Neuromancer::Neuromancer(int test) {
     //Matrix test routine
     if (test == 1) {
         Test();
+        init_network();
+        display_network();
+    }
+    else {
+        cout << "no test" << endl;
+        init_network();
+        display_network();
     }
 }
 
@@ -156,8 +175,10 @@ void Neuromancer::set_layout(vector<layer_type> input) {
     this->network_layout = input;
 }
 
-void display_network() {
-
+void Neuromancer::display_network() {
+    for (int i = 0; i < network.size(); i++) {
+        cout << "Matrix #" << i<< endl<< network[i] << endl << endl;
+    }
 }
 
 
