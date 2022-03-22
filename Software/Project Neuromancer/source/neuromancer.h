@@ -5,6 +5,7 @@
 #include "matrix.h"
 #include "RevoluteForwardKinematics2D.h"
 #include <iostream>
+#include "windows.h"
 
 enum layer_type {
 	LINEAR,

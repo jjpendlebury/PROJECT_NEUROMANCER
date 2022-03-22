@@ -96,21 +96,30 @@ void Neuromancer::disp_vec(vector<int> input_vec) {
 //Function to set up the network matrices based on the layout
 void Neuromancer::init_network() {
     //For every entry in the layout vector, pushback a preallocated matrix onto the network vector
-    for (auto i = network_layout.begin(); i < network_layout.end(); i++) {
+    for (int i = 0; i < network.size(); i++) {
         //edge case for inputs
-        if (i == network_layout.begin()) {
+        if (i == 0) {
             Matrix input(InputDims);
             network.push_back(input);
         }
-        else if (i == (network_layout.begin() + 1)) {   //second layer
+        else if (i == 1) {   //second layer
             Matrix W1(hiddenUnits, InputDims.rows);
             Matrix Net(hiddenUnits, InputDims.columns);
             network.push_back(W1);
             network.push_back(Net);
         }
-        else if (i == network_layout.end) {                         //output layer
-            Matrix W2(OutputDims.rows, network[i - 1].dims.rows);
+        else if (i == (network.size()-2)) {                         //1 before output layer
+            Matrix W2(OutputDims.rows, network[i - 1].dims.rows);   //this is rotated, so the transpose needs to be taken
             Matrix Net2(OutputDims);
+            network.push_back(W2);
+            network.push_back(Net2);
+        }
+        else if (i == (network.size() - 1)) {   //output layer
+            Matrix output(OutputDims);
+            network.push_back(output);
+        }
+        else {  //every other layer
+            Matrix weight()
         }
     }
 
