@@ -162,7 +162,7 @@ void Neuromancer::init_network() {
 void Neuromancer::init_weights() {
     //find weight matrices
     for (int i = 0;i < network_layout.size();i++) {
-        if (network_layout[i] == LINEAR) {
+        if (network_layout[i] == layer_type::LINEAR) {
 
         }
     }

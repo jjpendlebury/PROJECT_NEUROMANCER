@@ -8,7 +8,7 @@
 #include <iostream>
 #include "windows.h"
 
-enum layer_type {
+enum class layer_type {
 	LINEAR,
 	SIGMOID,
 	RELU
@@ -25,7 +25,7 @@ private:
 	void	Test();													//test routine
 	void	disp_vec(vector<float> input_vec);
 	void	disp_vec(vector<int> input_vec);
-	vector<layer_type> network_layout = { LINEAR, SIGMOID, LINEAR };
+	vector<layer_type> network_layout = { layer_type::LINEAR, layer_type::SIGMOID, layer_type::LINEAR };
 	vector<Matrix> network;
 
 	void init_network();
