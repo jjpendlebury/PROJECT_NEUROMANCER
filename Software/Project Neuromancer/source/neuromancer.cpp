@@ -94,47 +94,70 @@ void Neuromancer::disp_vec(vector<int> input_vec) {
 }
 
 //Function to set up the network matrices based on the layout
+//void Neuromancer::init_network() {
+//    //For every entry in the layout vector, pushback a preallocated matrix onto the network vector
+//    int current_offset = 0;
+//    for (int i = 0; i < network.size(); i++) {
+//        cout << "cheese" << endl;
+//        //edge case for inputs
+//        if (i == 0) {
+//            Matrix input(InputDims);
+//            network.push_back(input);
+//        }
+//        else if (i == 1) {   //second layer
+//            Matrix W1(hiddenUnits, InputDims.rows);
+//            Matrix Net(hiddenUnits, InputDims.columns);
+//            network.push_back(W1);
+//            network.push_back(Net);
+//        }
+//        else if (i == (network.size()-2)) {                         //1 before output layer
+//            Matrix W2(OutputDims.rows, network[i - 1].dims.rows);   //this is rotated, so the transpose needs to be taken
+//            Matrix Net2(OutputDims);
+//            network.push_back(W2);
+//            network.push_back(Net2);
+//        }
+//        else if (i == (network.size() - 1)) {   //output layer
+//            Matrix output(OutputDims);
+//            network.push_back(output);
+//        }
+//        else {  //every other layer
+//            Matrix weight(hiddenUnits+current_offset, network[i-1].dims.rows);
+//            Matrix net(network[i - 1].dims.rows, network[i - 1].dims.columns);
+//        }
+//        //adjust offset
+//        if (i > (network.size() / 2)) {
+//            current_offset -= 1;
+//        }
+//        else {
+//            current_offset += 1;
+//        }
+//    }
+//
+//}
+
+//copy of the aint351 network
 void Neuromancer::init_network() {
-    //For every entry in the layout vector, pushback a preallocated matrix onto the network vector
-    int current_offset = 0;
-    for (int i = 0; i < network.size(); i++) {
-        cout << "cheese" << endl;
-        //edge case for inputs
-        if (i == 0) {
-            Matrix input(InputDims);
-            network.push_back(input);
-        }
-        else if (i == 1) {   //second layer
-            Matrix W1(hiddenUnits, InputDims.rows);
-            Matrix Net(hiddenUnits, InputDims.columns);
-            network.push_back(W1);
-            network.push_back(Net);
-        }
-        else if (i == (network.size()-2)) {                         //1 before output layer
-            Matrix W2(OutputDims.rows, network[i - 1].dims.rows);   //this is rotated, so the transpose needs to be taken
-            Matrix Net2(OutputDims);
-            network.push_back(W2);
-            network.push_back(Net2);
-        }
-        else if (i == (network.size() - 1)) {   //output layer
-            Matrix output(OutputDims);
-            network.push_back(output);
-        }
-        else {  //every other layer
-            Matrix weight(hiddenUnits+current_offset, network[i-1].dims.rows);
-            Matrix net(network[i - 1].dims.rows, network[i - 1].dims.columns);
-        }
-        //adjust offset
-        if (i > (network.size() / 2)) {
-            current_offset -= 1;
-        }
-        else {
-            current_offset += 1;
-        }
-    }
-
+    //input layer
+    Matrix inputLayer(InputDims);
+    network.push_back(inputLayer);
+    //First layer
+    //Weight
+    Matrix W1(10, 3);
+    Matrix net1(10, 1);
+    network.push_back(W1);
+    network.push_back(net1);
+    //second layer
+    Matrix a2(10, 1);
+    Matrix a2_hat(11, 1);
+    network.push_back(a2);
+    network.push_back(a2_hat);
+    //third layer
+    Matrix W2(2, 11);
+    Matrix net2(2, 1);
+    network.push_back(W2);
+    network.push_back(net2);
+    //display_network();
 }
-
 
 //public
 Neuromancer::Neuromancer() {

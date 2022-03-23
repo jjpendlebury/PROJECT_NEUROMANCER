@@ -557,8 +557,10 @@ vector<float> Matrix::operator()(char all, int j) {
 std::ostream& operator<<(std::ostream& os, const Matrix& mat) {
     for (auto i = 0; i < mat.data.size(); i++) {
         for (
-            auto it = mat.data[i].begin(); it != mat.data[i].end(); it++)
+            auto it = mat.data[i].begin(); it != mat.data[i].end(); it++) {
             os << *it << " ";
+        }
+        os << endl;
     }
     return os;
 }
