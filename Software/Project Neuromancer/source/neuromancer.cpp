@@ -171,7 +171,11 @@ void Neuromancer::init_weights() {
 
 
 Matrix  Neuromancer::GenRandMat(dimensions dims, float upper, float lower){
-
+    Matrix output(dims);
+    for (int i = 0; i < output.dims.rows; i++) {
+        output.data[i] = GenRandVec(0.1, -0.1, output.dims.columns);
+    }
+    return output;
 }
 
 //public
@@ -224,7 +228,7 @@ float randomValue(float upper=1, float lower=0) {
     static std::uniform_real_distribution<> dis(lower, upper);
     return dis(e);
 }
-vector<float> GenRandVec(float upper=1, float lower=0, int size=5) {
+vector<float> GenRandVec(float upper, float lower, int size) {
     std::vector<float> nums;
     for (int i{}; i != size; ++i) // Generate 5 random floats
         nums.emplace_back(randomValue(lower, upper));

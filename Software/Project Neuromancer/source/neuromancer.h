@@ -13,8 +13,8 @@ enum layer_type {
 	SIGMOID,
 	RELU
 };
-//vector<float>	GenRandVec(float upper = 1, float lower = 0, int size = 5);
-//Matrix			GenRandMat(dimensions dims, float upper = 1, float lower = 0);
+vector<float>	GenRandVec(float upper=1, float lower=0, int size=5);
+float			randomValue(float upper, float lower);
 
 class Neuromancer {
 private:
