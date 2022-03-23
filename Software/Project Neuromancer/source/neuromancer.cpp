@@ -163,7 +163,7 @@ void Neuromancer::init_weights() {
     //find weight matrices
     for (int i = 0;i < network_layout.size();i++) {
         if (network_layout[i] == layer_type::LINEAR) {
-
+            network[(2 * (i + 1)) - 1] = GenRandMat(network[(2 * (i + 1)) - 1].get_dims(), 0.1, -0.1);
         }
     }
 }
@@ -173,7 +173,7 @@ void Neuromancer::init_weights() {
 Matrix  Neuromancer::GenRandMat(dimensions dims, float upper, float lower){
     Matrix output(dims);
     for (int i = 0; i < output.dims.rows; i++) {
-        output.data[i] = GenRandVec(0.1, -0.1, output.dims.columns);
+        output.data[i] = GenRandVec(upper, lower, output.dims.columns);
     }
     return output;
 }
