@@ -159,6 +159,21 @@ void Neuromancer::init_network() {
     //display_network();
 }
 
+void Neuromancer::init_weights() {
+    //find weight matrices
+    for (int i = 0;i < network_layout.size();i++) {
+        if (network_layout[i] == LINEAR) {
+
+        }
+    }
+}
+
+
+
+Matrix  Neuromancer::GenRandMat(dimensions dims, float upper, float lower){
+
+}
+
 //public
 Neuromancer::Neuromancer() {
     init_network();
@@ -204,4 +219,15 @@ void Neuromancer::display_network() {
     }
 }
 
+float randomValue(float upper=1, float lower=0) {
+    static std::default_random_engine e;
+    static std::uniform_real_distribution<> dis(lower, upper);
+    return dis(e);
+}
+vector<float> GenRandVec(float upper=1, float lower=0, int size=5) {
+    std::vector<float> nums;
+    for (int i{}; i != size; ++i) // Generate 5 random floats
+        nums.emplace_back(randomValue(lower, upper));
 
+    return nums;
+}

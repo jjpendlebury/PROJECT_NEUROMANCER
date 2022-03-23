@@ -4,6 +4,7 @@
 
 #include "matrix.h"
 #include "RevoluteForwardKinematics2D.h"
+#include <random>
 #include <iostream>
 #include "windows.h"
 
@@ -12,6 +13,8 @@ enum layer_type {
 	SIGMOID,
 	RELU
 };
+//vector<float>	GenRandVec(float upper = 1, float lower = 0, int size = 5);
+//Matrix			GenRandMat(dimensions dims, float upper = 1, float lower = 0);
 
 class Neuromancer {
 private:
@@ -26,7 +29,11 @@ private:
 	vector<Matrix> network;
 
 	void init_network();
-
+	void init_weights();
+	Matrix					GenRandMat(dimensions dims, float upper, float lower );
+	friend float			randomValue(float upper, float lower);
+	friend vector<float>	GenRandVec(float upper, float lower, int size);
+	
 	//Overloads
 
 
