@@ -41,3 +41,6 @@
 *.log
 *.pdb
 *.idb
+
+*.exe.recipe
+*.recipe
