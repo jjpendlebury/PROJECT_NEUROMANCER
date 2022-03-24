@@ -39,7 +39,8 @@ public:
 	Matrix();
 	Matrix(int m, int n);
 	Matrix(dimensions input_dims);
-	Matrix(const Matrix& obj);
+
+	Matrix(const Matrix& obj);			//copy constructor
 
 	dimensions dims;
 

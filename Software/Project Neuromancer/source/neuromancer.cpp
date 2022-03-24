@@ -248,7 +248,7 @@ void Neuromancer::display_network() {
 //    static std::uniform_real_distribution<> dis(lower, upper);
 //    return dis(e);
 //}
-
+//lower precision
 float randomValue(float lower, float upper)
 {
     return lower + (rand() / (RAND_MAX / (upper - lower)));

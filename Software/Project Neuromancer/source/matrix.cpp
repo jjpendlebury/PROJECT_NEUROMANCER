@@ -20,10 +20,40 @@ Matrix::Matrix(int m, int n) {
     dims.columns = n;
 }
 
+Matrix::Matrix(int m, int n, float x) {
+
+    std::vector<std::vector<float> > temp(m, std::vector<float>(n, x));
+    data = temp;
+    dims.rows = m;
+    dims.columns = n;
+}
+
+Matrix::Matrix(int m, int n, int x) {
+
+    std::vector<std::vector<float> > temp(m, std::vector<float>(n, x));
+    data = temp;
+    dims.rows = m;
+    dims.columns = n;
+}
+
 Matrix::Matrix(dimensions input_dims) {
     dims.rows = input_dims.rows;
     dims.columns = input_dims.columns;
     std::vector<std::vector<float> > temp(dims.rows, std::vector<float>(dims.columns, 0));
+    data = temp;
+}
+
+Matrix::Matrix(dimensions input_dims, float x) {
+    dims.rows = input_dims.rows;
+    dims.columns = input_dims.columns;
+    std::vector<std::vector<float> > temp(dims.rows, std::vector<float>(dims.columns, x));
+    data = temp;
+}
+
+Matrix::Matrix(dimensions input_dims, int x) {
+    dims.rows = input_dims.rows;
+    dims.columns = input_dims.columns;
+    std::vector<std::vector<float> > temp(dims.rows, std::vector<float>(dims.columns, x));
     data = temp;
 }
 
