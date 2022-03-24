@@ -38,9 +38,12 @@ private:
 public:
 	Matrix();
 	Matrix(int m, int n);
+	Matrix(int m, int n, float x);			//fill value
+	Matrix(int m, int n, int x);			//fill value
 	Matrix(dimensions input_dims);
-
-	Matrix(const Matrix& obj);			//copy constructor
+	Matrix(dimensions input_dims, float x);	//fill value
+	Matrix(dimensions input_dims, int x);	//fill value
+	Matrix(const Matrix& obj);				//copy constructor
 
 	dimensions dims;
 

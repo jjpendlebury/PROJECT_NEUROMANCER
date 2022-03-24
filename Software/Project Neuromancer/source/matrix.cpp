@@ -21,7 +21,6 @@ Matrix::Matrix(int m, int n) {
 }
 
 Matrix::Matrix(int m, int n, float x) {
-
     std::vector<std::vector<float> > temp(m, std::vector<float>(n, x));
     data = temp;
     dims.rows = m;
