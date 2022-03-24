@@ -243,10 +243,15 @@ void Neuromancer::display_network() {
     }
 }
 
-float randomValue(float upper=1, float lower=0) {
-    static std::default_random_engine e;
-    static std::uniform_real_distribution<> dis(lower, upper);
-    return dis(e);
+//float randomValue(float upper=1, float lower=0) {
+//    static std::default_random_engine e;
+//    static std::uniform_real_distribution<> dis(lower, upper);
+//    return dis(e);
+//}
+
+float randomValue(float lower, float upper)
+{
+    return lower + (rand() / (RAND_MAX / (upper - lower)));
 }
 vector<float> GenRandVec(float upper=1, float lower=0, int size=5) {
     std::vector<float> nums;
