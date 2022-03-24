@@ -38,7 +38,7 @@ void Neuromancer::Test() {
     vector<float> random_vec = GenRandVec(0,100,10);
     for (const auto& i : random_vec) std::cout << i << " ";
     cout << endl << "Default parameters" << endl;
-    random_vec = GenRandVec();
+    random_vec = GenRandVec(-0.1,0.1,5);
     for (const auto& i : random_vec) std::cout << i << " ";
     cout << endl << "addition test" << endl;
      Matrix result4 = matA + matB;
@@ -47,7 +47,7 @@ void Neuromancer::Test() {
     result4.disp_data();
     Matrix result4t = result4.transpose();
     result4t.disp_data();
-    Matrix test2(1000, 3);
+    Matrix test2(10, 3);
     test2.disp_data();
     cout << "rows: " << test2.get_rows() << endl;
     cout << "cols: " << test2.get_cols() << endl;
@@ -78,6 +78,13 @@ void Neuromancer::Test() {
     singleVector2.disp_data();
     singleVector += singleVector2;
     cout << singleVector << endl;
+    cout << "sigmoid test" << endl;
+    dimensions sig_dims(10, 2);
+    Matrix sig_mat = GenRandMat(sig_dims, 1, 2);
+    cout << "sig_mat:" << endl << sig_mat << endl;
+    Matrix sig_mat_out(sig_dims);
+    sigmoid(&sig_mat, &sig_mat_out);
+    cout << "output:" << endl << sig_mat_out << endl;
     cout << "END OF TESTS" << endl;
 }
 
@@ -156,11 +163,13 @@ void Neuromancer::init_network() {
     Matrix net2(2, 1);
     network.push_back(W2);
     network.push_back(net2);
+    init_weights();
     //display_network();
 }
 
 void Neuromancer::init_weights() {
     //find weight matrices
+    cout << "Performing weight initialisation..." << endl;
     for (int i = 0;i < network_layout.size();i++) {
         if (network_layout[i] == layer_type::LINEAR) {
             network[(2 * (i + 1)) - 1] = GenRandMat(network[(2 * (i + 1)) - 1].get_dims(), 0.1, -0.1);
@@ -168,7 +177,17 @@ void Neuromancer::init_weights() {
     }
 }
 
+void Neuromancer::sigmoid(Matrix* input, Matrix* output) {
+    cout << "Sigmoid" << endl;
+    //this layer is the layer before, sigmoid-ed 
+    for (auto i = 0; i < input->data.size(); i++) {
+        for (auto it = 0; it < input->data[i].size(); it++){
+            output->data[i][it] = 1 / (1 + exp(input->data[i][it]));
+            cout <<i<<","<<it<<" = " << output->data[i][it] << endl;
+        }
+    }
 
+}
 
 Matrix  Neuromancer::GenRandMat(dimensions dims, float upper, float lower){
     Matrix output(dims);
@@ -181,6 +200,7 @@ Matrix  Neuromancer::GenRandMat(dimensions dims, float upper, float lower){
 //public
 Neuromancer::Neuromancer() {
     init_network();
+    init_weights();
     display_network();
 }
 //test run
@@ -228,7 +248,7 @@ float randomValue(float upper=1, float lower=0) {
     static std::uniform_real_distribution<> dis(lower, upper);
     return dis(e);
 }
-vector<float> GenRandVec(float upper, float lower, int size) {
+vector<float> GenRandVec(float upper=1, float lower=0, int size=5) {
     std::vector<float> nums;
     for (int i{}; i != size; ++i) // Generate 5 random floats
         nums.emplace_back(randomValue(lower, upper));

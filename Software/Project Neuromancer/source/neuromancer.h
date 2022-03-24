@@ -6,15 +6,16 @@
 #include "RevoluteForwardKinematics2D.h"
 #include <random>
 #include <iostream>
-#include "windows.h"
+#include <math.h>
 
 enum class layer_type {
 	LINEAR,
 	SIGMOID,
 	RELU
 };
-vector<float>	GenRandVec(float upper=1, float lower=0, int size=5);
+vector<float>	GenRandVec(float upper, float lower, int size);
 float			randomValue(float upper, float lower);
+
 
 class Neuromancer {
 private:
@@ -28,8 +29,14 @@ private:
 	vector<layer_type> network_layout = { layer_type::LINEAR, layer_type::SIGMOID, layer_type::LINEAR };
 	vector<Matrix> network;
 
+	//network initialisers
 	void init_network();
 	void init_weights();
+
+	//non-linearities 
+	void sigmoid(Matrix* input, Matrix* output);
+
+	//random functions
 	Matrix					GenRandMat(dimensions dims, float upper, float lower );
 	friend float			randomValue(float upper, float lower);
 	friend vector<float>	GenRandVec(float upper, float lower, int size);
