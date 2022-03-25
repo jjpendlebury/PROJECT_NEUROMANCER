@@ -80,8 +80,10 @@ void Neuromancer::Test() {
     cout << singleVector << endl;
     cout << "sigmoid test" << endl;
     dimensions sig_dims(10, 2);
-    Matrix sig_mat = GenRandMat(sig_dims, 1, 2);
-    cout << "sig_mat:" << endl << sig_mat << endl;
+    Matrix rand_mat = GenRandMat(sig_dims, 1, 2);
+    cout << "Random Matrix:" << endl << rand_mat << endl;
+    Matrix sig_mat(sig_dims, 1);
+    cout << "Ones Matrix:" << endl << sig_mat << endl;
     Matrix sig_mat_out(sig_dims);
     sigmoid(&sig_mat, &sig_mat_out);
     cout << "output:" << endl << sig_mat_out << endl;
@@ -182,7 +184,7 @@ void Neuromancer::sigmoid(Matrix* input, Matrix* output) {
     //this layer is the layer before, sigmoid-ed 
     for (auto i = 0; i < input->data.size(); i++) {
         for (auto it = 0; it < input->data[i].size(); it++){
-            output->data[i][it] = 1 / (1 + exp(input->data[i][it]));
+            output->data[i][it] = 1 / (1 + exp(-(input->data[i][it])));
             cout <<i<<","<<it<<" = " << output->data[i][it] << endl;
         }
     }
