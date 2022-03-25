@@ -2,6 +2,42 @@
 
 using namespace std;
 
+//DIMENSIONS METHODS
+dimensions::dimensions() {      
+
+}
+dimensions::dimensions(int row_input, int col_input) {
+    rows = row_input;
+    columns = col_input;
+}
+//dims mult
+dimensions dimensions::mult_size(dimensions input_dims) {
+    dimensions output;
+    output.rows = this->rows;
+    output.columns = input_dims.columns;
+    return output;
+}
+
+int dimensions::square_check() {
+    if (rows == columns) {
+        return 1;
+    }
+    else {
+        return 0;
+    }
+}
+
+dimensions dimensions::operator*(dimensions input_dims) {
+    dimensions multiplier = input_dims;
+    dimensions result = this->mult_size(multiplier);
+    return result;
+}
+
+void dimensions::operator*=(dimensions& input_dims) {
+    dimensions result = this->mult_size(input_dims);
+    this->rows = result.rows;
+    this->columns = result.columns;
+
 //constructor
 //need to write an assign loop to iterate through an array of arrays, and assign values like that
 Matrix::Matrix() { //blank matrix
@@ -255,6 +291,7 @@ Matrix Matrix::multiply(int factor) {
     blank.set_data(dataA);
     return blank;
 }
+
 
 //addition
 //debug
