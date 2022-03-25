@@ -145,7 +145,7 @@ void Neuromancer::disp_vec(vector<int> input_vec) {
 //}
 
 //copy of the aint351 network
-void Neuromancer::init_network() {
+void Neuromancer::init_network_351() {
     //input layer
     Matrix inputLayer(InputDims);
     network.push_back(inputLayer);
@@ -201,6 +201,25 @@ void Neuromancer::sigmoid(Matrix* input, Matrix* output, int debug) {
 
 }
 
+void Neuromancer::forward_pass() {
+    //iterate through the network, performing multiplications
+    for (int i = 0; i < network_layout.size(); i++) {
+        int network_index = 2 * (i + 1);                    //network layout -> network
+        if (network_layout[i] == layer_type::LINEAR) {
+            //linear layer, so just multiply the matrices
+            network[network_index] = network[network_index - 1] * network[network_index - 2];
+        }
+        else if (network_layout[i] == layer_type::SIGMOID) {
+            sigmoid(&network[network_index], &network[network_index - 1]);
+
+        }
+    }
+};
+
+void Neuromancer::back_propogation() {
+
+};
+
 Matrix  Neuromancer::GenRandMat(dimensions dims, float upper, float lower){
     Matrix output(dims);
     for (int i = 0; i < output.dims.rows; i++) {
@@ -211,7 +230,7 @@ Matrix  Neuromancer::GenRandMat(dimensions dims, float upper, float lower){
 
 //public
 Neuromancer::Neuromancer() {
-    init_network();
+    init_network_351();
     init_weights();
     display_network();
 }
@@ -221,12 +240,12 @@ Neuromancer::Neuromancer(int test) {
     //Matrix test routine
     if (test == 1) {
         Test();
-        init_network();
+        init_network_351();
         display_network();
     }
     else {
         cout << "no test" << endl;
-        init_network();
+        init_network_351();
         display_network();
     }
 }
