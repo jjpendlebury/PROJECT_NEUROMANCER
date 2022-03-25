@@ -76,6 +76,12 @@ public:
 	Matrix addition(int offset);
 	Matrix addition(float offset);
 
+	//subtraction
+	Matrix subtraction(Matrix input, int debug);
+	Matrix subtraction(Matrix input);
+	Matrix subtraction(int offset);
+	Matrix subtraction(float offset);
+
 	//trig functions
 	Matrix sine();
 	Matrix cosine();
@@ -106,6 +112,13 @@ public:
 	void	operator+=(Matrix input);				// Matrix + Matrix
 	void	operator+=(int offset);					// Matrix + int
 	void	operator+=(float offset);				// Matrix + float
+
+	Matrix	operator-(Matrix input);				// Matrix + Matrix
+	Matrix	operator-(int offset);					// Matrix + int
+	Matrix	operator-(float offset);				// Matrix + float
+	void	operator-=(Matrix input);				// Matrix + Matrix
+	void	operator-=(int offset);					// Matrix + int
+	void	operator-=(float offset);				// Matrix + float
 
 	float			operator()(int i, int j);		// Access(i,j)
 	vector<float>	operator()(int i, char all);	// Access(row)

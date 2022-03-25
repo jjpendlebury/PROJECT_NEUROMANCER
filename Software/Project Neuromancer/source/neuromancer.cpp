@@ -180,12 +180,22 @@ void Neuromancer::init_weights() {
 }
 
 void Neuromancer::sigmoid(Matrix* input, Matrix* output) {
-    cout << "Sigmoid" << endl;
     //this layer is the layer before, sigmoid-ed 
     for (auto i = 0; i < input->data.size(); i++) {
         for (auto it = 0; it < input->data[i].size(); it++){
             output->data[i][it] = 1 / (1 + exp(-(input->data[i][it])));
-            cout <<i<<","<<it<<" = " << output->data[i][it] << endl;
+        }
+    }
+
+}
+
+void Neuromancer::sigmoid(Matrix* input, Matrix* output, int debug) {
+    cout << "Sigmoid" << endl;
+    //this layer is the layer before, sigmoid-ed 
+    for (auto i = 0; i < input->data.size(); i++) {
+        for (auto it = 0; it < input->data[i].size(); it++) {
+            output->data[i][it] = 1 / (1 + exp(-(input->data[i][it])));
+            cout << i << "," << it << " = " << output->data[i][it] << endl;
         }
     }
 

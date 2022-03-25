@@ -35,7 +35,7 @@ private:
 
 	//non-linearities 
 	void sigmoid(Matrix* input, Matrix* output);
-
+	void sigmoid(Matrix* input, Matrix* output, int debug);	//debug
 	//random functions
 	Matrix					GenRandMat(dimensions dims, float upper, float lower );
 	friend float			randomValue(float upper, float lower);
