@@ -14,20 +14,15 @@ using std::vector;
 struct dimensions {
 	int rows=0;
 	int columns=0;
-	dimensions() {};
-	dimensions(int row_input, int col_input) {
-		rows = row_input;
-		columns = col_input;
-	}
+	dimensions();		//default constructor
+	dimensions(int row_input, int col_input);
+	dimensions mult_size(dimensions input_dims);
+	int square_check();
 
-	int square_check() {
-		if (rows == columns) {
-			return 1;
-		}
-		else {
-			return 0;
-		}
-	}
+	dimensions	operator*(dimensions input_dims);	// dims x dims
+	void	operator*=(dimensions& input_dims);				// dims x dims
+
+	friend std::ostream& operator<<(std::ostream& os, const dimensions& dims);
 };
 
 
@@ -69,6 +64,8 @@ public:
 	Matrix	multiply(float factor);						//multiply by scalar
 	Matrix	multiply(int int_factor);					//multiply by scalar (int)
 	void	multiply(Matrix matB, int debug);			//debug
+
+	
 
 	//addition
 	Matrix addition(Matrix input, int debug);

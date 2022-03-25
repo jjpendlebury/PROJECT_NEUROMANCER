@@ -87,6 +87,7 @@ void Neuromancer::Test() {
     Matrix sig_mat_out(sig_dims);
     sigmoid(&sig_mat, &sig_mat_out);
     cout << "output:" << endl << sig_mat_out << endl;
+    cout
     cout << "END OF TESTS" << endl;
 }
 
@@ -211,7 +212,6 @@ void Neuromancer::forward_pass() {
         }
         else if (network_layout[i] == layer_type::SIGMOID) {
             sigmoid(&network[network_index], &network[network_index - 1]);
-
         }
     }
 };

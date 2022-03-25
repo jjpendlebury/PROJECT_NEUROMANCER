@@ -30,12 +30,18 @@ private:
 	vector<Matrix> network;
 
 	//network initialisers
-	void init_network();
+	void init_network_351();
 	void init_weights();
 
 	//non-linearities 
 	void sigmoid(Matrix* input, Matrix* output);
 	void sigmoid(Matrix* input, Matrix* output, int debug);	//debug
+
+	//forward pass
+	void forward_pass();
+
+	//backpropogation
+	void back_propogation();
 	//random functions
 	Matrix					GenRandMat(dimensions dims, float upper, float lower );
 	friend float			randomValue(float upper, float lower);
