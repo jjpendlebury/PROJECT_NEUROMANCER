@@ -37,7 +37,7 @@ void dimensions::operator*=(dimensions& input_dims) {
     dimensions result = this->mult_size(input_dims);
     this->rows = result.rows;
     this->columns = result.columns;
-
+}
 //constructor
 //need to write an assign loop to iterate through an array of arrays, and assign values like that
 Matrix::Matrix() { //blank matrix
@@ -736,6 +736,13 @@ vector<float> Matrix::operator()(int i, char all) {
 vector<float> Matrix::operator()(char all, int j) {
     vector<float> output = this->access(all, j);
     return output;
+}
+
+//stream overloads
+
+std::ostream& operator<<(std::ostream& os, const dimensions& dims) {
+    os << "(" << dims.rows << "," << dims.columns << ")";
+    return os;
 }
 
 std::ostream& operator<<(std::ostream& os, const Matrix& mat) {
