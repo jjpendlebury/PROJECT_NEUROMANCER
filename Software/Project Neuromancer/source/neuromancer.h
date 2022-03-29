@@ -32,6 +32,7 @@ private:
 	//network initialisers
 	void init_network_351();
 	void init_weights();
+	void init_back_351();
 
 	//non-linearities 
 	void sigmoid(Matrix* input, Matrix* output);

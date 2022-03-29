@@ -201,6 +201,11 @@ void Neuromancer::init_weights() {
     }
 }
 
+void init_back_351() {
+    //Static backprop for the 351 network
+
+}
+
 void Neuromancer::sigmoid(Matrix* input, Matrix* output) {
     //this layer is the layer before, sigmoid-ed 
     for (auto i = 0; i < input->data.size(); i++) {
