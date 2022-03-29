@@ -87,7 +87,11 @@ void Neuromancer::Test() {
     Matrix sig_mat_out(sig_dims);
     sigmoid(&sig_mat, &sig_mat_out);
     cout << "output:" << endl << sig_mat_out << endl;
-    cout
+    cout << "Dimensions multiplication test" << endl;
+    dimensions dims_a(2, 3), dims_b(3, 2);
+    dimensions dims_c = dims_a * dims_b;
+    cout << "A = " << dims_a << " B = " << dims_b << endl;
+    cout << "result = " << dims_c << endl;
     cout << "END OF TESTS" << endl;
 }
 

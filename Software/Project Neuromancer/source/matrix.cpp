@@ -10,12 +10,24 @@ dimensions::dimensions(int row_input, int col_input) {
     rows = row_input;
     columns = col_input;
 }
+
+void dimensions::set_dims(int row_input, int col_input) {
+    rows = row_input;
+    columns = col_input;
+}
 //dims mult
 dimensions dimensions::mult_size(dimensions input_dims) {
     dimensions output;
-    output.rows = this->rows;
-    output.columns = input_dims.columns;
-    return output;
+    if (this->columns != input_dims.rows) { //dims error
+        output.rows = -1;
+        output.columns = -1;
+        return output;
+    }
+    else {
+        output.rows = this->rows;
+        output.columns = input_dims.columns;
+        return output;
+    }
 }
 
 int dimensions::square_check() {
@@ -37,6 +49,10 @@ void dimensions::operator*=(dimensions& input_dims) {
     dimensions result = this->mult_size(input_dims);
     this->rows = result.rows;
     this->columns = result.columns;
+}
+
+void dimensions::operator=(int input[2]) {
+    this->set_dims(input[0], input[1]);
 }
 //constructor
 //need to write an assign loop to iterate through an array of arrays, and assign values like that
