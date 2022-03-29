@@ -9,13 +9,13 @@ void Neuromancer::Test() {
     Matrix matA, matB;
     vector< vector<float> > a = { {2, 4, 6} , {2, 3, 5} , {3, 1, 4} };
     vector< vector<float> > b = { {1, 2, 3} , {3, 6, 1} , {3, 1, 4} };
-    vector< vector<float> > c = { {1,2}     , {3 , 4  } , { 5, 6 }  };
+    vector< vector<float> > c = { {1,2}     , {3 , 4  } , { 5, 6 } };
     vector< vector<float> > d = { {7,8}     , {9 , 10 } , { 11, 12} };
     vector<float>           e = { 1,2,3 };
     cout << "SET MATRIX A:" << endl;
     matA.set_data(a);
     cout << "SET MATRIX B:" << endl;
-    matB=b;                   //overload test
+    matB = b;                   //overload test
     Matrix matC;
     matC = c;
     Matrix matD;
@@ -30,18 +30,18 @@ void Neuromancer::Test() {
     cout << "MULTIPLY A*B:" << endl;
     matA.multiply(matB, 1);
     cout << endl;
-    Matrix result2 = matA*2;
+    Matrix result2 = matA * 2;
     result2.disp_data();
-    Matrix result3 = matA*d_mult;
+    Matrix result3 = matA * d_mult;
     result3.disp_data();
     cout << "10 random numbers between 0 and 100" << endl;
-    vector<float> random_vec = GenRandVec(0,100,10);
+    vector<float> random_vec = GenRandVec(0, 100, 10);
     for (const auto& i : random_vec) std::cout << i << " ";
     cout << endl << "Default parameters" << endl;
-    random_vec = GenRandVec(-0.1,0.1,5);
+    random_vec = GenRandVec(-0.1, 0.1, 5);
     for (const auto& i : random_vec) std::cout << i << " ";
     cout << endl << "addition test" << endl;
-     Matrix result4 = matA + matB;
+    Matrix result4 = matA + matB;
     result4.disp_data();
     result4 = matC + matD;
     result4.disp_data();
@@ -87,11 +87,28 @@ void Neuromancer::Test() {
     Matrix sig_mat_out(sig_dims);
     sigmoid(&sig_mat, &sig_mat_out);
     cout << "output:" << endl << sig_mat_out << endl;
+
     cout << "Dimensions multiplication test" << endl;
     dimensions dims_a(2, 3), dims_b(3, 2);
     dimensions dims_c = dims_a * dims_b;
-    cout << "A = " << dims_a << " B = " << dims_b << endl;
+    cout << "A = " << dims_a << " * B = " << dims_b << endl;
     cout << "result = " << dims_c << endl;
+
+    dims_a = { 4, 2 };
+    dims_b = { 2,3 };
+    dims_c = dims_a * dims_b;
+    cout << "A = " << dims_a << " * B = " << dims_b << endl;
+    cout << "result = " << dims_c << endl;
+
+    dims_a = {1, 3};
+    dims_b = { 1,3 };
+    dims_c = dims_a * dims_b;
+    cout << "A = " << dims_a << " * B = " << dims_b << endl;
+    cout << "result = " << dims_c << endl;
+
+
+
+
     cout << "END OF TESTS" << endl;
 }
 

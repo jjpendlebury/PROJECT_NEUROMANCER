@@ -16,11 +16,13 @@ struct dimensions {
 	int columns=0;
 	dimensions();		//default constructor
 	dimensions(int row_input, int col_input);
+	void set_dims(int row_input, int col_input);
 	dimensions mult_size(dimensions input_dims);
 	int square_check();
 
 	dimensions	operator*(dimensions input_dims);	// dims x dims
 	void	operator*=(dimensions& input_dims);				// dims x dims
+	void	operator=(int input[2]);
 
 	friend std::ostream& operator<<(std::ostream& os, const dimensions& dims);
 };
