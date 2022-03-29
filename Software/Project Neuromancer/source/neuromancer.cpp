@@ -201,9 +201,20 @@ void Neuromancer::init_weights() {
     }
 }
 
-void init_back_351() {
+void Neuromancer::init_back_351() {
     //Static backprop for the 351 network
-
+    //delta 3 - same size as output layer
+    Matrix delta3(network[(network.size() - 1)].get_dims());
+    back_network.push_back(delta3);
+    //delta 2 - W2bar
+    Matrix delta2(network[(network.size() - 2)].get_rows(), network[(network.size() - 2)].get_cols() - 1);
+    back_network.push_back(delta2);
+    //de/dw2 - same as W2
+    Matrix dedw2(network[(network.size() - 2)].get_dims());
+    back_network.push_back(dedw2);
+    // de/dw1 - same as W1
+    Matrix dedw1(network[1].get_dims());
+    back_network.push_back(dedw1);
 }
 
 void Neuromancer::sigmoid(Matrix* input, Matrix* output) {
@@ -243,7 +254,7 @@ void Neuromancer::forward_pass() {
 };
 
 void Neuromancer::back_propogation() {
-
+    
 };
 
 Matrix  Neuromancer::GenRandMat(dimensions dims, float upper, float lower){
@@ -259,6 +270,8 @@ Neuromancer::Neuromancer() {
     init_network_351();
     init_weights();
     display_network();
+    init_back_351();
+    display_back_network();
 }
 //test run
 Neuromancer::Neuromancer(int test) {
@@ -268,11 +281,15 @@ Neuromancer::Neuromancer(int test) {
         Test();
         init_network_351();
         display_network();
+        init_back_351();
+        display_back_network();
     }
     else {
         cout << "no test" << endl;
         init_network_351();
         display_network();
+        init_back_351();
+        display_back_network();
     }
 }
 
@@ -297,6 +314,12 @@ void Neuromancer::set_layout(vector<layer_type> input) {
 void Neuromancer::display_network() {
     for (int i = 0; i < network.size(); i++) {
         cout << "Matrix #" << i<< endl<< network[i] << endl << endl;
+    }
+}
+
+void Neuromancer::display_back_network() {
+    for (int i = 0; i < back_network.size(); i++) {
+        cout << "Matrix #" << i << endl << back_network[i] << endl << endl;
     }
 }
 

@@ -308,6 +308,31 @@ Matrix Matrix::multiply(int factor) {
     return blank;
 }
 
+Matrix Matrix::mult_element(Matrix matB) {
+    vector<vector<float>> dataA = this->get_data();
+    vector<vector<float>> dataB = matB.get_data();
+    int r1 = dataA.size();
+    int r2 = dataB.size();
+    int c1 = dataA[0].size();
+    int c2 = dataB[0].size();
+    Matrix blank(this->get_rows(), this->get_cols());
+    if ((c1 != c2) || (r1 != r2)) {
+        cout << "For matrix elementwise multiplication, matrix dimensions must be the same" << endl;
+    }
+    else {
+        for (auto i = 0; i < dataA.size(); i++) {
+            for (
+                auto it = 0; it < dataA[i].size(); it++)
+                //cout << dataA[i][it] << "+" << dataB[i][it] << endl;
+                dataA[i][it] *= dataB[i][it];
+            //cout << *it << " ";
+            cout << endl;
+        }
+        blank.set_data(dataA);
+    }
+    return blank;
+}
+
 
 //addition
 //debug

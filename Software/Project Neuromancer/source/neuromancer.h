@@ -27,7 +27,8 @@ private:
 	void	disp_vec(vector<float> input_vec);
 	void	disp_vec(vector<int> input_vec);
 	vector<layer_type> network_layout = { layer_type::LINEAR, layer_type::SIGMOID, layer_type::LINEAR };
-	vector<Matrix> network;
+	vector<Matrix> network;					//forward network
+	vector<Matrix> back_network;			//backwards network
 
 	//network initialisers
 	void init_network_351();
@@ -63,6 +64,7 @@ public:
 	void				set_layout(vector<layer_type> input);
 
 	void				display_network();
+	void				display_back_network();
 
 
 };
