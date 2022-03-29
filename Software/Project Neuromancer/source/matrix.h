@@ -67,6 +67,7 @@ public:
 	Matrix	multiply(int int_factor);					//multiply by scalar (int)
 	void	multiply(Matrix matB, int debug);			//debug
 
+	Matrix mult_element(Matrix matB);
 	
 
 	//addition
