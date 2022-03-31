@@ -88,6 +88,11 @@ void Neuromancer::Test() {
     sigmoid(&sig_mat, &sig_mat_out);
     cout << "output:" << endl << sig_mat_out << endl;
 
+    cout << "test flaugh" << endl;
+    Matrix mat10(10, 3, 1);
+    Matrix mat3(3, 1, 2);
+    mat10.multiply(mat3, 1);
+
     cout << "Dimensions multiplication test" << endl;
     dimensions dims_a(2, 3), dims_b(3, 2);
     dimensions dims_c = dims_a * dims_b;
@@ -245,9 +250,18 @@ void Neuromancer::forward_pass() {
         int network_index = 2 * (i + 1);                    //network layout -> network
         if (network_layout[i] == layer_type::LINEAR) {
             //linear layer, so just multiply the matrices
+            cout << "Layer #" << i << " LAYER TYPE - LINEAR" << endl;
+            cout << "Network Index = " << network_index << endl;
+            cout << "GOAL RESULT - " << network[network_index].get_dims() << endl;
+            cout << "CALCULATION =" << network[network_index - 1].get_dims() << " * " << network[network_index - 2].get_dims() << " = " << (network[network_index - 1].get_dims() * network[network_index - 2].get_dims()) << endl;
+            cout << "A = " << endl << network[network_index - 1] << endl << "B = " <<endl<< network[network_index - 2] << endl;
             network[network_index] = network[network_index - 1] * network[network_index - 2];
+            cout << "LAYER COMPLETE" << endl;
         }
         else if (network_layout[i] == layer_type::SIGMOID) {
+            cout << "Layer #" << i << " LAYER TYPE - SIGMOID" << endl;
+            cout << "Network Index = " << network_index << endl;
+            cout << network[network_index] << endl << endl << network[network_index - 1] << endl;
             sigmoid(&network[network_index], &network[network_index - 1]);
         }
     }
@@ -307,6 +321,7 @@ Neuromancer::Neuromancer(int test) {
         display_network();
         init_back_351();
         display_back_network();
+        execute();
     }
     else {
         cout << "no test" << endl;
@@ -314,7 +329,14 @@ Neuromancer::Neuromancer(int test) {
         display_network();
         init_back_351();
         display_back_network();
+        execute();
     }
+}
+
+void Neuromancer::execute() {
+    forward_pass();
+    //back_propogation_351();
+    display_network();
 }
 
 float Neuromancer::get_alpha() {
@@ -325,6 +347,25 @@ float Neuromancer::get_alpha() {
 void Neuromancer::set_alpha(float new_learning_rate) {
     this->alpha = new_learning_rate;
 }
+
+int Neuromancer::get_episodes() {
+    float output = episodes;
+    return output;
+}
+
+void Neuromancer::set_episodes(int new_episodes) {
+    this->episodes = new_episodes;
+}
+int Neuromancer::get_trials() {
+    float output = trials;
+    return output;
+}
+
+void Neuromancer::set_trials(int new_trials) {
+    this->trials = new_trials;
+}
+
+
 
 vector<layer_type> Neuromancer::get_layout() {
     vector<layer_type> layout = this->network_layout;

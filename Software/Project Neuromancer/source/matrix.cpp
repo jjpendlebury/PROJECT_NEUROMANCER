@@ -54,6 +54,8 @@ void dimensions::operator*=(dimensions& input_dims) {
 void dimensions::operator=(int input[2]) {
     this->set_dims(input[0], input[1]);
 }
+
+
 //constructor
 //need to write an assign loop to iterate through an array of arrays, and assign values like that
 Matrix::Matrix() { //blank matrix
@@ -198,9 +200,15 @@ vector<float> Matrix::access(char all, int j) {
 //multiply two matrices
 //DEBUG variant, prints matrices out
 void Matrix::multiply(Matrix matB, int debug) {
-    int product[10][10], r1 = 3, c1 = 2, r2 = 2, c2 = 3, i, j, k;
+    int r1 = 3, c1 = 2, r2 = 2, c2 = 3, i, j, k;
     vector< vector<float> > a = this->get_data();
     vector< vector<float> > b = matB.get_data();
+    r1 = a.size();
+    r2 = b.size();
+    c1 = a[0].size();
+    c2 = b[0].size();
+
+    vector< vector<float> > product(r1, vector<float>(c2, 0));
     r1 = a.size();
     r2 = b.size();
     c1 = a[0].size();
@@ -243,11 +251,52 @@ void Matrix::multiply(Matrix matB, int debug) {
 }
 
 //Standard variant
+//Matrix Matrix::multiply(Matrix matB) {
+//    Matrix result;
+//    int r1 = 3, c1 = 2, r2 = 2, c2 = 3, i, j, k;
+//    vector< vector<float> > a = this->get_data();
+//    vector< vector<float> > b = matB.get_data();
+//    vector< vector<float> > product(r1, vector<float>(c2, 0));
+//    r1 = a.size();
+//    r2 = b.size();
+//    c1 = a[0].size();
+//    c2 = b[0].size();
+//
+//    if (c1 != r2) {
+//        cout << "Column of first matrix should be equal to row of second matrix";
+//    }
+//    else {
+//
+//        for (i = 0; i < r1; ++i)
+//            for (j = 0; j < c2; ++j) {
+//                product[i][j] = 0;
+//            }
+//        for (i = 0; i < r1; ++i)
+//            for (j = 0; j < c2; ++j)
+//                for (k = 0; k < c1; ++k) {
+//                    product[i][j] += a[i][k] * b[k][j];
+//                }
+//        cout << "Product of the two matrices is:" << endl;
+//        for (i = 0; i < r1; ++i) {
+//            for (j = 0; j < c2; ++j)
+//                cout << product[i][j] << " ";
+//            cout << endl;
+//        }
+//    }
+//    Matrix result(r1, c2);
+//    result.set_data(product);
+//    return result;
+//}
+
 Matrix Matrix::multiply(Matrix matB) {
-    //Matrix result;
     int r1 = 3, c1 = 2, r2 = 2, c2 = 3, i, j, k;
     vector< vector<float> > a = this->get_data();
     vector< vector<float> > b = matB.get_data();
+    r1 = a.size();
+    r2 = b.size();
+    c1 = a[0].size();
+    c2 = b[0].size();
+
     vector< vector<float> > product(r1, vector<float>(c2, 0));
     r1 = a.size();
     r2 = b.size();
@@ -258,7 +307,20 @@ Matrix Matrix::multiply(Matrix matB) {
         cout << "Column of first matrix should be equal to row of second matrix";
     }
     else {
-
+        cout << "The first matrix is:" << endl;
+        for (i = 0; i < r1; ++i) {
+            for (j = 0; j < c1; ++j)
+                cout << a[i][j] << " ";
+            cout << endl;
+        }
+        cout << endl;
+        cout << "The second matrix is:" << endl;
+        for (i = 0; i < r2; ++i) {
+            for (j = 0; j < c2; ++j)
+                cout << b[i][j] << " ";
+            cout << endl;
+        }
+        cout << endl;
         for (i = 0; i < r1; ++i)
             for (j = 0; j < c2; ++j) {
                 product[i][j] = 0;
@@ -268,16 +330,16 @@ Matrix Matrix::multiply(Matrix matB) {
                 for (k = 0; k < c1; ++k) {
                     product[i][j] += a[i][k] * b[k][j];
                 }
-        //cout << "Product of the two matrices is:" << endl;
+        cout << "Product of the two matrices is:" << endl;
         for (i = 0; i < r1; ++i) {
             for (j = 0; j < c2; ++j)
                 cout << product[i][j] << " ";
             cout << endl;
         }
     }
-    Matrix result(r1, c2);
-    result.set_data(product);
-    return result;
+    Matrix output;
+    output.set_data(product);
+    return output;
 }
 
 //multiply by a factor

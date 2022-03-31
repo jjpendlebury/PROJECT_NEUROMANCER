@@ -60,8 +60,14 @@ private:
 public:
 	Neuromancer();
 	Neuromancer(int test = 0);
+	
+	void	execute();
 	float	get_alpha();
 	void	set_alpha(float new_learning_rate);
+	int		get_episodes();
+	void	set_episodes(int new_episodes);
+	int		get_trials();
+	void	set_trials(int new_trials);
 
 	vector<layer_type>	get_layout();
 	void				set_layout(vector<layer_type> input);
