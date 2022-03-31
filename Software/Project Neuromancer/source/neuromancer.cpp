@@ -271,6 +271,12 @@ void Neuromancer::back_propogation_351() {
     Matrix x_t = network[0].transpose();
     back_network[3] = back_network[1] * x_t;
     //Sum of Squared error terms
+    Matrix error_temp = back_network[0] * -1;
+    Matrix error_temp2 = (error_temp.transpose() * error_temp);
+    error = error + error_temp2(0, 0); //error temp2 is a 1x1, there has to be a more elegant way to do this
+    //adjust network weights
+    network[5] = network[5] - back_network[2] * alpha;
+    network[1] = network[1] - back_network[3] * alpha;
 
 
 };
