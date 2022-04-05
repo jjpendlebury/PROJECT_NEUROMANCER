@@ -41,6 +41,7 @@ private:
 	//non-linearities 
 	void sigmoid(Matrix* input, Matrix* output);
 	void sigmoid(Matrix* input, Matrix* output, int debug);	//debug
+	Matrix sigmoid(Matrix input, int debug);	//debug
 
 	//forward pass
 	void forward_pass();

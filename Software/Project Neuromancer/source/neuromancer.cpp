@@ -234,13 +234,46 @@ void Neuromancer::sigmoid(Matrix* input, Matrix* output) {
 
 void Neuromancer::sigmoid(Matrix* input, Matrix* output, int debug) {
     cout << "Sigmoid" << endl;
+    //Dimensions change test
+    cout << "cheese" << endl;
+    input->data.pop_back();
+    input->update_dims();
+    cout << input->dims << " " << output->dims << endl;
     //this layer is the layer before, sigmoid-ed 
-    for (auto i = 0; i < input->data.size(); i++) {
-        for (auto it = 0; it < input->data[i].size(); it++) {
+    for (auto i = 0; i < output->data.size(); i++) {
+        for (auto it = 0; it < output->data[i].size(); it++) {
+            cout << "Accessing (" << i << "," << it << ")" << endl;
             output->data[i][it] = 1 / (1 + exp(-(input->data[i][it])));
             cout << i << "," << it << " = " << output->data[i][it] << endl;
         }
     }
+
+}
+
+Matrix Neuromancer::sigmoid(Matrix input, int debug) {
+    Matrix output;
+    Matrix inputMat = input;
+    cout << "Input :" << endl << inputMat << endl;
+    vector<vector<float>> dataA = input.data;
+    vector<vector<float>> dataB;
+    cout << "Sigmoid" << endl;
+    //Dimensions change test
+    cout << "cheese" << endl;
+    dataA.pop_back();
+    dataB = dataA;
+    cout << "cheese2" << endl;
+    //this layer is the layer before, sigmoid-ed 
+    for (auto i = 0; i < dataA.size(); i++) {
+        for (auto it = 0; it < dataA[i].size(); it++) {
+            cout << "Accessing (" << i << "," << it << ")" << endl;
+            dataB[i][it] = i*it;
+            cout << dataB[i][it] << endl;
+            dataB[i][it] = 1 / (1 + exp(-(dataA[i][it])));
+            cout << i << "," << it << " = " << dataB[i][it] << endl;
+        }
+    }
+    output.set_data(dataB);
+    return output;
 
 }
 
@@ -262,7 +295,7 @@ void Neuromancer::forward_pass() {
             cout << "Layer #" << i << " LAYER TYPE - SIGMOID" << endl;
             cout << "Network Index = " << network_index << endl;
             cout << network[network_index] << endl << endl << network[network_index - 1] << endl;
-            sigmoid(&network[network_index], &network[network_index - 1]);
+            network[network_index] = sigmoid(network[network_index-1],1);
         }
     }
 };
