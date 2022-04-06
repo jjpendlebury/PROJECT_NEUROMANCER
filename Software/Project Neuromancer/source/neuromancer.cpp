@@ -259,7 +259,7 @@ Matrix Neuromancer::sigmoid(Matrix input, int debug) {
     cout << "Sigmoid" << endl;
     //Dimensions change test
     cout << "cheese" << endl;
-    dataA.pop_back();
+    //dataA.pop_back();
     dataB = dataA;
     cout << "cheese2" << endl;
     //this layer is the layer before, sigmoid-ed 
@@ -296,6 +296,9 @@ void Neuromancer::forward_pass() {
             cout << "Network Index = " << network_index << endl;
             cout << network[network_index] << endl << endl << network[network_index - 1] << endl;
             network[network_index] = sigmoid(network[network_index-1],1);
+            //re-add removed bias term.
+            vector<float> bias(network[network_index].dims.columns, 1);
+            network[network_index].data.push_back(bias);
         }
     }
 };
