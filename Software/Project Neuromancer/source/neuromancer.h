@@ -47,6 +47,7 @@ private:
 	void forward_pass();
 
 	//backpropogation
+	void back_propogation_351(int debug); //debug variant
 	void back_propogation_351();
 	//random functions
 	Matrix					GenRandMat(dimensions dims, float upper, float lower );

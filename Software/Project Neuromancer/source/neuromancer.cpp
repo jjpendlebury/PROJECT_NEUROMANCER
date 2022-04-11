@@ -302,7 +302,32 @@ void Neuromancer::forward_pass() {
         }
     }
 };
-
+void Neuromancer::back_propogation_351(int debug) {
+    //delta3
+    cout << "delta 3 " << "target_slice " << target_slice.dims << " - " << network[network.size() - 1].dims << endl;
+    back_network[0] = (target_slice - network[network.size() - 1]) * -1;
+    //delta 2
+    Matrix W2bar;
+    W2bar = network[(network.size() - 2)].data;
+    W2bar.data.pop_back();                          //remove last row, dropping bias terms, and transpose
+    W2bar = W2bar.transpose();
+    Matrix a2error(network[3].get_dims(), 1);
+    a2error = (network[3].mult_element(a2error - network[3]));
+    back_network[1] = (W2bar * back_network[0]).mult_element(a2error);
+    //diff2
+    Matrix a2hat_t = network[4].transpose();
+    back_network[2] = back_network[0] * a2hat_t;
+    //diff 1
+    Matrix x_t = network[0].transpose();
+    back_network[3] = back_network[1] * x_t;
+    //Sum of Squared error terms
+    Matrix error_temp = back_network[0] * -1;
+    Matrix error_temp2 = (error_temp.transpose() * error_temp);
+    error = error + error_temp2(0, 0); //error temp2 is a 1x1, there has to be a more elegant way to do this
+    //adjust network weights
+    network[5] = network[5] - back_network[2] * alpha;
+    network[1] = network[1] - back_network[3] * alpha;
+};
 void Neuromancer::back_propogation_351() {
     //delta3
     back_network[0] = (target_slice - network[network.size() - 1])*-1;
@@ -327,8 +352,6 @@ void Neuromancer::back_propogation_351() {
     //adjust network weights
     network[5] = network[5] - back_network[2] * alpha;
     network[1] = network[1] - back_network[3] * alpha;
-
-
 };
 
 Matrix  Neuromancer::GenRandMat(dimensions dims, float upper, float lower){
@@ -371,7 +394,7 @@ Neuromancer::Neuromancer(int test) {
 
 void Neuromancer::execute() {
     forward_pass();
-    //back_propogation_351();
+    back_propogation_351(1);
     display_network();
 }
 

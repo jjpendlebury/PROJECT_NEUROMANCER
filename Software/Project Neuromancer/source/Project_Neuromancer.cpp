@@ -5,16 +5,24 @@
 
 #include "neuromancer.h"
 using namespace std;
-Neuromancer cheese(1);
+//Neuromancer cheese(1);
 
 int main()
 {
+    vector<Matrix> kin_test;
     float lengths[2] = { 0.4,0.4 };
     float origin[2] = { 0,0 };
     Matrix angles(2, 100);
-    angles.data[0] = GenRandVec(0.0f, 3.14f, 100);
-    angles.data[1] = GenRandVec(0.0f, 3.14f, 100);
-    ForwardKinematics(lengths, angles, origin);
+    angles.data[0] = GenRandVec(0.0f, 3.14f, 1000);
+    angles.data[1] = GenRandVec(0.0f, 3.14f, 1000);
+    kin_test = ForwardKinematics(lengths, angles, origin);
+    cout << angles << endl << endl;
+
+    for (int i = 0; i < kin_test.size(); i++) {
+        cout << kin_test[i].dims << endl;
+        cout << kin_test[i] << endl << endl;
+    }
+    
 }
 
 
