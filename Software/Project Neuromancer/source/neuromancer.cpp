@@ -364,10 +364,15 @@ Matrix  Neuromancer::GenRandMat(dimensions dims, float upper, float lower){
 
 //public
 Neuromancer::Neuromancer() {
+    cout << "Initialising network..." << endl;
     init_network_351();
+    cout << "Initialising weights..." << endl;
     init_weights();
+    cout << "NETWORK LAYOUT:" << endl;
     display_network();
+    cout << "Initialising backpropogation network..." << endl;
     init_back_351();
+    cout << "BACKPROP NETWORK: " << endl;
     display_back_network();
 }
 //test run
@@ -376,26 +381,48 @@ Neuromancer::Neuromancer(int test) {
     //Matrix test routine
     if (test == 1) {
         Test();
-        init_network_351();
-        display_network();
-        init_back_351();
-        display_back_network();
-        execute();
     }
     else {
         cout << "no test" << endl;
-        init_network_351();
-        display_network();
-        init_back_351();
-        display_back_network();
-        execute();
     }
+    cout << "Initialising network..." << endl;
+    init_network_351();
+    cout << "Initialising weights..." << endl;
+    init_weights();
+    cout << "NETWORK LAYOUT:" << endl;
+    display_network();
+    cout << "Initialising backpropogation network..." << endl;
+    init_back_351();
+    cout << "BACKPROP NETWORK: " << endl;
+    display_back_network();
+    //execute();
 }
 
 void Neuromancer::execute() {
-    forward_pass();
-    back_propogation_351(1);
-    display_network();
+    for (int i = 0; i < episodes; i++) {
+        input_slice = inputs(':', i);       //load inputs into input slice
+        target_slice = targets(':',i);
+        network[0] = input_slice;
+        forward_pass();
+        back_propogation_351(1);
+        display_network();
+    }
+}
+
+Matrix Neuromancer::get_inputs() {
+    return inputs;
+}
+
+void Neuromancer::set_inputs(Matrix new_inputs) {
+    inputs = new_inputs;
+}
+
+Matrix Neuromancer::get_targets() {
+    return targets;
+}
+
+void Neuromancer::set_targets(Matrix new_targets) {
+    targets = new_targets;
 }
 
 float Neuromancer::get_alpha() {

@@ -23,7 +23,7 @@ private:
 	float alpha = 0.025;
 	int trials = 100, episodes = 100, hiddenUnits = 10;
 	dimensions InputDims = { 3,1 }, OutputDims = { 2,1 };			//default values for testing
-	Matrix targets, target_slice;
+	Matrix targets, target_slice, inputs, input_slice;
 	float error;
 
 	void	Test();													//test routine
@@ -64,6 +64,10 @@ public:
 	Neuromancer(int test = 0);
 	
 	void	execute();
+	Matrix	get_inputs();
+	void	set_inputs(Matrix new_inputs);
+	Matrix	get_targets();
+	void	set_targets(Matrix new_targets);
 	float	get_alpha();
 	void	set_alpha(float new_learning_rate);
 	int		get_episodes();
