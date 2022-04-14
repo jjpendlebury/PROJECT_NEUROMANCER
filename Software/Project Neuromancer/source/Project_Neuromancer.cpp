@@ -16,6 +16,17 @@ int main()
     angles.data[0] = GenRandVec(0.0f, 3.14f, 1000);
     angles.data[1] = GenRandVec(0.0f, 3.14f, 1000);
     kin_test = ForwardKinematics(lengths, angles, origin);
+
+    //TEST
+   /* Matrix angles_test(2, 10);
+    angles_test.data[0] = GenRandVec(0.0f, 3.14f, 10);
+    angles_test.data[1] = GenRandVec(0.0f, 3.14f, 10);
+    Matrix angles_slice1, angles_slice2;
+    angles_slice1 = angles_test(0, ':');
+    angles_slice2 = angles_test(':', 0);
+    cout << "slice 1 - first row" << endl << angles_slice1 << endl;
+    cout << "slice 2 - first col" << endl << angles_slice2 << endl;
+    cout << angles_test << endl;*/
     //cout << angles << endl << endl;
 
     /*for (int i = 0; i < kin_test.size(); i++) {

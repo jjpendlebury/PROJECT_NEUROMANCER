@@ -402,6 +402,7 @@ void Neuromancer::execute() {
     for (int i = 0; i < episodes; i++) {
         input_slice = inputs(':', i);       //load inputs into input slice
         target_slice = targets(':',i);
+        cout << "SLICE: " << target_slice.dims << endl << target_slice << endl;
         network[0] = input_slice;
         forward_pass();
         back_propogation_351(1);
