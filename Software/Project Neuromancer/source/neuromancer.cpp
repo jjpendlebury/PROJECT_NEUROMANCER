@@ -18,7 +18,7 @@ void Neuromancer::Test() {
     matB = b;                   //overload test
     Matrix matC;
     matC = c;
-    Matrix matD;
+     Matrix matD;
     matD = d;
     cout << "DISPLAY A" << endl;
     matA.disp_data();
@@ -111,23 +111,9 @@ void Neuromancer::Test() {
     cout << "A = " << dims_a << " * B = " << dims_b << endl;
     cout << "result = " << dims_c << endl;
 
-
-
-
     cout << "END OF TESTS" << endl;
 }
 
-void Neuromancer::disp_vec(vector<float> input_vec) {
-    for (auto it = input_vec.begin(); it != input_vec.end(); it++)
-        cout << *it << " ";
-    cout << endl;
-}
-
-void Neuromancer::disp_vec(vector<int> input_vec) {
-    for (auto it = input_vec.begin(); it != input_vec.end(); it++)
-        cout << *it << " ";
-    cout << endl;
-}
 
 //Function to set up the network matrices based on the layout
 //void Neuromancer::init_network() {
@@ -492,3 +478,30 @@ vector<float> GenRandVec(float upper=1, float lower=0, int size=5) {
 
     return nums;
 }
+
+
+void disp_vec(vector<float> input_vec) {
+    for (auto it = input_vec.begin(); it != input_vec.end(); it++)
+        cout << *it << " ";
+    cout << endl;
+}
+
+void disp_vec(vector<int> input_vec) {
+    for (auto it = input_vec.begin(); it != input_vec.end(); it++)
+        cout << *it << " ";
+    cout << endl;
+}
+
+std::ostream& operator<<(std::ostream& os, const vector<float>& vec) {
+    for (auto it = vec.begin(); it != vec.end(); it++)
+        os << *it << " ";
+    os << endl;
+    return os;
+};
+
+std::ostream& operator<<(std::ostream& os, const vector<int>& vec) {
+    for (auto it = vec.begin(); it != vec.end(); it++)
+        os << *it << " ";
+    os << endl;
+    return os;
+};

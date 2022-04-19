@@ -27,8 +27,7 @@ private:
 	float error;
 
 	void	Test();													//test routine
-	void	disp_vec(vector<float> input_vec);
-	void	disp_vec(vector<int> input_vec);
+
 	vector<layer_type> network_layout = { layer_type::LINEAR, layer_type::SIGMOID, layer_type::LINEAR };
 	vector<Matrix> network;					//forward network
 	vector<Matrix> back_network;			//backwards network
@@ -55,7 +54,9 @@ private:
 	friend vector<float>	GenRandVec(float upper, float lower, int size);
 	
 	//Overloads
+	friend std::ostream& operator<<(std::ostream& os, const vector<float>& vec);
 
+	friend std::ostream& operator<<(std::ostream& os, const vector<int>& vec);
 
 
 
@@ -83,5 +84,9 @@ public:
 
 
 };
+
+void	disp_vec(vector<float> input_vec);
+void	disp_vec(vector<int> input_vec);
+std::ostream& operator<<(std::ostream& os, const vector<float>& vec);
 
 #endif
