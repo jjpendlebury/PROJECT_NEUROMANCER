@@ -16,7 +16,9 @@ int main()
     angles.data[0] = GenRandVec(0.0f, 3.14f, 1000);
     angles.data[1] = GenRandVec(0.0f, 3.14f, 1000);
     kin_test = ForwardKinematics(lengths, angles, origin);
-
+    //add bias term
+    //vector<float> ones_vec(1000, 1);
+    //kin_test[1].data.push_back(ones_vec);
     //TEST
    /* Matrix angles_test(2, 10);
     angles_test.data[0] = GenRandVec(0.0f, 3.14f, 10);
@@ -34,6 +36,8 @@ int main()
         cout << kin_test[i] << endl << endl;
     }*/
     cheese.set_inputs(kin_test[1]); //P2 angles
+    cout << kin_test[1].get_dims() << endl;
+    cout << cheese.get_inputs() << endl;
     cheese.set_targets(angles);
     cout << angles.dims << endl;
     

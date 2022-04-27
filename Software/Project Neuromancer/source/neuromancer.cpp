@@ -282,6 +282,7 @@ void Neuromancer::forward_pass() {
             cout << "Network Index = " << network_index << endl;
             cout << network[network_index] << endl << endl << network[network_index - 1] << endl;
             network[network_index] = sigmoid(network[network_index-1],1);
+            //sigmoid(&network[network_index - 1], &network[network_index]);
             //re-add removed bias term.
             vector<float> bias(network[network_index].dims.columns, 1);
             network[network_index].data.push_back(bias);
@@ -385,13 +386,19 @@ Neuromancer::Neuromancer(int test) {
 }
 
 void Neuromancer::execute() {
+    cout << "Executing..." << endl;
+    vector<float> ones_vec(1000, 1);
+    inputs.data.push_back(ones_vec);
+    inputs.update_dims();
     for (int i = 0; i < episodes; i++) {
         input_slice = inputs(':', i);       //load inputs into input slice
+        cout << "INPUT SLICE: " << input_slice.dims << endl << input_slice << endl;
+        //input_slice.data.push_back({ 1 });
         target_slice = targets(':',i);
-        cout << "SLICE: " << target_slice.dims << endl << target_slice << endl;
+        cout << "TARGET SLICE: " << target_slice.dims << endl << target_slice << endl;
         network[0] = input_slice;
         forward_pass();
-        back_propogation_351(1);
+        //back_propogation_351(1);
         display_network();
     }
 }

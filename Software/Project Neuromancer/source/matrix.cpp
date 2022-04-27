@@ -839,6 +839,7 @@ Matrix Matrix::operator()(char all, int j) {
     for (auto i = 0; i < output_data.size(); i++) {
         output_temp.data[i][0] = output_data[i];
     }
+    cout << "cheese" << endl;
     return output=output_temp;
 }
 
