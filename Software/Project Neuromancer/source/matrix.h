@@ -49,7 +49,6 @@ public:
 	void set_data(vector<float> inputVec);
 	vector<vector<float>> get_data();
 	void		disp_data();
-	void		disp_vec();
 	void		update_dims();
 	dimensions	get_dims();
 	int			get_rows();
@@ -120,13 +119,15 @@ public:
 	void	operator-=(int offset);					// Matrix + int
 	void	operator-=(float offset);				// Matrix + float
 
-	float			operator()(int i, int j);		// Access(i,j)
-	vector<float>	operator()(int i, char all);	// Access(row)
-	vector<float>	operator()(char all, int j);	// Access(column)
+	float	operator()(int i, int j);				// Access(i,j)
+	Matrix	operator()(int i, char all);			// Access(row)
+	Matrix	operator()(char all, int j);			// Access(column)
 
 	friend std::ostream& operator<<(std::ostream& os, const Matrix& mat);
 };
 
+void	disp_vec(vector<float> input_vec);
+void	disp_vec(vector<int> input_vec);
 
 
 

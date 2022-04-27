@@ -144,14 +144,7 @@ void Matrix::disp_data() {
     }
 }
 
-void Matrix::disp_vec() {
-    for (auto i = 0; i < data.size(); i++) {
-        for (
-            auto it = data[i].begin(); it != data[i].end(); it++)
-            cout << *it << " ";
-        cout << endl;
-    }
-}
+
 
 void Matrix::update_dims() {
     this->dims.rows = data.size();
@@ -831,14 +824,22 @@ float Matrix::operator()(int i, int j) {
     return output;
 }
 
-vector<float> Matrix::operator()(int i, char all) {
-    vector<float> output = this->access(i, all);
+Matrix Matrix::operator()(int i, char all) {
+    Matrix output(1, this->get_cols());
+    vector<float> output_data = this->access(i, all);
+    output = output_data;                               //creates a matrix of a row
     return output;
 }
 
-vector<float> Matrix::operator()(char all, int j) {
-    vector<float> output = this->access(all, j);
-    return output;
+//column vector will be returned as a matrix
+Matrix Matrix::operator()(char all, int j) {
+    Matrix output_temp(this->get_rows(), 1), output;
+    vector<float> output_data = this->access(all, j);
+    disp_vec(output_data);
+    for (auto i = 0; i < output_data.size(); i++) {
+        output_temp.data[i][0] = output_data[i];
+    }
+    return output=output_temp;
 }
 
 //stream overloads
@@ -857,4 +858,18 @@ std::ostream& operator<<(std::ostream& os, const Matrix& mat) {
         os << endl;
     }
     return os;
+}
+
+void disp_vec(vector<float> input_vec) {
+        for (
+            auto it = input_vec.begin(); it != input_vec.end(); it++)
+            cout << *it << " ";
+        cout << endl;
+}
+
+void disp_vec(vector<int> input_vec) {
+    for (
+        auto it = input_vec.begin(); it != input_vec.end(); it++)
+        cout << *it << " ";
+    cout << endl;
 }

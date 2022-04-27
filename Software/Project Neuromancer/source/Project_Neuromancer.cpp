@@ -5,7 +5,7 @@
 
 #include "neuromancer.h"
 using namespace std;
-Neuromancer cheese(0);
+Neuromancer cheese(1);
 
 int main()
 {

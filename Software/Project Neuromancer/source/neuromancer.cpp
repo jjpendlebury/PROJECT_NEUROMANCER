@@ -55,10 +55,10 @@ void Neuromancer::Test() {
     matA.disp_data();
     cout << "matA at (0,0): " << matA(0, 0) << endl;
     cout << "matA row 1: ";
-    disp_vec(matA(0, ':'));
+    cout << matA(0, ':') << endl;
     cout << endl << "matA col 1: ";
-    disp_vec(matA(':', 1));
-    cout << matA.dims.columns << endl;
+    cout <<endl << matA(':', 1) << endl;
+    cout << "MatA Coloumns: " << matA.dims.columns << endl;
     cout << "det(a) =" << matA.determinant() << endl;
     Matrix mat2(2, 2);
     mat2 = { {1,2}, {3,4} };
@@ -480,17 +480,6 @@ vector<float> GenRandVec(float upper=1, float lower=0, int size=5) {
 }
 
 
-void disp_vec(vector<float> input_vec) {
-    for (auto it = input_vec.begin(); it != input_vec.end(); it++)
-        cout << *it << " ";
-    cout << endl;
-}
-
-void disp_vec(vector<int> input_vec) {
-    for (auto it = input_vec.begin(); it != input_vec.end(); it++)
-        cout << *it << " ";
-    cout << endl;
-}
 
 std::ostream& operator<<(std::ostream& os, const vector<float>& vec) {
     for (auto it = vec.begin(); it != vec.end(); it++)

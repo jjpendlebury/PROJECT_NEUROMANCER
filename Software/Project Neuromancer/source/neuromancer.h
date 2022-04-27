@@ -82,11 +82,13 @@ public:
 	void				display_network();
 	void				display_back_network();
 
+	friend	void	disp_vec(vector<float> input_vec);
+	friend	void	disp_vec(vector<int> input_vec);
+
 
 };
 
-void	disp_vec(vector<float> input_vec);
-void	disp_vec(vector<int> input_vec);
+
 std::ostream& operator<<(std::ostream& os, const vector<float>& vec);
 
 #endif
