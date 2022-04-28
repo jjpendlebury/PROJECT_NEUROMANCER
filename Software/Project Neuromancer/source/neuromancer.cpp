@@ -281,11 +281,13 @@ void Neuromancer::forward_pass() {
             cout << "Layer #" << i << " LAYER TYPE - SIGMOID" << endl;
             cout << "Network Index = " << network_index << endl;
             cout << network[network_index] << endl << endl << network[network_index - 1] << endl;
+            network[network_index - 1] = network[network_index - 2];
             network[network_index] = sigmoid(network[network_index-1],1);
             //sigmoid(&network[network_index - 1], &network[network_index]);
             //re-add removed bias term.
             vector<float> bias(network[network_index].dims.columns, 1);
             network[network_index].data.push_back(bias);
+            network[network_index].update_dims();
         }
     }
 };
