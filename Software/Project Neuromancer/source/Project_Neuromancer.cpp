@@ -41,6 +41,7 @@ int main()
     cheese.set_targets(angles);
     cout << angles.dims << endl;
     
+    cheese.set_episodes(1000);
     cheese.execute();
     
 }

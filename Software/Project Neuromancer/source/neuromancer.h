@@ -25,6 +25,7 @@ private:
 	dimensions InputDims = { 3,1 }, OutputDims = { 2,1 };			//default values for testing
 	Matrix targets, target_slice, inputs, input_slice;
 	float error;
+	vector<float> error_vec;
 
 	void	Test();													//test routine
 

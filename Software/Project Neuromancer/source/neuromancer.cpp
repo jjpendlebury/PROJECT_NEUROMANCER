@@ -282,8 +282,8 @@ void Neuromancer::forward_pass() {
             cout << "Network Index = " << network_index << endl;
             cout << network[network_index] << endl << endl << network[network_index - 1] << endl;
             network[network_index - 1] = network[network_index - 2];
-            //network[network_index] = sigmoid(network[network_index-1],1);
-            sigmoid(&network[network_index - 1], &network[network_index]);
+            network[network_index] = sigmoid(network[network_index-1],1);
+            //sigmoid(&network[network_index - 1], &network[network_index]);
             //re-add removed bias term.
             vector<float> bias(network[network_index].dims.columns, 1);
             network[network_index].data.push_back(bias);
@@ -298,8 +298,10 @@ void Neuromancer::back_propogation_351(int debug) {
     //delta 2
     Matrix W2bar;
     W2bar = network[(network.size() - 2)].data;
-    W2bar.data.pop_back();                          //remove last row, dropping bias terms, and transpose
+    cout << "W2" << endl << W2bar << endl;
     W2bar = W2bar.transpose();
+    W2bar.data.pop_back();                          //remove last row, dropping bias terms, and transpose
+    cout << "W2bar:" << endl << W2bar << endl;
     Matrix a2error(network[3].get_dims(), 1);
     a2error = (network[3].mult_element(a2error - network[3]));
     back_network[1] = (W2bar * back_network[0]).mult_element(a2error);
@@ -313,6 +315,7 @@ void Neuromancer::back_propogation_351(int debug) {
     Matrix error_temp = back_network[0] * -1;
     Matrix error_temp2 = (error_temp.transpose() * error_temp);
     error = error + error_temp2(0, 0); //error temp2 is a 1x1, there has to be a more elegant way to do this
+    error_vec.push_back(error);
     //adjust network weights
     network[5] = network[5] - back_network[2] * alpha;
     network[1] = network[1] - back_network[3] * alpha;
@@ -400,9 +403,13 @@ void Neuromancer::execute() {
         cout << "TARGET SLICE: " << target_slice.dims << endl << target_slice << endl;
         network[0] = input_slice;
         forward_pass();
-        //back_propogation_351(1);
+        back_propogation_351(1);
         display_network();
+        cout << "TARGET SLICE: " << target_slice.dims << endl << target_slice << endl;
     }
+    disp_vec(error_vec);
+    cout << "Complete." << endl;
+    
 }
 
 Matrix Neuromancer::get_inputs() {
