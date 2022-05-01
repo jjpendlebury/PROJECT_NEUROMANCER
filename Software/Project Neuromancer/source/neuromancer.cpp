@@ -292,9 +292,11 @@ void Neuromancer::forward_pass() {
     }
 };
 void Neuromancer::back_propogation_351(int debug) {
+    cout << "BACKPROP BEGINS" << endl;
     //delta3
     cout << "delta 3 " << "target_slice " << target_slice.dims << " - " << network[network.size() - 1].dims << endl;
     back_network[0] = (target_slice - network[network.size() - 1]) * -1;
+
     //delta 2
     Matrix W2bar;
     W2bar = network[(network.size() - 2)].data;
@@ -302,15 +304,20 @@ void Neuromancer::back_propogation_351(int debug) {
     W2bar = W2bar.transpose();
     W2bar.data.pop_back();                          //remove last row, dropping bias terms, and transpose
     cout << "W2bar:" << endl << W2bar << endl;
+
     Matrix a2error(network[3].get_dims(), 1);
-    a2error = (network[3].mult_element(a2error - network[3]));
+    Matrix a2errorTemp(network[3].get_dims(), 1);
+    a2error = (network[3].mult_element(a2errorTemp - network[3]));
     back_network[1] = (W2bar * back_network[0]).mult_element(a2error);
+    cout << "Delta 2" << endl << back_network[1] << endl;
     //diff2
     Matrix a2hat_t = network[4].transpose();
     back_network[2] = back_network[0] * a2hat_t;
+
     //diff 1
     Matrix x_t = network[0].transpose();
     back_network[3] = back_network[1] * x_t;
+
     //Sum of Squared error terms
     Matrix error_temp = back_network[0] * -1;
     Matrix error_temp2 = (error_temp.transpose() * error_temp);
@@ -319,18 +326,25 @@ void Neuromancer::back_propogation_351(int debug) {
     //adjust network weights
     network[5] = network[5] - back_network[2] * alpha;
     network[1] = network[1] - back_network[3] * alpha;
+    cout << "BACKPROP ENDS" << endl;
 };
 void Neuromancer::back_propogation_351() {
+    cout << "BACKPROP BEGINS" << endl;
     //delta3
     back_network[0] = (target_slice - network[network.size() - 1])*-1;
+
     //delta 2
     Matrix W2bar;
     W2bar = network[(network.size() - 2)].data;
     W2bar.data.pop_back();                          //remove last row, dropping bias terms, and transpose
     W2bar = W2bar.transpose();
+
     Matrix a2error(network[3].get_dims(), 1);
-    a2error = (network[3].mult_element(a2error - network[3]));
+    Matrix a2errorTemp(network[3].get_dims(), 1);
+    a2error = (network[3].mult_element(a2errorTemp - network[3]));
     back_network[1] = (W2bar * back_network[0]).mult_element(a2error);
+    cout << "Delta 2" << endl << back_network[1] << endl;
+
     //diff2
     Matrix a2hat_t = network[4].transpose();
     back_network[2] = back_network[0] * a2hat_t;
@@ -344,6 +358,7 @@ void Neuromancer::back_propogation_351() {
     //adjust network weights
     network[5] = network[5] - back_network[2] * alpha;
     network[1] = network[1] - back_network[3] * alpha;
+    cout << "BACKPROP ENDS" << endl;
 };
 
 Matrix  Neuromancer::GenRandMat(dimensions dims, float upper, float lower){
