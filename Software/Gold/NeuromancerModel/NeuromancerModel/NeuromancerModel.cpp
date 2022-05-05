@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include <string>
-#include "neuromancer.h"
+#include <neuromancer.h>
 //#include "../../../Project Neuromancer/source/neuromancer.h"
 #include <fstream>
 #include <sstream>
@@ -33,6 +33,8 @@ void read_csv() {
     cout << "MatA:" << endl;
     cout << MatA << endl;
 }
+
+Neuromancer test_network(0);
 
 
 int main()
