@@ -7,6 +7,9 @@
 #include <random>
 #include <iostream>
 #include <math.h>
+#include <string>
+#include <fstream>
+#include <sstream>
 
 enum class layer_type {
 	LINEAR,
@@ -36,6 +39,7 @@ private:
 	//network initialisers
 	void init_network_351();
 	void init_weights();
+	void load_setup();
 	void init_back_351();
 
 	//non-linearities 

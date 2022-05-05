@@ -23,9 +23,6 @@ DeDw1= zeros(3,2);
 DeDw2= zeros(1,3);
 
 %initialise weights to non-zero
-W1 = GenerateUniformDataset(3,-0.1,0.1,hiddenUnits);
-W2 = GenerateUniformDataset((hiddenUnits+1),-0.1,0.1,2);
-
 
 % randomize data
 i = 1;

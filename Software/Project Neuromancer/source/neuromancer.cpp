@@ -160,25 +160,25 @@ void Neuromancer::Test() {
 //copy of the aint351 network
 void Neuromancer::init_network_351() {
     //input layer
-    Matrix inputLayer(InputDims);
+    Matrix inputLayer(InputDims); //0
     network.push_back(inputLayer);
     //First layer
     //Weight
-    Matrix W1(10, 3);
-    Matrix net1(10, 1);
+    Matrix W1(10, 3);               //1
+    Matrix net1(10, 1);             //2
     network.push_back(W1);
     network.push_back(net1);
     //second layer
-    Matrix a2(10, 1);
-    Matrix a2_hat(11, 1);
+    Matrix a2(10, 1);               //3
+    Matrix a2_hat(11, 1);           //4
     network.push_back(a2);
     network.push_back(a2_hat);
     //third layer
-    Matrix W2(2, 11);
-    Matrix net2(2, 1);
+    Matrix W2(2, 11);               //5
+    Matrix net2(2, 1);              //6
     network.push_back(W2);
     network.push_back(net2);
-    init_weights();
+    //init_weights();
     //display_network();
 }
 
@@ -190,6 +190,10 @@ void Neuromancer::init_weights() {
             network[(2 * (i + 1)) - 1] = GenRandMat(network[(2 * (i + 1)) - 1].get_dims(), 0.1, -0.1);
         }
     }
+}
+
+void Neuromancer::load_setup() {
+
 }
 
 void Neuromancer::init_back_351() {
@@ -525,3 +529,26 @@ std::ostream& operator<<(std::ostream& os, const vector<int>& vec) {
     os << endl;
     return os;
 };
+
+vector<vector<float>> read_csv() {
+    std::fstream fin; //file pointer
+    cout << "opening file..." << endl;
+    fin.open("ModelTrainingData.csv");
+    cout << "file open" << endl;
+    vector<vector<float>> content;
+    vector<float> row;
+    std::string temp, line, entry;
+    dimensions dims(2, 2);
+    Matrix MatA(dims);
+    int count = 0;
+    while (getline(fin, line)) {
+        row.clear();
+        stringstream s(line);
+        while (getline(s, entry, ',')) {
+            row.push_back(stof(entry));
+        }
+        cout << row[0] << " " << row[1] << endl;
+        content.push_back(row);
+        count++;
+    }
+}

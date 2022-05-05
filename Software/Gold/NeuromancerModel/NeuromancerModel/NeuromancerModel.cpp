@@ -1,20 +1,19 @@
 // NeuromancerModel.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
-
+#include <neuromancer.h>
 #include <iostream>
 #include <string>
-#include <neuromancer.h>
-//#include "../../../Project Neuromancer/source/neuromancer.h"
 #include <fstream>
 #include <sstream>
 
 using namespace std;
 //csv read test
-void read_csv() {
+vector<vector<float>> read_csv() {
     std::fstream fin; //file pointer
     cout << "opening file..." << endl;
     fin.open("test.csv");
     cout << "file open" << endl;
+    vector<vector<float>> content;
     vector<float> row;
     std::string temp,line,entry;
     dimensions dims(2, 2);
@@ -27,11 +26,9 @@ void read_csv() {
             row.push_back(stof(entry));
         }
         cout << row[0] << " " << row[1] << endl;
-        MatA.data[count] = row;
+        content.push_back(row);
         count++;
     }
-    cout << "MatA:" << endl;
-    cout << MatA << endl;
 }
 
 Neuromancer test_network(0);

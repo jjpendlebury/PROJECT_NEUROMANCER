@@ -15,7 +15,11 @@ Theta = GenerateUniformDataset(episodes,0,pi,2);
 X = P2;                                                                     %Raw end effector positions
 Xhat = [X; ones(1,episodes);];                                              %Augmented Inputs
 T = Theta;                                                                  %Set correct joint angles as targets
-output_vec = zeros(2,episodes);                                             %Preallocate the output vector
+output_vec = zeros(2,episodes);
+
+W1 = GenerateUniformDataset(3,-0.1,0.1,hiddenUnits);
+W2 = GenerateUniformDataset((hiddenUnits+1),-0.1,0.1,2);
+
 
 filename = 'ModelTrainingData.csv';
 save("Model_Training_Data");
@@ -23,3 +27,5 @@ save("Model_Training_Data");
 delete ModelData.csv;
 writematrix(X,filename, 'WriteMode','append');
 writematrix(T,filename, 'WriteMode','append');
+writematrix(W1,filename, 'WriteMode','append');
+writematrix(W2,filename, 'WriteMode','append');
