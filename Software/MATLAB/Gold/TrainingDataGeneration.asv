@@ -1,0 +1,24 @@
+%Model Data Generation
+
+alpha = 0.025;
+trials = 10000;
+episodes = 1000;
+hiddenUnits = 10;
+%Generate Arm Training Data
+L1 = 0.4;
+L2 = 0.4;
+armLen = [L1, L2];
+origin = [0,0];
+Theta = GenerateUniformDataset(episodes,0,pi,2);
+[P1, P2] = RevoluteForwardKinematics2D(armLen,Theta,origin);
+%Organise training data
+X = P2;                                                                     %Raw end effector positions
+Xhat = [X; ones(1,episodes);];                                              %Augmented Inputs
+T = Theta;                                                                  %Set correct joint angles as targets
+output_vec = zeros(2,episodes);                                             %Preallocate the output vector
+
+save("Model_Training_Data");
+%clear old model data
+delete ModelData.csv;
+writematrix(X,'ModelData.csv', 'WriteMode','append');
+writematrix({"cheese"}
