@@ -58,6 +58,27 @@ fprintf("Training complete\n");
 
 save("P2_10613591");
 %write to CSV file
-filename = '
+filename = 'NeuromancerModel_SINGLE_RUN.csv';
+try
+    delete NeuromancerModel_SINGLE_RUN.csv;
+catch ME
+    warning('File not present, creating...');
+end
+    
+writematrix(x,filename, 'WriteMode','append');      %input slice
+writematrix(t,filename, 'WriteMode','append');      %target slice
+writematrix(net,filename, 'WriteMode','append');    %net1
+writematrix(a2hat,filename, 'WriteMode','append');  %a2hat
+writematrix(net2,filename, 'WriteMode','append');   %net2
+writematrix(o,filename, 'WriteMode','append');      %output
+
+writematrix(delta3,filename, 'WriteMode','append');      %delta3
+writematrix(W2bar,filename, 'WriteMode','append');      %W2bar
+writematrix(delta2,filename, 'WriteMode','append'); %delta2
+writematrix(DeDw2,filename, 'WriteMode','append');  %DeDw2
+writematrix(DeDw1,filename, 'WriteMode','append');  %DeDw1
+writematrix(error1,filename, 'WriteMode','append'); %error
+
+
 
 
