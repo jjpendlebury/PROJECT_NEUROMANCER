@@ -140,7 +140,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\Project Neuromancer\source\matrix.cpp" />
+    <ClCompile Include="..\..\..\Project Neuromancer\source\neuromancer.cpp" />
     <ClCompile Include="NeuromancerModel.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\Project Neuromancer\source\matrix.h" />
+    <ClInclude Include="..\..\..\Project Neuromancer\source\neuromancer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

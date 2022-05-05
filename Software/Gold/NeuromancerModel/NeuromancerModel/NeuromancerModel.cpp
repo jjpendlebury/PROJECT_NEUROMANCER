@@ -3,7 +3,8 @@
 
 #include <iostream>
 #include <string>
-#include <neuromancer.h>
+#include "neuromancer.h"
+//#include "../../../Project Neuromancer/source/neuromancer.h"
 #include <fstream>
 #include <sstream>
 
@@ -16,17 +17,21 @@ void read_csv() {
     cout << "file open" << endl;
     vector<float> row;
     std::string temp,line,entry;
+    dimensions dims(2, 2);
+    Matrix MatA(dims);
+    int count = 0;
     while (getline(fin, line)) {
-        //row.clear();
-        cout << line << endl;
+        row.clear();
         stringstream s(line);
         while (getline(s, entry, ',')) {
-            cout << entry << endl;
             row.push_back(stof(entry));
         }
-        
+        cout << row[0] << " " << row[1] << endl;
+        MatA.data[count] = row;
+        count++;
     }
-    cout << row[0] << " " << row[1] << " " << row[2] << " " << row[3] << endl;
+    cout << "MatA:" << endl;
+    cout << MatA << endl;
 }
 
 
