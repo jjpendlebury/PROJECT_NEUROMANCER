@@ -192,22 +192,7 @@ void Neuromancer::init_weights() {
     }
 }
 
-void Neuromancer::load_setup() {
-    //read in a CSV file
-    vector<vector<float>> setup_in;
-    setup_in = read_csv(data_path);  //read the setup CSV into data_in
-    //retrieve the row counts of the matrices to be loaded
-    vector<int> input_rows;
-    input_rows.push_back(InputDims.rows);           //inputs, AKA 'X'
-    input_rows.push_back(OutputDims.rows);          //targets, AKA 'T'
-    input_rows.push_back(network[1].get_rows());    //W1
-    input_rows.push_back(network[5].get_rows());    //W2
-    //iterate through
-    int linecount = 0;
-    for (int i = 0; i < input_rows.size(); i++) {
-        for(int j = 0;)
-    }
-}
+
 
 void Neuromancer::init_back_351() {
     //Static backprop for the 351 network
@@ -422,6 +407,44 @@ Neuromancer::Neuromancer(int test) {
     //execute();
 }
 
+void Neuromancer::load_setup() {
+    //read in a CSV file
+    vector<vector<float>> setup_in;
+    setup_in = read_csv(setup_path);  //read the setup CSV into data_in
+    cout << "File read." << endl;
+    //retrieve the row counts of the matrices to be loaded
+    vector<int> input_rows;
+    vector<Matrix*> Mat_Pointers; //pointers to the matrices to be pushed to
+    input_rows.push_back(InputDims.rows-1);           //inputs, AKA 'X'
+    Mat_Pointers.push_back(&inputs);
+    input_rows.push_back(OutputDims.rows);          //targets, AKA 'T'
+    Mat_Pointers.push_back(&targets);
+    input_rows.push_back(network[1].get_rows());    //W1
+    Mat_Pointers.push_back(&network[1]);
+    input_rows.push_back(network[5].get_rows());    //W2
+    Mat_Pointers.push_back(&network[5]);
+    //iterate through
+    int linecount = 0;
+    for (int i = 0; i < input_rows.size(); i++) {
+        cout << i << endl;
+        //clear each matrix
+        Mat_Pointers[i]->data.clear();
+        for (int j = 0; j < input_rows[i]; j++) {
+            //now the matrix is clear, push each row of setup data to the matrix
+            
+            cout << "Grabbing line " << (linecount + j) << endl;
+            disp_vec(setup_in[linecount + j]);
+            Mat_Pointers[i]->data.push_back(setup_in[linecount + j]);
+        }
+        linecount += input_rows[i];
+    }
+    cout << "Load Complete" << endl << "Displaying Matrices:" << endl;
+    for (int l = 0; l < Mat_Pointers.size(); l++) {
+        cout << Mat_Pointers[l] << endl;
+    }
+    cout << "Display Complete" << endl;
+}
+
 void Neuromancer::execute() {
     cout << "Executing..." << endl;
     vector<float> ones_vec(1000, 1);
@@ -486,6 +509,13 @@ void Neuromancer::set_trials(int new_trials) {
     this->trials = new_trials;
 }
 
+std::string Neuromancer::get_setup_path() {
+    return setup_path;
+}
+
+void Neuromancer::set_setup_path(std::string new_path) {
+    setup_path = new_path;
+}
 
 
 vector<layer_type> Neuromancer::get_layout() {

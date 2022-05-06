@@ -29,7 +29,7 @@ private:
 	Matrix targets, target_slice, inputs, input_slice;
 	float error;
 	vector<float> error_vec;
-	std::string data_path;
+	std::string setup_path;
 
 	void	Test();													//test routine
 
@@ -40,7 +40,6 @@ private:
 	//network initialisers
 	void init_network_351();
 	void init_weights();
-	void load_setup();
 	void init_back_351();
 
 	//non-linearities 
@@ -70,17 +69,20 @@ public:
 	Neuromancer();
 	Neuromancer(int test = 0);
 	
-	void	execute();
-	Matrix	get_inputs();
-	void	set_inputs(Matrix new_inputs);
-	Matrix	get_targets();
-	void	set_targets(Matrix new_targets);
-	float	get_alpha();
-	void	set_alpha(float new_learning_rate);
-	int		get_episodes();
-	void	set_episodes(int new_episodes);
-	int		get_trials();
-	void	set_trials(int new_trials);
+	void			load_setup();
+	void			execute();
+	Matrix			get_inputs();
+	void			set_inputs(Matrix new_inputs);
+	Matrix			get_targets();
+	void			set_targets(Matrix new_targets);
+	float			get_alpha();
+	void			set_alpha(float new_learning_rate);
+	int				get_episodes();
+	void			set_episodes(int new_episodes);
+	int				get_trials();
+	void			set_trials(int new_trials);
+	std::string		get_setup_path();
+	void			set_setup_path(std::string new_path);
 
 	vector<layer_type>	get_layout();
 	void				set_layout(vector<layer_type> input);

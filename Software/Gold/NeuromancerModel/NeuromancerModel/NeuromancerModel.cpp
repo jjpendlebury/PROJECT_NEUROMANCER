@@ -16,7 +16,8 @@ int main()
     string path = "../../MATLAB/ModelTrainingData.csv";
     Matrix input_data;
     input_data = read_csv(path);
-    std::cout << "Hello World!\n";
-    cout << input_data << endl;
+    test_network.set_setup_path(path);
+    test_network.load_setup();
+    test_network.display_network();
     
 }
