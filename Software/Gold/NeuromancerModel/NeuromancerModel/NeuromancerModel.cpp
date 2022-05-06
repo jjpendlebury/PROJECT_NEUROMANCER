@@ -14,7 +14,9 @@ Neuromancer test_network(0);
 int main()
 {
     string path = "../../MATLAB/ModelTrainingData.csv";
-    read_csv(path);
+    Matrix input_data;
+    input_data = read_csv(path);
     std::cout << "Hello World!\n";
+    cout << input_data << endl;
     
 }

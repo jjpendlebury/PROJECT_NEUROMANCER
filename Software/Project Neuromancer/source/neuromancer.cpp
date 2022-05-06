@@ -193,7 +193,20 @@ void Neuromancer::init_weights() {
 }
 
 void Neuromancer::load_setup() {
-
+    //read in a CSV file
+    vector<vector<float>> setup_in;
+    setup_in = read_csv(data_path);  //read the setup CSV into data_in
+    //retrieve the row counts of the matrices to be loaded
+    vector<int> input_rows;
+    input_rows.push_back(InputDims.rows);           //inputs, AKA 'X'
+    input_rows.push_back(OutputDims.rows);          //targets, AKA 'T'
+    input_rows.push_back(network[1].get_rows());    //W1
+    input_rows.push_back(network[5].get_rows());    //W2
+    //iterate through
+    int linecount = 0;
+    for (int i = 0; i < input_rows.size(); i++) {
+        for(int j = 0;)
+    }
 }
 
 void Neuromancer::init_back_351() {

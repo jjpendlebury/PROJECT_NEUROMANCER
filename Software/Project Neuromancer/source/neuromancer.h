@@ -29,6 +29,7 @@ private:
 	Matrix targets, target_slice, inputs, input_slice;
 	float error;
 	vector<float> error_vec;
+	std::string data_path;
 
 	void	Test();													//test routine
 
