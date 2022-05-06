@@ -19,5 +19,7 @@ int main()
     test_network.set_setup_path(path);
     test_network.load_setup();
     test_network.display_network();
+    test_network.set_episodes(1);
+    test_network.execute();
     
 }

@@ -429,13 +429,18 @@ void Neuromancer::load_setup() {
         cout << i << endl;
         //clear each matrix
         Mat_Pointers[i]->data.clear();
+        vector<vector<float>> temp;
         for (int j = 0; j < input_rows[i]; j++) {
             //now the matrix is clear, push each row of setup data to the matrix
             
             cout << "Grabbing line " << (linecount + j) << endl;
             disp_vec(setup_in[linecount + j]);
-            Mat_Pointers[i]->data.push_back(setup_in[linecount + j]);
+            
+            temp.push_back(setup_in[linecount + j]);
+            //Mat_Pointers[i]->data.push_back(setup_in[linecount + j]);
+            
         }
+        Mat_Pointers[i]->set_data(temp);
         linecount += input_rows[i];
     }
     cout << "Load Complete" << endl << "Displaying Matrices:" << endl;
@@ -458,7 +463,7 @@ void Neuromancer::execute() {
         cout << "TARGET SLICE: " << target_slice.dims << endl << target_slice << endl;
         network[0] = input_slice;
         forward_pass();
-        back_propogation_351(1);
+        //back_propogation_351(1);
         display_network();
         cout << "TARGET SLICE: " << target_slice.dims << endl << target_slice << endl;
     }

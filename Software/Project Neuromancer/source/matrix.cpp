@@ -120,6 +120,7 @@ void Matrix::set_data(vector< vector<float> > &inputData) {
     data = inputData;
     this->dims.rows = this->data.size();
     this->dims.columns = this->data[0].size();
+    this->update_dims();
 }
 
 void Matrix::set_data(vector<float> inputVec) {
