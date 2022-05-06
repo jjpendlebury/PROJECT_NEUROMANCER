@@ -96,4 +96,6 @@ public:
 
 std::ostream& operator<<(std::ostream& os, const vector<float>& vec);
 
+vector<vector<float>> read_csv(std::string path);
+
 #endif

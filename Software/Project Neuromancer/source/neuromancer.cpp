@@ -530,10 +530,10 @@ std::ostream& operator<<(std::ostream& os, const vector<int>& vec) {
     return os;
 };
 
-vector<vector<float>> read_csv() {
+vector<vector<float>> read_csv(string path) {
     std::fstream fin; //file pointer
     cout << "opening file..." << endl;
-    fin.open("ModelTrainingData.csv");
+    fin.open(path);
     cout << "file open" << endl;
     vector<vector<float>> content;
     vector<float> row;
@@ -551,4 +551,5 @@ vector<vector<float>> read_csv() {
         content.push_back(row);
         count++;
     }
+    return content;
 }
