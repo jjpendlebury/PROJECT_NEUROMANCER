@@ -14,6 +14,7 @@ Neuromancer test_network(0);
 int main()
 {
     string path = "../../MATLAB/ModelTrainingData.csv";
+    string verification_path = "../../MATLAB/NeuromancerModelSINGLERUN.csv";
     Matrix input_data;
     input_data = read_csv(path);
     test_network.set_setup_path(path);
@@ -21,5 +22,7 @@ int main()
     test_network.display_network();
     test_network.set_episodes(1);
     test_network.execute();
+    test_network.set_model_path(verification_path);
+    test_network.verify_model();
     
 }

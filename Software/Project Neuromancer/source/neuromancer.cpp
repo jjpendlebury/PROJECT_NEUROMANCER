@@ -450,6 +450,69 @@ void Neuromancer::load_setup() {
     cout << "Display Complete" << endl;
 }
 
+void Neuromancer::verify_model() {
+    vector<vector<float>> model_in; //vector to store the loaded model
+    model_in = read_csv(model_path);
+    //check if the model loaded correctly
+    cout << model_in.size() << endl;
+    for (int k = 0; k < model_in.size(); k++) {
+        disp_vec(model_in[k]);
+    }
+    if (model_in.size() == 0) {
+        cout << "Model failed to load." << endl << "check the model path is set correctly." << endl;
+        return;
+    }
+    else {
+        cout << "Model loaded." << endl;
+    }
+
+    //pull error into placeholder matrix
+    Matrix error_temp;
+    error_temp.data.push_back({ error });
+    //do the same with W2 to get W2 bar
+    Matrix W2bar;
+    W2bar = network[(network.size() - 2)].data;
+    W2bar = W2bar.transpose();
+    W2bar.data.pop_back();
+    vector<Matrix*> mat_pointers; //vector of pointers, to point to the matrices to be used for comparison
+    //push matrices in the CORRECT ORDER - MUST MATCH CSV FILE
+    mat_pointers.push_back(&network[0]);        //input
+    mat_pointers.push_back(&network[2]);        //net1
+    mat_pointers.push_back(&network[4]);        //A2hat
+    mat_pointers.push_back(&network[6]);        //net2/output
+    mat_pointers.push_back(&back_network[0]);   //delta 3
+    mat_pointers.push_back(&W2bar);             //W2bar
+    mat_pointers.push_back(&back_network[1]);   //delta 2
+    mat_pointers.push_back(&back_network[2]);   //dedw2
+    mat_pointers.push_back(&back_network[3]);   //dedw1
+    mat_pointers.push_back(&error_temp);        //error (via error temp)
+    mat_pointers.push_back(&target_slice);      //target slice
+
+    //vectors to hold comparison result
+    vector<int> test_results;
+
+    int linecount = 0;
+    for (int i = 0; i < mat_pointers.size(); i++) {
+        Matrix temp(mat_pointers[i]->get_dims());       //temp matrix to hold the model data
+        for (int j = linecount; j < mat_pointers[i]->dims.rows; j++) {  //extract data from model input
+            temp.data.push_back(model_in[j]);
+        }
+        linecount += mat_pointers[i]->dims.rows;
+        //compare temp and actual dims
+        temp.update_dims();
+        if ((temp.dims.rows == mat_pointers[i]->dims.rows) && (temp.dims.columns == mat_pointers[i]->dims.columns)) {
+            test_results.push_back(1);
+        }
+
+    }
+    for (int l = 0; l < test_results.size(); l++) {
+        cout << test_results[l] << endl;
+    }
+
+
+
+}
+
 void Neuromancer::execute() {
     cout << "Executing..." << endl;
     vector<float> ones_vec(1000, 1);
@@ -522,6 +585,14 @@ void Neuromancer::set_setup_path(std::string new_path) {
     setup_path = new_path;
 }
 
+std::string Neuromancer::get_model_path() {
+    return setup_path;
+}
+
+void Neuromancer::set_model_path(std::string new_path) {
+    setup_path = new_path;
+}
+
 
 vector<layer_type> Neuromancer::get_layout() {
     vector<layer_type> layout = this->network_layout;
@@ -581,23 +652,30 @@ std::ostream& operator<<(std::ostream& os, const vector<int>& vec) {
 vector<vector<float>> read_csv(string path) {
     std::fstream fin; //file pointer
     cout << "opening file..." << endl;
-    fin.open(path);
-    cout << "file open" << endl;
-    vector<vector<float>> content;
-    vector<float> row;
-    std::string temp, line, entry;
-    dimensions dims(2, 2);
-    Matrix MatA(dims);
-    int count = 0;
-    while (getline(fin, line)) {
-        row.clear();
-        stringstream s(line);
-        while (getline(s, entry, ',')) {
-            row.push_back(stof(entry));
+    //try {
+        fin.open(path);
+        cout << "file open" << endl;
+        vector<vector<float>> content;
+        vector<float> row;
+        std::string temp, line, entry;
+        dimensions dims(2, 2);
+        Matrix MatA(dims);
+        int count = 0;
+        while (getline(fin, line)) {
+            row.clear();
+            stringstream s(line);
+            while (getline(s, entry, ',')) {
+                row.push_back(stof(entry));
+            }
+            cout << row[0] << " " << row[1] << endl;
+            content.push_back(row);
+            count++;
         }
-        cout << row[0] << " " << row[1] << endl;
-        content.push_back(row);
-        count++;
-    }
-    return content;
+        return content;
+    //}
+    /*catch (...) {
+        cout << "File failed to open." << endl;
+        vector<vector<float>> error;
+        return error;
+    }*/
 }

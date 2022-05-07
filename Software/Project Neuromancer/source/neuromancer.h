@@ -29,7 +29,7 @@ private:
 	Matrix targets, target_slice, inputs, input_slice;
 	float error;
 	vector<float> error_vec;
-	std::string setup_path;
+	std::string setup_path,model_path;
 
 	void	Test();													//test routine
 
@@ -70,6 +70,8 @@ public:
 	Neuromancer(int test = 0);
 	
 	void			load_setup();
+	void			verify_model();
+
 	void			execute();
 	Matrix			get_inputs();
 	void			set_inputs(Matrix new_inputs);
@@ -83,6 +85,8 @@ public:
 	void			set_trials(int new_trials);
 	std::string		get_setup_path();
 	void			set_setup_path(std::string new_path);
+	std::string		get_model_path();
+	void			set_model_path(std::string new_path);
 
 	vector<layer_type>	get_layout();
 	void				set_layout(vector<layer_type> input);
