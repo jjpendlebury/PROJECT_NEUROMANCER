@@ -14,15 +14,17 @@ Neuromancer test_network(0);
 int main()
 {
     string path = "../../MATLAB/ModelTrainingData.csv";
-    string verification_path = "../../MATLAB/NeuromancerModelSINGLERUN.csv";
+    //string verification_path = "../../MATLAB/NeuromancerModelSINGLERUN.csv";
+    string verification_path = "C:\\Git\\PROJECT_NEUROMANCER\\Software\\Project Neuromancer\\source\\nm.csv";
     Matrix input_data;
-    input_data = read_csv(path);
-    test_network.set_setup_path(path);
+    input_data = read_csv(verification_path);
+    cout << input_data << endl;
+    /*test_network.set_setup_path(path);
     test_network.load_setup();
     test_network.display_network();
     test_network.set_episodes(1);
     test_network.execute();
     test_network.set_model_path(verification_path);
-    test_network.verify_model();
+    test_network.verify_model();*/
     
 }

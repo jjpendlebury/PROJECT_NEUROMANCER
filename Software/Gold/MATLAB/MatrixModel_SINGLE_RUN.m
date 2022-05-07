@@ -55,9 +55,9 @@ fprintf("Training complete\n");
 
 save("P2_10613591");
 %write to CSV file
-filename = 'NeuromancerModelSINGLERUN.csv';
+filename = 'nm.csv';
 try
-    delete NeuromancerModelSINGLERUN.csv;
+    delete nm.csv;
 catch ME
     warning('File not present, creating...');
 end
