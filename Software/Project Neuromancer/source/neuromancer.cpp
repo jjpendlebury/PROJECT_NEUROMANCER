@@ -463,8 +463,9 @@ void Neuromancer::execute() {
         cout << "TARGET SLICE: " << target_slice.dims << endl << target_slice << endl;
         network[0] = input_slice;
         forward_pass();
-        //back_propogation_351(1);
+        back_propogation_351(1);
         display_network();
+        display_back_network();
         cout << "TARGET SLICE: " << target_slice.dims << endl << target_slice << endl;
     }
     disp_vec(error_vec);
