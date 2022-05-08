@@ -343,6 +343,8 @@ void Neuromancer::back_propogation_351(int debug) {
     Matrix error_temp2 = (error_temp.transpose() * error_temp);
     error = error + error_temp2(0, 0); //error temp2 is a 1x1, there has to be a more elegant way to do this
     error_vec.push_back(error);
+
+
     //adjust network weights
     network[5] = network[5] - back_network[2] * alpha;
     network[1] = network[1] - back_network[3] * alpha;
@@ -470,68 +472,68 @@ void Neuromancer::load_setup() {
     cout << "Display Complete" << endl;
 }
 
-void Neuromancer::verify_model() {
-    vector<vector<float>> model_in; //vector to store the loaded model
-    model_in = read_csv(model_path);
-    //check if the model loaded correctly
-    cout << model_in.size() << endl;
-    for (int k = 0; k < model_in.size(); k++) {
-        disp_vec(model_in[k]);
-    }
-    if (model_in.size() == 0) {
-        cout << "Model failed to load." << endl << "check the model path is set correctly." << endl;
-        return;
-    }
-    else {
-        cout << "Model loaded." << endl;
-    }
-
-    //pull error into placeholder matrix
-    Matrix error_temp;
-    error_temp.data.push_back({ error });
-    //do the same with W2 to get W2 bar
-    Matrix W2bar;
-    W2bar = network[(network.size() - 2)].data;
-    W2bar = W2bar.transpose();
-    W2bar.data.pop_back();
-    vector<Matrix*> mat_pointers; //vector of pointers, to point to the matrices to be used for comparison
-    //push matrices in the CORRECT ORDER - MUST MATCH CSV FILE
-    mat_pointers.push_back(&network[0]);        //input
-    mat_pointers.push_back(&network[2]);        //net1
-    mat_pointers.push_back(&network[4]);        //A2hat
-    mat_pointers.push_back(&network[6]);        //net2/output
-    mat_pointers.push_back(&back_network[0]);   //delta 3
-    mat_pointers.push_back(&W2bar);             //W2bar
-    mat_pointers.push_back(&back_network[1]);   //delta 2
-    mat_pointers.push_back(&back_network[2]);   //dedw2
-    mat_pointers.push_back(&back_network[3]);   //dedw1
-    mat_pointers.push_back(&error_temp);        //error (via error temp)
-    mat_pointers.push_back(&target_slice);      //target slice
-
-    //vectors to hold comparison result
-    vector<int> test_results;
-
-    int linecount = 0;
-    for (int i = 0; i < mat_pointers.size(); i++) {
-        Matrix temp(mat_pointers[i]->get_dims());       //temp matrix to hold the model data
-        for (int j = linecount; j < mat_pointers[i]->dims.rows; j++) {  //extract data from model input
-            temp.data.push_back(model_in[j]);
-        }
-        linecount += mat_pointers[i]->dims.rows;
-        //compare temp and actual dims
-        temp.update_dims();
-        if ((temp.dims.rows == mat_pointers[i]->dims.rows) && (temp.dims.columns == mat_pointers[i]->dims.columns)) {
-            test_results.push_back(1);
-        }
-
-    }
-    for (int l = 0; l < test_results.size(); l++) {
-        cout << test_results[l] << endl;
-    }
-
-
-
-}
+//void Neuromancer::verify_model() {
+//    vector<vector<float>> model_in; //vector to store the loaded model
+//    model_in = read_csv(model_path);
+//    //check if the model loaded correctly
+//    cout << model_in.size() << endl;
+//    for (int k = 0; k < model_in.size(); k++) {
+//        disp_vec(model_in[k]);
+//    }
+//    if (model_in.size() == 0) {
+//        cout << "Model failed to load." << endl << "check the model path is set correctly." << endl;
+//        return;
+//    }
+//    else {
+//        cout << "Model loaded." << endl;
+//    }
+//
+//    //pull error into placeholder matrix
+//    Matrix error_temp;
+//    error_temp.data.push_back({ error });
+//    //do the same with W2 to get W2 bar
+//    Matrix W2bar;
+//    W2bar = network[(network.size() - 2)].data;
+//    W2bar = W2bar.transpose();
+//    W2bar.data.pop_back();
+//    vector<Matrix*> mat_pointers; //vector of pointers, to point to the matrices to be used for comparison
+//    //push matrices in the CORRECT ORDER - MUST MATCH CSV FILE
+//    mat_pointers.push_back(&network[0]);        //input
+//    mat_pointers.push_back(&network[2]);        //net1
+//    mat_pointers.push_back(&network[4]);        //A2hat
+//    mat_pointers.push_back(&network[6]);        //net2/output
+//    mat_pointers.push_back(&back_network[0]);   //delta 3
+//    mat_pointers.push_back(&W2bar);             //W2bar
+//    mat_pointers.push_back(&back_network[1]);   //delta 2
+//    mat_pointers.push_back(&back_network[2]);   //dedw2
+//    mat_pointers.push_back(&back_network[3]);   //dedw1
+//    mat_pointers.push_back(&error_temp);        //error (via error temp)
+//    mat_pointers.push_back(&target_slice);      //target slice
+//
+//    //vectors to hold comparison result
+//    vector<int> test_results;
+//
+//    int linecount = 0;
+//    for (int i = 0; i < mat_pointers.size(); i++) {
+//        Matrix temp(mat_pointers[i]->get_dims());       //temp matrix to hold the model data
+//        for (int j = linecount; j < mat_pointers[i]->dims.rows; j++) {  //extract data from model input
+//            temp.data.push_back(model_in[j]);
+//        }
+//        linecount += mat_pointers[i]->dims.rows;
+//        //compare temp and actual dims
+//        temp.update_dims();
+//        if ((temp.dims.rows == mat_pointers[i]->dims.rows) && (temp.dims.columns == mat_pointers[i]->dims.columns)) {
+//            test_results.push_back(1);
+//        }
+//
+//    }
+//    for (int l = 0; l < test_results.size(); l++) {
+//        cout << test_results[l] << endl;
+//    }
+//
+//
+//
+//}
 
 void Neuromancer::execute() {
     cout << "Executing..." << endl;
