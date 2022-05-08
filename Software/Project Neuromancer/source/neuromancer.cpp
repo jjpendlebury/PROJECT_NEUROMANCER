@@ -339,11 +339,21 @@ void Neuromancer::back_propogation_351(int debug) {
     back_network[3] = back_network[1] * x_t;
 
     //Sum of Squared error terms
-    Matrix error_temp = back_network[0] * -1;
-    Matrix error_temp2 = (error_temp.transpose() * error_temp);
-    error = error + error_temp2(0, 0); //error temp2 is a 1x1, there has to be a more elegant way to do this
-    error_vec.push_back(error);
+    //Matrix error_temp = back_network[0] * -1;
+    //Matrix error_temp2 = (error_temp.transpose() * error_temp);
+    //error = error + error_temp2(0, 0); //error temp2 is a 1x1, there has to be a more elegant way to do this
+    //error_vec.push_back(error);
 
+    Matrix error_temp1, error_temp2;
+    error_temp1 = network[6] - target_slice;
+    cout << "error_Temp1" << error_temp1 << endl;
+    error_temp2 = error_temp1;
+    error_temp1.transpose();
+    Matrix error_temp3 = error_temp1 * error_temp2;
+    cout << "errortemp3" << error_temp3 << endl;
+    error = error + error_temp3(0,0);
+    cout << "error: " << error;
+    error_vec.push_back(error);
 
     //adjust network weights
     network[5] = network[5] - back_network[2] * alpha;
@@ -379,6 +389,7 @@ void Neuromancer::back_propogation_351() {
     Matrix error_temp = back_network[0] * -1;
     Matrix error_temp2 = (error_temp.transpose() * error_temp);
     error = error + error_temp2(0, 0); //error temp2 is a 1x1, there has to be a more elegant way to do this
+    
     //adjust network weights
     network[5] = network[5] - back_network[2] * alpha;
     network[1] = network[1] - back_network[3] * alpha;
@@ -541,6 +552,7 @@ void Neuromancer::execute() {
     inputs.data.push_back(ones_vec);
     inputs.update_dims();
     for (int i = 0; i < episodes; i++) {
+        error = 0;
         input_slice = inputs(':', i);       //load inputs into input slice
         cout << "INPUT SLICE: " << input_slice.dims << endl << input_slice << endl;
         //input_slice.data.push_back({ 1 });
