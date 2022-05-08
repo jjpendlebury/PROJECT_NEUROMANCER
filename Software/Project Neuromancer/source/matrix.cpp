@@ -374,6 +374,7 @@ Matrix Matrix::mult_element(Matrix matB) {
     Matrix blank(this->get_rows(), this->get_cols());
     if ((c1 != c2) || (r1 != r2)) {
         cout << "For matrix elementwise multiplication, matrix dimensions must be the same" << endl;
+        cout << "MatA size: " << this->get_dims() << " MatB Size: " << matB.get_dims() << endl;
     }
     else {
         for (auto i = 0; i < dataA.size(); i++) {
