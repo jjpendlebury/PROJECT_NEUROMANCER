@@ -354,7 +354,7 @@ void Neuromancer::back_propogation_351(int debug) {
     cout << "errortemp3" << error_temp3 << endl;
     error = error + error_temp3(0,0);
     cout << "error: " << error;
-    error_vec.push_back(error);
+    //error_vec.push_back(error);
 
     //adjust network weights
     network[5] = network[5] - back_network[2] * alpha;
@@ -552,19 +552,23 @@ void Neuromancer::execute() {
     vector<float> ones_vec(1000, 1);
     inputs.data.push_back(ones_vec);
     inputs.update_dims();
-    for (int i = 0; i < episodes; i++) {
+    for (int j = 0; j < trials; j++) {
         error = 0;
-        input_slice = inputs(':', i);       //load inputs into input slice
-        cout << "INPUT SLICE: " << input_slice.dims << endl << input_slice << endl;
-        //input_slice.data.push_back({ 1 });
-        target_slice = targets(':',i);
-        cout << "TARGET SLICE: " << target_slice.dims << endl << target_slice << endl;
-        network[0] = input_slice;
-        forward_pass();
-        back_propogation_351(1);
-        display_network();
-        display_back_network();
-        cout << "TARGET SLICE: " << target_slice.dims << endl << target_slice << endl;
+        for (int i = 0; i < episodes; i++) {
+            
+            input_slice = inputs(':', i);       //load inputs into input slice
+            cout << "INPUT SLICE: " << input_slice.dims << endl << input_slice << endl;
+            //input_slice.data.push_back({ 1 });
+            target_slice = targets(':', i);
+            cout << "TARGET SLICE: " << target_slice.dims << endl << target_slice << endl;
+            network[0] = input_slice;
+            forward_pass();
+            back_propogation_351(1);
+            display_network();
+            display_back_network();
+            cout << "TARGET SLICE: " << target_slice.dims << endl << target_slice << endl;
+        }
+        error_vec.push_back(error);
     }
     disp_vec(error_vec);
     cout << "Complete." << endl;
