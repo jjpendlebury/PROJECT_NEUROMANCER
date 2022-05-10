@@ -5,8 +5,8 @@ clc
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Set up episode variables
 alpha = 0.025;
-trials = 1;
-episodes = 100;
+trials = 10000;
+episodes = 1000;
 hiddenUnits = 10;
 
 %Load training data
@@ -17,7 +17,8 @@ Xhat = [X; ones(1,episodes);];                                            %Augme
 T = Theta;                                                                  %Set correct joint angles as targets
 output_vec = zeros(2,episodes);                                           %Preallocate the output vector
 
-
+trials = 5;
+episodes = 1000;
 %differentials
 DeDw1= zeros(3,2);
 DeDw2= zeros(1,3);

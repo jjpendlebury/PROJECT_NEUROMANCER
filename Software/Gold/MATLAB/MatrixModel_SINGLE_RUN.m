@@ -6,7 +6,7 @@ clc
 %Set up episode variables
 alpha = 0.025;
 trials = 10000;
-episodes = 1000;
+episodes = 1;
 hiddenUnits = 10;
 
 %Load training data
@@ -29,8 +29,9 @@ i = 1;
 XHat_constant = Xhat;
 T_constant = T;
 fprintf("Starting training...\n");
-errorvec = zeros(2,trials);
+errorvec = zeros(2,trials); 
 error1=0;
+for i = 1:1000
         x = Xhat(:,i);                          %extract input
         t = T(:,i);                             %extract target
         net = W1 *x;                            %generate first net
@@ -49,7 +50,9 @@ error1=0;
         error1 = error1 + (t - o)' * (t - o);   %sum of squared error terms
         W1 = W1 - alpha*DeDw1;                  %update weight 1
         W2 = W2 - alpha*DeDw2;                  %update weight 2
-        output_vec(:,i)=o;                      %append output to vector    
+        output_vec(:,i)=o;                      %append output to vector
+        errorvec(:,i) = error1;
+end
 fprintf("Training complete\n");
 
 
