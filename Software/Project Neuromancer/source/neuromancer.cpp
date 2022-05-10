@@ -354,7 +354,7 @@ void Neuromancer::back_propogation_351(int debug) {
     cout << "errortemp3" << error_temp3 << endl;
     error = error + error_temp3(0,0);
     cout << "error: " << error;
-    //error_vec.push_back(error);
+    error_vec.push_back(error);
 
     //adjust network weights
     network[5] = network[5] - back_network[2] * alpha;
@@ -550,6 +550,7 @@ void Neuromancer::load_setup() {
 void Neuromancer::execute() {
     cout << "Executing..." << endl;
     vector<float> ones_vec(1000, 1);
+    vector<float> err_avg;
     inputs.data.push_back(ones_vec);
     inputs.update_dims();
     for (int j = 0; j < trials; j++) {
@@ -568,9 +569,11 @@ void Neuromancer::execute() {
             display_back_network();
             cout << "TARGET SLICE: " << target_slice.dims << endl << target_slice << endl;
         }
-        error_vec.push_back(error);
+        float trial_avg = vec_avg(error_vec);
+        disp_vec(error_vec);
+        err_avg.push_back(trial_avg);
     }
-    disp_vec(error_vec);
+    disp_vec(err_avg);
     cout << "Complete." << endl;
     
 }
@@ -718,4 +721,13 @@ vector<vector<float>> read_csv(string path) {
         vector<vector<float>> error;
         return error;
     }*/
+}
+
+float vec_avg(vector<float> vec_in) {
+    float total = 0;
+    for (int i = 0; i < vec_in.size(); i++) {
+        total += vec_in[i];
+    }
+    total = total / vec_in.size();
+    return total;
 }

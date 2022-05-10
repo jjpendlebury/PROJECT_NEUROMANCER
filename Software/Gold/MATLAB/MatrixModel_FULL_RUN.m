@@ -5,8 +5,8 @@ clc
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Set up episode variables
 alpha = 0.025;
-trials = 10000;
-episodes = 1000;
+trials = 1;
+episodes = 100;
 hiddenUnits = 10;
 
 %Load training data

@@ -103,6 +103,9 @@ public:
 
 std::ostream& operator<<(std::ostream& os, const vector<float>& vec);
 
-vector<vector<float>> read_csv(std::string path);
+//non-class functions
+
+vector<vector<float>>	read_csv(std::string path);
+float					vec_avg(vector<float> vec_in);
 
 #endif
