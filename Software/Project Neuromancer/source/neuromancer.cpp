@@ -348,7 +348,8 @@ void Neuromancer::back_propogation_351(int debug) {
     error_temp1 = network[6] - target_slice;
     cout << "error_Temp1" << error_temp1 << endl;
     error_temp2 = error_temp1;
-    error_temp1.transpose();
+    error_temp1 = error_temp1.transpose();
+    cout << "2 Dims: " << error_temp2.dims << " 1 Dims: " << error_temp1.dims << endl;
     Matrix error_temp3 = error_temp1 * error_temp2;
     cout << "errortemp3" << error_temp3 << endl;
     error = error + error_temp3(0,0);
