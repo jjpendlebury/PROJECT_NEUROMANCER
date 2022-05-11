@@ -212,7 +212,9 @@ void Matrix::multiply(Matrix matB, int debug) {
         cout << "Column of first matrix should be equal to row of second matrix";
     }
     else {
+        #if DEBUG_MODE == 1
         cout << "The first matrix is:" << endl;
+
         for (i = 0; i < r1; ++i) {
             for (j = 0; j < c1; ++j)
                 cout << a[i][j] << " ";
@@ -226,6 +228,7 @@ void Matrix::multiply(Matrix matB, int debug) {
             cout << endl;
         }
         cout << endl;
+        #endif
         for (i = 0; i < r1; ++i)
             for (j = 0; j < c2; ++j) {
                 product[i][j] = 0;
@@ -235,12 +238,14 @@ void Matrix::multiply(Matrix matB, int debug) {
                 for (k = 0; k < c1; ++k) {
                     product[i][j] += a[i][k] * b[k][j];
                 }
+        #if DEBUG_MODE == 1
         cout << "Product of the two matrices is:" << endl;
         for (i = 0; i < r1; ++i) {
             for (j = 0; j < c2; ++j)
                 cout << product[i][j] << " ";
             cout << endl;
         }
+        #endif
     }
 }
 
@@ -301,6 +306,7 @@ Matrix Matrix::multiply(Matrix matB) {
         cout << "Column of first matrix should be equal to row of second matrix";
     }
     else {
+    #if DEBUG_MODE == 1
         cout << "The first matrix is:" << endl;
         for (i = 0; i < r1; ++i) {
             for (j = 0; j < c1; ++j)
@@ -315,6 +321,7 @@ Matrix Matrix::multiply(Matrix matB) {
             cout << endl;
         }
         cout << endl;
+    #endif
         for (i = 0; i < r1; ++i)
             for (j = 0; j < c2; ++j) {
                 product[i][j] = 0;
@@ -324,12 +331,14 @@ Matrix Matrix::multiply(Matrix matB) {
                 for (k = 0; k < c1; ++k) {
                     product[i][j] += a[i][k] * b[k][j];
                 }
+        #if DEBUG_MODE == 1
         cout << "Product of the two matrices is:" << endl;
         for (i = 0; i < r1; ++i) {
             for (j = 0; j < c2; ++j)
                 cout << product[i][j] << " ";
             cout << endl;
         }
+        #endif
     }
     Matrix output;
     output.set_data(product);
@@ -343,8 +352,6 @@ Matrix Matrix::multiply(float factor) {
         for (
             auto it = dataA[i].begin(); it != dataA[i].end(); it++)
             *it *= factor;
-        //cout << *it << " ";
-        cout << endl;
     }
     Matrix blank(this->get_rows(),this->get_cols());
     blank.set_data(dataA);
@@ -356,8 +363,6 @@ Matrix Matrix::multiply(int factor) {
         for (
             auto it = dataA[i].begin(); it != dataA[i].end(); it++)
             *it *= factor;
-        //cout << *it << " ";
-        cout << endl;
     }
     Matrix blank(this->get_rows(), this->get_cols());
     blank.set_data(dataA);
@@ -382,8 +387,6 @@ Matrix Matrix::mult_element(Matrix matB) {
                 auto it = 0; it < dataA[i].size(); it++)
                 //cout << dataA[i][it] << "+" << dataB[i][it] << endl;
                 dataA[i][it] *= dataB[i][it];
-            //cout << *it << " ";
-            cout << endl;
         }
         blank.set_data(dataA);
     }
@@ -400,8 +403,10 @@ Matrix Matrix::addition(Matrix input, int debug) {
     int r2 = dataB.size();
     int c1 = dataA[0].size();
     int c2 = dataB[0].size();
+    #if DEBUG_MODE == 1
     cout << "MatA - " << r1 << "," << c1 << endl;
     cout << "MatB - " << r2 << "," << c2 << endl;
+    #endif
     Matrix blank(this->get_rows(), this->get_cols());
     if ((c1 != c2) || (r1 != r2)) {
         cout << "For matrix elementwise addition, matrix dimensions must be the same" << endl;
@@ -410,10 +415,7 @@ Matrix Matrix::addition(Matrix input, int debug) {
         for (auto i = 0; i < dataA.size(); i++) {
             for (
                 auto it = 0; it < dataA[i].size(); it++)
-                //cout << dataA[i][it] << "+" << dataB[i][it] << endl;
                 dataA[i][it] += dataB[i][it];
-            //cout << *it << " ";
-            cout << endl;
         }
         blank.set_data(dataA);
     }
@@ -427,7 +429,7 @@ Matrix Matrix::addition(Matrix input) {
     int r2 = dataB.size();
     int c1 = dataA[0].size();
     int c2 = dataB[0].size();
-    Matrix blank(this->get_rows(), this->get_cols());
+    Matrix blank(this->get_dims());
     if ((c1 != c2) || (r1 != r2)) {
         cout << "For matrix elementwise addition, matrix dimensions must be the same" << endl;
     }
@@ -435,10 +437,7 @@ Matrix Matrix::addition(Matrix input) {
         for (auto i = 0; i < dataA.size(); i++) {
             for (
                 auto it = 0; it < dataA[i].size(); it++)
-                //cout << dataA[i][it] << "+" << dataB[i][it] << endl;
                 dataA[i][it] += dataB[i][it];
-            //cout << *it << " ";
-            cout << endl;
         }
         blank.set_data(dataA);
     }
@@ -452,8 +451,6 @@ Matrix Matrix::addition(int offset) {
         for (
             auto it = 0; it < dataA[i].size(); it++)
             dataA[i][it] += input;
-        //cout << *it << " ";
-        cout << endl;
     }
     Matrix blank(this->get_rows(), this->get_cols());
     blank.set_data(dataA);
@@ -467,8 +464,6 @@ Matrix Matrix::addition(float offset) {
         for (
             auto it = 0; it < dataA[i].size(); it++)
             dataA[i][it] += input;
-        //cout << *it << " ";
-        cout << endl;
     }
     Matrix blank(this->get_rows(), this->get_cols());
     blank.set_data(dataA);
@@ -483,8 +478,10 @@ Matrix Matrix::subtraction(Matrix input, int debug) {
     int r2 = dataB.size();
     int c1 = dataA[0].size();
     int c2 = dataB[0].size();
+    #if DEBUG_MODE == 1
     cout << "MatA - " << r1 << "," << c1 << endl;
     cout << "MatB - " << r2 << "," << c2 << endl;
+    #endif
     Matrix blank(this->get_rows(), this->get_cols());
     if ((c1 != c2) || (r1 != r2)) {
         cout << "For matrix elementwise subtraction, matrix dimensions must be the same" << endl;
@@ -493,10 +490,14 @@ Matrix Matrix::subtraction(Matrix input, int debug) {
         for (auto i = 0; i < dataA.size(); i++) {
             for (
                 auto it = 0; it < dataA[i].size(); it++)
-                //cout << dataA[i][it] << "+" << dataB[i][it] << endl;
+                #if DEBUG_MODE == 1
+                cout << dataA[i][it] << "+" << dataB[i][it] << endl;
+                #endif      
                 dataA[i][it] -= dataB[i][it];
-            //cout << *it << " ";
+            #if DEBUG_MODE == 1
+            cout << *it << " ";
             cout << endl;
+            #endif
         }
         blank.set_data(dataA);
     }
@@ -518,10 +519,7 @@ Matrix Matrix::subtraction(Matrix input) {
         for (auto i = 0; i < dataA.size(); i++) {
             for (
                 auto it = 0; it < dataA[i].size(); it++)
-                //cout << dataA[i][it] << "+" << dataB[i][it] << endl;
                 dataA[i][it] -= dataB[i][it];
-            //cout << *it << " ";
-            cout << endl;
         }
         blank.set_data(dataA);
     }
@@ -535,8 +533,6 @@ Matrix Matrix::subtraction(int offset) {
         for (
             auto it = 0; it < dataA[i].size(); it++)
             dataA[i][it] -= input;
-        //cout << *it << " ";
-        cout << endl;
     }
     Matrix blank(this->get_rows(), this->get_cols());
     blank.set_data(dataA);
@@ -550,8 +546,6 @@ Matrix Matrix::subtraction(float offset) {
         for (
             auto it = 0; it < dataA[i].size(); it++)
             dataA[i][it] -= input;
-        //cout << *it << " ";
-        cout << endl;
     }
     Matrix blank(this->get_rows(), this->get_cols());
     blank.set_data(dataA);
@@ -566,8 +560,6 @@ Matrix Matrix::sine() {
         for (
             auto it = dataA[i].begin(); it != dataA[i].end(); it++)
             *it *= sin(*it);
-        //cout << *it << " ";
-        cout << endl;
     }
     Matrix blank(this->get_rows(), this->get_cols());
     blank.set_data(dataA);
@@ -580,8 +572,6 @@ Matrix Matrix::cosine() {
         for (
             auto it = dataA[i].begin(); it != dataA[i].end(); it++)
             *it *= cos(*it);
-        //cout << *it << " ";
-        cout << endl;
     }
     Matrix blank(this->get_rows(), this->get_cols());
     blank.set_data(dataA);
@@ -594,8 +584,6 @@ Matrix Matrix::tangent() {
         for (
             auto it = dataA[i].begin(); it != dataA[i].end(); it++)
             *it *= tan(*it);
-        //cout << *it << " ";
-        cout << endl;
     }
     Matrix blank(this->get_rows(), this->get_cols());
     blank.set_data(dataA);
@@ -612,8 +600,6 @@ Matrix Matrix::transpose() {
         for (
             auto it = 0; it < dataA[i].size(); it++)
             output.data[it][i] = dataA[i][it];
-        //cout << *it << " ";
-        cout << endl;
     }
     
     return output;
@@ -646,12 +632,14 @@ float Matrix::determinant(int debug) {
         a =(this->access(1, 1) * this->access(2, 2)) - (this->access(1, 2) * this->access(2, 1));
         b = (this->access(1, 0) * this->access(2, 2)) - (this->access(1, 2) * this->access(2, 0));
         c =  (this->access(1, 0) * this->access(2, 1)) - (this->access(1, 1) * this->access(2, 0));
+        #if DEBUG_MODE == 1
         cout << this->access(0, 0) << " *( " <<this->access(1, 1) << " * " << this->access(2, 2) << " - " << this->access(1, 2) << " * " << this->access(2, 1) << ")" << endl;
         cout << this->access(0, 1) << " *( " << this->access(1, 0) << " * " << this->access(2, 2) << " - " << this->access(1, 2) << " * " << this->access(2, 0) << ")" << endl;
         cout << this->access(0, 2) << " *( " << this->access(1, 0) << " * " << this->access(2, 1) << " - " << this->access(1, 1) << " * " << this->access(2, 0) << ")" << endl;
         cout << a << endl;
         cout << b << endl;
         cout << c << endl;
+        #endif
         output = (this->access(0, 0) * a) -(this->access(0, 1) * b) +(this->access(0, 2) * c);
         return output;
     }
@@ -690,8 +678,6 @@ float Matrix::determinant() {
         output = (this->access(0, 0) * a) - (this->access(0, 1) * b) + (this->access(0, 2) * c);
         return output;
     }
-
-
     return output;
 }
 
@@ -782,8 +768,6 @@ void Matrix::operator+=(int offset) {
 void Matrix::operator+=(float offset) {
 
     Matrix result = this->addition(offset);
-    cout << "intermediary result" << endl;
-    result.disp_data();
     this->data = result.data;
 }
 
@@ -816,8 +800,6 @@ void Matrix::operator-=(int offset) {
 void Matrix::operator-=(float offset) {
 
     Matrix result = this->subtraction(offset);
-    cout << "intermediary result" << endl;
-    result.disp_data();
     this->data = result.data;
 }
 
@@ -837,11 +819,9 @@ Matrix Matrix::operator()(int i, char all) {
 Matrix Matrix::operator()(char all, int j) {
     Matrix output_temp(this->get_rows(), 1), output;
     vector<float> output_data = this->access(all, j);
-    disp_vec(output_data);
     for (auto i = 0; i < output_data.size(); i++) {
         output_temp.data[i][0] = output_data[i];
     }
-    cout << "cheese" << endl;
     return output=output_temp;
 }
 

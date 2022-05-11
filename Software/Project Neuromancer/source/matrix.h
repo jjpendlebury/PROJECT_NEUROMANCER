@@ -11,6 +11,12 @@ using std::vector;
 //vector of vectors as a backbone
 //need to write a multiplication method - see neuromancer
 
+// 0 = EXECUTION / 1 = DEBUG
+#ifndef DEBUG_MODE
+#define DEBUG_MODE 0
+#endif
+
+
 struct dimensions {
 	int rows=0;
 	int columns=0;

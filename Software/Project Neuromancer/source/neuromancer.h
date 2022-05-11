@@ -11,6 +11,9 @@
 #include <fstream>
 #include <sstream>
 
+// 0 = EXECUTION / 1 = DEBUG
+#define DEBUG_MODE 0
+
 enum class layer_type {
 	LINEAR,
 	SIGMOID,
@@ -52,7 +55,6 @@ private:
 
 	//backpropogation
 	void back_propogation_351(int debug); //debug variant
-	void back_propogation_351();
 	//random functions
 	Matrix					GenRandMat(dimensions dims, float upper, float lower );
 	friend float			randomValue(float upper, float lower);

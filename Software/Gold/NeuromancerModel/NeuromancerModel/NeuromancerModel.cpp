@@ -18,7 +18,7 @@ int main()
     test_network.load_setup();
     test_network.display_network();
     test_network.set_episodes(1000);
-    test_network.set_trials(5);
+    test_network.set_trials(10000);
     test_network.execute();
     /*test_network.set_model_path(verification_path);
     test_network.verify_model();*/
