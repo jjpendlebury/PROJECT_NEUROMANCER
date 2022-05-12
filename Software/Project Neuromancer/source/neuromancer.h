@@ -19,6 +19,11 @@ enum class layer_type {
 	SIGMOID,
 	RELU
 };
+
+enum class network_mode {
+	DEPLOYMENT,
+	TRAINING
+};
 vector<float>	GenRandVec(float upper, float lower, int size);
 float			randomValue(float upper, float lower);
 
@@ -33,6 +38,7 @@ private:
 	float error;
 	vector<float> error_vec;
 	std::string setup_path,model_path;
+	network_mode	current_mode = network_mode::TRAINING;
 
 	void	Test();													//test routine
 
