@@ -91,6 +91,10 @@ public:
 	void			set_episodes(int new_episodes);
 	int				get_trials();
 	void			set_trials(int new_trials);
+
+	network_mode	get_current_mode();
+	void			set_current_mode(network_mode new_mode);
+
 	std::string		get_setup_path();
 	void			set_setup_path(std::string new_path);
 	std::string		get_model_path();
@@ -114,6 +118,7 @@ std::ostream& operator<<(std::ostream& os, const vector<float>& vec);
 //non-class functions
 
 vector<vector<float>>	read_csv(std::string path);
+int						write_mat_csv(Matrix in_mat, std::string filename);
 float					vec_avg(vector<float> vec_in);
 
 #endif

@@ -14,12 +14,15 @@ Neuromancer test_network(0);
 int main()
 {
     string path = "../../MATLAB/ModelTrainingData.csv";
+    string output = "outputtest.csv";
+    Matrix test(2, 2, 10);
+    write_mat_csv(test, output);
     test_network.set_setup_path(path);
     test_network.load_setup();
     test_network.display_network();
     test_network.set_episodes(1000);
     test_network.set_trials(10000);
-    test_network.execute();
+    //test_network.execute();
     /*test_network.set_model_path(verification_path);
     test_network.verify_model();*/
     

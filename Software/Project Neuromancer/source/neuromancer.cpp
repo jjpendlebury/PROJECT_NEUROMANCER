@@ -573,7 +573,9 @@ void Neuromancer::execute() {
 			#endif
 			network[0] = input_slice;
 			forward_pass();
-			back_propogation_351(1);
+			if (current_mode == network_mode::TRAINING) {
+				back_propogation_351(1);
+			}
 			#if DEBUG_MODE == 1
 			display_network();
 			display_back_network();
@@ -634,6 +636,13 @@ int Neuromancer::get_trials() {
 
 void Neuromancer::set_trials(int new_trials) {
 	this->trials = new_trials;
+}
+
+network_mode	Neuromancer::get_current_mode() {
+	return current_mode;
+}
+void			Neuromancer::set_current_mode(network_mode new_mode) {
+	current_mode = new_mode;
 }
 
 std::string Neuromancer::get_setup_path() {
@@ -737,6 +746,24 @@ vector<vector<float>> read_csv(string path) {
 		vector<vector<float>> error;
 		return error;
 	}*/
+}
+
+int write_mat_csv(Matrix in_mat, std::string filename) {
+	std::ofstream myfile;
+	myfile.open(filename);
+	for (int i = 0; i < in_mat.dims.rows; i++) {
+		for (int j = 0; j < in_mat.dims.columns; j++) {
+			myfile << in_mat(i, j);
+			if (j != in_mat.dims.columns - 1) {
+				myfile << ',';
+			}
+			else {
+				myfile << endl;
+			}
+		}
+	}
+	myfile.close();
+	return 0;
 }
 
 float vec_avg(vector<float> vec_in) {
