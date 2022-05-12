@@ -766,6 +766,22 @@ int write_mat_csv(Matrix in_mat, std::string filename) {
 	return 0;
 }
 
+int write_vec_cst(vector<float> in_vec, std::string filename) {
+	std::ofstream myfile;
+	myfile.open(filename);
+	for (int i = 0; i < in_vec.size(); i++) {
+		myfile << in_vec[i];
+		if (i != in_vec.size() - 1) {
+			myfile << ',';
+		}
+		else {
+			myfile << endl;
+		}
+	}
+	myfile.close();
+	return 0;
+}
+
 float vec_avg(vector<float> vec_in) {
 	float total = 0;
 	for (int i = 0; i < vec_in.size(); i++) {
