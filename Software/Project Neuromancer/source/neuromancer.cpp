@@ -788,6 +788,28 @@ int write_mat_csv(Matrix in_mat, std::string filename) {
 	return 0;
 }
 
+int write_mat_h(Matrix in_mat, std::string filename, std::string vec_name) {
+	std::ofstream myfile;
+	myfile.open(filename, std::ios_base::app);
+	//2d vector declaration
+	myfile << "<vector<float>> " << vec_name << "= {" << endl;
+	for (int i = 0; i < in_mat.dims.rows; i++) {
+		myfile << "{";
+		for (int j = 0; j < in_mat.dims.columns; j++) {
+			myfile << in_mat(i, j);
+			if (j != in_mat.dims.columns - 1) {
+				myfile << ',';
+			}
+			else {
+				myfile << "}," << endl;
+			}
+		}
+	}
+	myfile << "};" << endl;
+	myfile.close();
+	return 0;
+}
+
 int write_vec_csv(vector<float> in_vec, std::string filename) {
 	std::ofstream myfile;
 	myfile.open(filename, std::ios_base::app);

@@ -6,6 +6,7 @@
 #include <fstream>
 #include <sstream>
 #include <chrono>
+#include "NetworkConfig.h"
 using namespace std;
 //csv read test
 
@@ -14,6 +15,8 @@ Neuromancer test_network(0);
 
 int main()
 {
+   
+
     string path = "../../MATLAB/ModelTrainingData.csv";
     string output = "output.csv";
     Matrix test(2, 2, 10);
@@ -32,6 +35,12 @@ int main()
     test_network.output_network();
     auto duration = chrono::duration_cast<chrono::seconds>(stop - start);
     cout << "duration: " << duration.count()<< " seconds " << endl;
+    Matrix W1_mat;
+    W1_mat = W1_in;
+    cout << W1_mat << endl;
+    Matrix W2_mat;
+    W2_mat = W2_in;
+    cout << W2_mat << endl;
     /*test_network.set_model_path(verification_path);
     test_network.verify_model();*/
     
