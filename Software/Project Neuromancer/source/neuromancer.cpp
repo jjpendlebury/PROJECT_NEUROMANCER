@@ -558,6 +558,7 @@ void Neuromancer::execute() {
 	vector<float> err_avg;
 	inputs.data.push_back(ones_vec);
 	inputs.update_dims();
+	int count = 0;
 	for (int j = 0; j < trials; j++) {
 		error = 0;
 		for (int i = 0; i < episodes; i++) {
@@ -590,6 +591,10 @@ void Neuromancer::execute() {
 		disp_vec(error_vec);
 		#endif
 		err_avg.push_back(trial_avg);
+		if (j % (trials / 10) == 0) {
+			cout << count * 10 << "%" << endl;
+			count++;
+		}
 	}
 	disp_vec(err_avg);
 	cout << "Complete." << endl;
@@ -659,6 +664,23 @@ std::string Neuromancer::get_model_path() {
 
 void Neuromancer::set_model_path(std::string new_path) {
 	setup_path = new_path;
+}
+
+std::string	Neuromancer::get_output_path() {
+	return output_path;
+}
+void	Neuromancer::set_output_path(std::string new_path) {
+	output_path = new_path;
+}
+void	Neuromancer::output_network() {
+	//clear the file
+	std::ofstream myfile;
+	myfile.open(output_path);
+	myfile.close();
+	//write relevant matrices
+	write_mat_csv(network[1], output_path);
+	write_mat_csv(network[5], output_path);
+
 }
 
 
@@ -750,7 +772,7 @@ vector<vector<float>> read_csv(string path) {
 
 int write_mat_csv(Matrix in_mat, std::string filename) {
 	std::ofstream myfile;
-	myfile.open(filename);
+	myfile.open(filename, std::ios_base::app);
 	for (int i = 0; i < in_mat.dims.rows; i++) {
 		for (int j = 0; j < in_mat.dims.columns; j++) {
 			myfile << in_mat(i, j);
@@ -766,9 +788,9 @@ int write_mat_csv(Matrix in_mat, std::string filename) {
 	return 0;
 }
 
-int write_vec_cst(vector<float> in_vec, std::string filename) {
+int write_vec_csv(vector<float> in_vec, std::string filename) {
 	std::ofstream myfile;
-	myfile.open(filename);
+	myfile.open(filename, std::ios_base::app);
 	for (int i = 0; i < in_vec.size(); i++) {
 		myfile << in_vec[i];
 		if (i != in_vec.size() - 1) {

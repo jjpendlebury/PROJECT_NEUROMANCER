@@ -37,7 +37,7 @@ private:
 	Matrix targets, target_slice, inputs, input_slice;
 	float error;
 	vector<float> error_vec;
-	std::string setup_path,model_path;
+	std::string setup_path,model_path,output_path;
 	network_mode	current_mode = network_mode::TRAINING;
 
 	void	Test();													//test routine
@@ -99,6 +99,10 @@ public:
 	void			set_setup_path(std::string new_path);
 	std::string		get_model_path();
 	void			set_model_path(std::string new_path);
+	std::string		get_output_path();
+	void			set_output_path(std::string new_path);
+	void			output_network();
+
 
 	vector<layer_type>	get_layout();
 	void				set_layout(vector<layer_type> input);
@@ -119,7 +123,7 @@ std::ostream& operator<<(std::ostream& os, const vector<float>& vec);
 
 vector<vector<float>>	read_csv(std::string path);
 int						write_mat_csv(Matrix in_mat, std::string filename);
-int						write_vec_cst(vector<float> in_vec, std::string filename);
+int						write_vec_csv(vector<float> in_vec, std::string filename);
 float					vec_avg(vector<float> vec_in);
 
 #endif
