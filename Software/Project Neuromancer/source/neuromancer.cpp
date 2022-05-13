@@ -598,6 +598,9 @@ void Neuromancer::execute() {
 	}
 	disp_vec(err_avg);
 	cout << "Complete." << endl;
+	if (current_mode == network_mode::TRAINING) {
+		back_propogation_351(1);
+	}
 
 }
 
@@ -680,6 +683,13 @@ void	Neuromancer::output_network() {
 	//write relevant matrices
 	write_mat_csv(network[1], output_path);
 	write_mat_csv(network[5], output_path);
+	//Write to Header
+	create_header("output.h");
+	write_mat_header(network[1], "W1_output", "output.h");
+	write_mat_header(network[5], "W2_output", "output.h");
+	write_mat_header(inputs, "Inputs_output", "output.h");
+	write_mat_header(targets, "Targets_outputs", "output.h");
+	close_header("output.h");
 
 }
 

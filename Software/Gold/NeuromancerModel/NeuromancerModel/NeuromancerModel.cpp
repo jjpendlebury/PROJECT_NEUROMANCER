@@ -33,11 +33,4 @@ int main()
     test_network.output_network();
     auto duration = chrono::duration_cast<chrono::seconds>(stop - start);
     cout << "duration: " << duration.count()<< " seconds " << endl;
-    Matrix fleugh;
-    fleugh = first_mat;
-    cout << fleugh;
-    create_header("test.h");
-    write_mat_header(test, "first_mat", "test.h");
-    close_header("test.h");
-    
 }
