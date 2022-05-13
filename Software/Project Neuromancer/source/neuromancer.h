@@ -92,6 +92,8 @@ public:
 	int				get_trials();
 	void			set_trials(int new_trials);
 
+	void			set_weights(vector < vector<float>> vec_a, vector<vector<float>> vec_b);
+
 	network_mode	get_current_mode();
 	void			set_current_mode(network_mode new_mode);
 

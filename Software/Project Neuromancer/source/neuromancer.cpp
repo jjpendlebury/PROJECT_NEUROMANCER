@@ -646,6 +646,11 @@ void Neuromancer::set_trials(int new_trials) {
 	this->trials = new_trials;
 }
 
+void Neuromancer::set_weights(vector < vector<float>> vec_a, vector<vector<float>> vec_b) {
+	network[1] = vec_a;
+	network[5] = vec_b;
+}
+
 network_mode	Neuromancer::get_current_mode() {
 	return current_mode;
 }
