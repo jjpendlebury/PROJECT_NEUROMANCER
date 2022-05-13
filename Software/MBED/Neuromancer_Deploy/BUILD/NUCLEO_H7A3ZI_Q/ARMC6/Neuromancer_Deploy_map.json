@@ -1,11 +1,22 @@
 [
     {
+        "module": "RevoluteForwardKinematics2D.o",
+        "size": {
+            ".text": 1262,
+            ".data": 0,
+            ".bss": 1,
+            ".text-delta": 0,
+            ".data-delta": 0,
+            ".bss-delta": 0
+        }
+    },
+    {
         "module": "[lib]\\c_w.l",
         "size": {
-            ".text": 16888,
+            ".text": 17004,
             ".data": 16,
-            ".bss": 348,
-            ".text-delta": 106,
+            ".bss": 576,
+            ".text-delta": 0,
             ".data-delta": 0,
             ".bss-delta": 0
         }
@@ -13,7 +24,7 @@
     {
         "module": "[lib]\\fz_wv.l",
         "size": {
-            ".text": 316,
+            ".text": 330,
             ".data": 0,
             ".bss": 0,
             ".text-delta": 0,
@@ -24,7 +35,7 @@
     {
         "module": "[lib]\\libcpp_w.l",
         "size": {
-            ".text": 66862,
+            ".text": 67178,
             ".data": 0,
             ".bss": 2961,
             ".text-delta": 0,
@@ -46,7 +57,7 @@
     {
         "module": "[lib]\\m_wv.l",
         "size": {
-            ".text": 616,
+            ".text": 1232,
             ".data": 0,
             ".bss": 0,
             ".text-delta": 0,
@@ -60,7 +71,7 @@
             ".text": 32,
             ".data": 0,
             ".bss": 1024,
-            ".text-delta": 32,
+            ".text-delta": 0,
             ".data-delta": 0,
             ".bss-delta": 0
         }
@@ -68,18 +79,29 @@
     {
         "module": "main.o",
         "size": {
-            ".text": 74,
+            ".text": 21556,
+            ".data": 0,
+            ".bss": 253,
+            ".text-delta": 50,
+            ".data-delta": 0,
+            ".bss-delta": 0
+        }
+    },
+    {
+        "module": "matrix.o",
+        "size": {
+            ".text": 5827,
             ".data": 0,
             ".bss": 1,
-            ".text-delta": -20,
+            ".text-delta": 0,
             ".data-delta": 0,
-            ".bss-delta": -204
+            ".bss-delta": 0
         }
     },
     {
         "module": "mbed-os\\cmsis",
         "size": {
-            ".text": 9417,
+            ".text": 9351,
             ".data": 168,
             ".bss": 6865,
             ".text-delta": 0,
@@ -134,7 +156,7 @@
     {
         "module": "mbed-os\\rtos",
         "size": {
-            ".text": 416,
+            ".text": 332,
             ".data": 0,
             ".bss": 0,
             ".text-delta": 0,
@@ -154,11 +176,22 @@
         }
     },
     {
+        "module": "neuromancer.o",
+        "size": {
+            ".text": 12385,
+            ".data": 4,
+            ".bss": 1,
+            ".text-delta": 0,
+            ".data-delta": 0,
+            ".bss-delta": 0
+        }
+    },
+    {
         "summary": {
-            "static_ram": 13514,
-            "static_ram_delta": -204,
-            "total_flash": 125933,
-            "total_flash_delta": 118
+            "static_ram": 14001,
+            "static_ram_delta": 0,
+            "total_flash": 167805,
+            "total_flash_delta": 50
         }
     }
 ]
