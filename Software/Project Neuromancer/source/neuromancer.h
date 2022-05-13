@@ -123,7 +123,11 @@ std::ostream& operator<<(std::ostream& os, const vector<float>& vec);
 
 vector<vector<float>>	read_csv(std::string path);
 int						write_mat_csv(Matrix in_mat, std::string filename);
+int						write_mat_header(Matrix in_mat, std::string vec_name, std::string filename);
 int						write_vec_csv(vector<float> in_vec, std::string filename);
 float					vec_avg(vector<float> vec_in);
+
+int	create_header(std::string header_path);
+int close_header(std::string header_path);
 
 #endif

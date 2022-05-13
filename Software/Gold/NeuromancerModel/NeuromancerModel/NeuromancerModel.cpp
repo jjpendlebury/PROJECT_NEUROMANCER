@@ -6,6 +6,7 @@
 #include <fstream>
 #include <sstream>
 #include <chrono>
+#include "test.h"
 using namespace std;
 //csv read test
 
@@ -32,7 +33,11 @@ int main()
     test_network.output_network();
     auto duration = chrono::duration_cast<chrono::seconds>(stop - start);
     cout << "duration: " << duration.count()<< " seconds " << endl;
-    /*test_network.set_model_path(verification_path);
-    test_network.verify_model();*/
+    Matrix fleugh;
+    fleugh = first_mat;
+    cout << fleugh;
+    create_header("test.h");
+    write_mat_header(test, "first_mat", "test.h");
+    close_header("test.h");
     
 }

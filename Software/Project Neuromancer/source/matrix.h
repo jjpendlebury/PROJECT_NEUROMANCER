@@ -16,7 +16,6 @@ using std::vector;
 #define DEBUG_MODE 0
 #endif
 
-
 struct dimensions {
 	int rows=0;
 	int columns=0;
