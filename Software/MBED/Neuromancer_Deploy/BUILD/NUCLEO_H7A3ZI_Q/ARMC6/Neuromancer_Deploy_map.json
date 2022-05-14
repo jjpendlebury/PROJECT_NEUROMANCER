@@ -2,10 +2,10 @@
     {
         "module": "Matrix_Deploy.o",
         "size": {
-            ".text": 66,
+            ".text": 64,
             ".data": 0,
             ".bss": 0,
-            ".text-delta": 34,
+            ".text-delta": -2,
             ".data-delta": 0,
             ".bss-delta": 0
         }
@@ -13,10 +13,10 @@
     {
         "module": "[lib]\\c_w.l",
         "size": {
-            ".text": 4266,
+            ".text": 4326,
             ".data": 16,
             ".bss": 348,
-            ".text-delta": 0,
+            ".text-delta": 60,
             ".data-delta": 0,
             ".bss-delta": 0
         }
@@ -68,10 +68,10 @@
     {
         "module": "main.o",
         "size": {
-            ".text": 21374,
+            ".text": 21318,
             ".data": 0,
             ".bss": 48,
-            ".text-delta": 56,
+            ".text-delta": -172,
             ".data-delta": 0,
             ".bss-delta": 0
         }
@@ -79,10 +79,10 @@
     {
         "module": "mbed-os\\cmsis",
         "size": {
-            ".text": 9417,
+            ".text": 7594,
             ".data": 168,
             ".bss": 6865,
-            ".text-delta": 0,
+            ".text-delta": -1823,
             ".data-delta": 0,
             ".bss-delta": 0
         }
@@ -90,10 +90,10 @@
     {
         "module": "mbed-os\\connectivity",
         "size": {
-            ".text": 168,
+            ".text": 62,
             ".data": 0,
             ".bss": 0,
-            ".text-delta": 0,
+            ".text-delta": -106,
             ".data-delta": 0,
             ".bss-delta": 0
         }
@@ -101,10 +101,10 @@
     {
         "module": "mbed-os\\drivers",
         "size": {
-            ".text": 162,
+            ".text": 178,
             ".data": 0,
             ".bss": 0,
-            ".text-delta": 0,
+            ".text-delta": 16,
             ".data-delta": 0,
             ".bss-delta": 0
         }
@@ -112,10 +112,10 @@
     {
         "module": "mbed-os\\hal",
         "size": {
-            ".text": 2004,
+            ".text": 1464,
             ".data": 8,
             ".bss": 114,
-            ".text-delta": 0,
+            ".text-delta": -540,
             ".data-delta": 0,
             ".bss-delta": 0
         }
@@ -123,21 +123,21 @@
     {
         "module": "mbed-os\\platform",
         "size": {
-            ".text": 8109,
+            ".text": 5963,
             ".data": 64,
-            ".bss": 416,
-            ".text-delta": 0,
+            ".bss": 420,
+            ".text-delta": -2226,
             ".data-delta": 0,
-            ".bss-delta": 0
+            ".bss-delta": 4
         }
     },
     {
         "module": "mbed-os\\rtos",
         "size": {
-            ".text": 416,
+            ".text": 190,
             ".data": 0,
             ".bss": 0,
-            ".text-delta": 0,
+            ".text-delta": -226,
             ".data-delta": 0,
             ".bss-delta": 0
         }
@@ -145,20 +145,20 @@
     {
         "module": "mbed-os\\targets",
         "size": {
-            ".text": 17550,
-            ".data": 12,
-            ".bss": 1517,
-            ".text-delta": 0,
-            ".data-delta": 0,
-            ".bss-delta": 0
+            ".text": 15102,
+            ".data": 16,
+            ".bss": 1524,
+            ".text-delta": -2448,
+            ".data-delta": 4,
+            ".bss-delta": 7
         }
     },
     {
         "summary": {
-            "static_ram": 10600,
-            "static_ram_delta": 0,
-            "total_flash": 63906,
-            "total_flash_delta": 90
+            "static_ram": 10615,
+            "static_ram_delta": 15,
+            "total_flash": 56639,
+            "total_flash_delta": -7463
         }
     }
 ]

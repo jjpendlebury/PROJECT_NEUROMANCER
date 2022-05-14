@@ -3,17 +3,18 @@
 //Dimensions method
 //default contructor
 dimensions::dimensions(){ 
-
+    rows = 1;
+    columns = 1;
 }
 
 dimensions::dimensions(int row_input, int col_input){
-    rows = row_input;
-    columns = col_input;
+    this->rows = row_input;
+    this->columns = col_input;
 }
 
 void dimensions::set_dims(int row_input, int col_input) {
-    rows = row_input;
-    columns = col_input;
+    this->rows = row_input;
+    this->columns = col_input;
 }
 dimensions dimensions::mult_size(dimensions input_dims) {
     dimensions output;
@@ -57,3 +58,4 @@ void dimensions::operator*=(dimensions& input_dims) {
 void dimensions::operator=(int input[2]) {
     this->set_dims(input[0], input[1]);
 }
+
