@@ -27,6 +27,6 @@ int main()
     dimensions result;
     result = test*test2;
     result.print_dims();
-    matrix test_mat(2,2);
+    matrix test_mat(2,2,4);
     test_mat.print();
 }

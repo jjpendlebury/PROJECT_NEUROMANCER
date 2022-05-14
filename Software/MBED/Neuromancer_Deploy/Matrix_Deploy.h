@@ -28,12 +28,12 @@ class matrix {
     public:
     matrix();
     matrix(int m, int n);
-// 	// matrix(int m, int n, float x);			//fill value
-// 	// matrix(int m, int n, int x);			//fill value
-// 	// matrix(dimensions input_dims);
-// 	// matrix(dimensions input_dims, float x);	//fill value
-// 	// matrix(dimensions input_dims, int x);	//fill value
-// 	// matrix(const Matrix& obj);				//copy constructor
+    matrix(int m, int n, float x);			//fill value
+    matrix(int m, int n, int x);			//fill value
+    matrix(dimensions input_dims);
+    matrix(dimensions input_dims, float x);	//fill value
+    matrix(dimensions input_dims, int x);	//fill value
+    //matrix(const Matrix& obj);				//copy constructor
     virtual ~matrix();
 
     void print();

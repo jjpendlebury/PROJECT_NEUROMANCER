@@ -78,6 +78,92 @@ matrix::matrix(int m, int n){
     dims.set_dims(m,n);
 }
 
+matrix::matrix(int m, int n, float x){
+    //default to 1x1
+    printf("%f\n",x);
+    data = new float* [m];
+    //data[0] = new float[n];
+    for(int i = 0; i < m; i++){
+        data[i] = new float[n];
+        memset(data[i], x, n*sizeof(float)); 
+    }
+    dims.set_dims(m,n);
+    for(int i = 0; i < dims.rows; i++){
+        for(int j = 0; j < dims.columns; j++){
+            data[i][j] = x;
+        }
+    }
+}
+
+matrix::matrix(int m, int n, int x){
+    float val = (float)x;
+    printf("%f\n",val);
+    //default to 1x1
+    data = new float* [m];
+    //data[0] = new float[n];
+    for(int i = 0; i < m; i++){
+        data[i] = new float[n];
+        memset(data[i], val, n*sizeof(float)); 
+    }
+    dims.set_dims(m,n);
+    for(int i = 0; i < dims.rows; i++){
+        for(int j = 0; j < dims.columns; j++){
+            data[i][j]=val;
+        }
+    }
+}
+
+matrix::matrix(dimensions input_dims){
+    int m = input_dims.rows;
+    int n = input_dims.columns;
+    //default to 1x1
+    data = new float* [m];
+    //data[0] = new float[n];
+    for(int i = 0; i < m; i++){
+        data[i] = new float[n];
+        memset(data[i], 0, n*sizeof(float)); 
+    }
+    dims.set_dims(m,n);
+}
+
+matrix::matrix(dimensions input_dims, float x){
+    int m = input_dims.rows;
+    int n = input_dims.columns;
+    //default to 1x1
+    data = new float* [m];
+    //data[0] = new float[n];
+    for(int i = 0; i < m; i++){
+        data[i] = new float[n];
+        memset(data[i], x, n*sizeof(float)); 
+    }
+    dims.set_dims(m,n);
+    for(int i = 0; i < dims.rows; i++){
+        for(int j = 0; j < dims.columns; j++){
+            data[i][j]=x;
+        }
+    }
+}
+
+matrix::matrix(dimensions input_dims, int x){
+    float val = (float)x;
+    int m = input_dims.rows;
+    int n = input_dims.columns;
+    //default to 1x1
+    data = new float* [m];
+    //data[0] = new float[n];
+    for(int i = 0; i < m; i++){
+        data[i] = new float[n];
+        memset(data[i], val, n*sizeof(float)); 
+    }
+    dims.set_dims(m,n);
+    for(int i = 0; i < dims.rows; i++){
+        for(int j = 0; j < dims.columns; j++){
+            data[i][j]=val;
+        }
+    }
+}
+
+
 
 matrix::~matrix(){
     for(int i=0; i < dims.rows; i++){
