@@ -26,28 +26,18 @@ class matrix {
     private:
     dimensions dims;
     public:
-     //matrix();
-// 	// matrix(int m, int n);
+    matrix();
+    matrix(int m, int n);
 // 	// matrix(int m, int n, float x);			//fill value
 // 	// matrix(int m, int n, int x);			//fill value
 // 	// matrix(dimensions input_dims);
 // 	// matrix(dimensions input_dims, float x);	//fill value
 // 	// matrix(dimensions input_dims, int x);	//fill value
 // 	// matrix(const Matrix& obj);				//copy constructor
-    matrix(){
-    //default to 1x1
-    printf("fleaugh\n");
-    data = new float* [1];
-    data[0] = new float[1];
-    memset(data[0], 0, sizeof(float));
-    printf("beans 2\n");
-    data[0][0]=5;
-    float t = 5;
-    printf("%f\n", data[0][0]);
-}
-    void cheese(){
-        printf("cheese\n");
-    }
+    virtual ~matrix();
+
+    void print();
+
     
 
 //     //a pointer to pointers. This will be the matrix once the dma is done

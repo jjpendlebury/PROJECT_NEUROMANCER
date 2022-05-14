@@ -59,3 +59,36 @@ void dimensions::operator=(int input[2]) {
     this->set_dims(input[0], input[1]);
 }
 
+matrix::matrix(){
+    //default to 1x1
+    printf("fleaugh\n");
+    data = new float* [1];
+    data[0] = new float[1];
+    memset(data[0], 0, sizeof(float));
+}
+
+matrix::matrix(int m, int n){
+    //default to 1x1
+    data = new float* [m];
+    //data[0] = new float[n];
+    for(int i = 0; i < m; i++){
+        data[i] = new float[n];
+        memset(data[i], 0, n*sizeof(float)); 
+    }
+    dims.set_dims(m,n);
+}
+
+
+matrix::~matrix(){
+    for(int i=0; i < dims.rows; i++){
+        delete[] data[i];
+    }
+    delete[] data;
+}
+void matrix::print(){
+    for(int i = 0; i < dims.rows; i++){
+        for(int j = 0; j < dims.columns; j++){
+            printf("%f\n", data[i][j]);
+        }
+    }
+}

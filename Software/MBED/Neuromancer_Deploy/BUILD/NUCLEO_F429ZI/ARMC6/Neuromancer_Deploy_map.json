@@ -2,10 +2,10 @@
     {
         "module": "Matrix_Deploy.o",
         "size": {
-            ".text": 64,
+            ".text": 396,
             ".data": 0,
             ".bss": 0,
-            ".text-delta": 0,
+            ".text-delta": 98,
             ".data-delta": 0,
             ".bss-delta": 0
         }
@@ -24,7 +24,7 @@
     {
         "module": "[lib]\\fz_wm.l",
         "size": {
-            ".text": 34,
+            ".text": 272,
             ".data": 0,
             ".bss": 0,
             ".text-delta": 0,
@@ -68,10 +68,10 @@
     {
         "module": "main.o",
         "size": {
-            ".text": 21468,
+            ".text": 21360,
             ".data": 0,
             ".bss": 48,
-            ".text-delta": 0,
+            ".text-delta": 8,
             ".data-delta": 0,
             ".bss-delta": 0
         }
@@ -168,8 +168,8 @@
         "summary": {
             "static_ram": 25456,
             "static_ram_delta": 0,
-            "total_flash": 67513,
-            "total_flash_delta": 0
+            "total_flash": 67975,
+            "total_flash_delta": 106
         }
     }
 ]

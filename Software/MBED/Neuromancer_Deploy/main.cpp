@@ -27,8 +27,6 @@ int main()
     dimensions result;
     result = test*test2;
     result.print_dims();
-    matrix test_mat;
-    test_mat.cheese();
-    printf("bah\n");
-    
+    matrix test_mat(2,2);
+    test_mat.print();
 }
