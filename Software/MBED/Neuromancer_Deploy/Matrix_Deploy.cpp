@@ -188,7 +188,9 @@ void matrix::set_data(float **data_in, dimensions dimensions_in){
     this->data = data_in;
     this->dims = dimensions_in;
 }
-
+dimensions matrix::get_dims(){
+    return this->dims;
+}
 matrix matrix::multiply(matrix matB) {
     int r1 = 3, c1 = 2, r2 = 2, c2 = 3, i, j, k;
     r1 = this->dims.rows;
@@ -215,4 +217,20 @@ matrix matrix::multiply(matrix matB) {
     }
     matrix error;
     return error;
+}
+
+matrix matrix::sine() {
+    //matrix output(this->get_dims());
+    printf("input\n");
+    this->print();
+    matrix output;
+    output.set_data(this->data,this->get_dims());
+    output.dims.print_dims();
+    for (int i = 0; i < output.dims.rows; i++) {
+        for (int it = 0; it < output.dims.columns; it++){
+            printf("%f\n", output.data[i][it]);
+            output.data[i][it]=sin(output.data[i][it]);
+        }
+    }
+    return output;
 }
