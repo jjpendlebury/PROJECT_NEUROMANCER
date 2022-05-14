@@ -6,7 +6,7 @@
 #endif
 
 #include "mbed.h"
-
+#include "string"
 struct dimensions{
     int rows = 0;
     int columns = 0;
@@ -43,6 +43,8 @@ class matrix {
 //     //a pointer to pointers. This will be the matrix once the dma is done
     float **data;
 
+    void    set_data(float **data_in, dimensions dimensions_in);
+    matrix	multiply(matrix matB);						//standard
 };
 
 

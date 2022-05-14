@@ -16,19 +16,17 @@ int main()
     printf("beans\n");
     DigitalOut led(LED1);
     led = 1;
-    ThisThread::sleep_for(BLINKING_RATE);
-    led=0;
-    ThisThread::sleep_for(BLINKING_RATE);
     
     dimensions test(1,2);
     dimensions test2(2,1);
-    test.print_dims();
-    test2.print_dims();
     dimensions result;
-    result = test*test2;
-    result.print_dims();
-    matrix test_mat(2,2,4);
+    matrix test_mat(1,2,4);
+    printf("mat1\n");
     test_mat.print();
-    matrix test_mat2 = test_mat;
+    matrix test_mat2(2,2,4);
+    printf("mat2 \n");
     test_mat2.print();
+    matrix mult_result = test_mat.multiply(test_mat2);
+    printf("result \n");
+    mult_result.print();
 }

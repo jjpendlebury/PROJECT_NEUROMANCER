@@ -176,8 +176,43 @@ matrix::~matrix(){
 }
 void matrix::print(){
     for(int i = 0; i < dims.rows; i++){
+        printf("Row %d\n",i);
         for(int j = 0; j < dims.columns; j++){
             printf("%f\n", data[i][j]);
+            
         }
     }
+}
+
+void matrix::set_data(float **data_in, dimensions dimensions_in){
+    this->data = data_in;
+    this->dims = dimensions_in;
+}
+
+matrix matrix::multiply(matrix matB) {
+    int r1 = 3, c1 = 2, r2 = 2, c2 = 3, i, j, k;
+    r1 = this->dims.rows;
+    r2 = matB.dims.rows;
+    c1 = this->dims.columns;
+    c2 = matB.dims.columns;
+
+    if (c1 != r2) {
+        printf("Column of first matrix should be equal to row of second matrix\n");
+    }
+    else {
+        matrix product(r1,c2);
+        for (i = 0; i < r1; ++i)
+            for (j = 0; j < c2; ++j) {
+                product.data[i][j] = 0;
+            }
+        for (i = 0; i < r1; ++i)
+            for (j = 0; j < c2; ++j)
+                for (k = 0; k < c1; ++k) {
+                    product.data[i][j] += this->data[i][k] * matB.data[k][j];
+                }
+                return product;
+    
+    }
+    matrix error;
+    return error;
 }
