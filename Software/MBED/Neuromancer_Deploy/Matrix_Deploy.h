@@ -33,7 +33,7 @@ class matrix {
     matrix(dimensions input_dims);
     matrix(dimensions input_dims, float x);	//fill value
     matrix(dimensions input_dims, int x);	//fill value
-    //matrix(const Matrix& obj);				//copy constructor
+    matrix(const matrix& obj);				//copy constructor
     virtual ~matrix();
 
     void print();

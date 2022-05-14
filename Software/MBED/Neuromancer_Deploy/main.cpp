@@ -29,4 +29,6 @@ int main()
     result.print_dims();
     matrix test_mat(2,2,4);
     test_mat.print();
+    matrix test_mat2 = test_mat;
+    test_mat2.print();
 }

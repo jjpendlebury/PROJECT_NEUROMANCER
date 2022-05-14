@@ -163,7 +163,10 @@ matrix::matrix(dimensions input_dims, int x){
     }
 }
 
-
+matrix::matrix(const matrix& obj) { //blank matrix
+    data = obj.data;
+    dims = obj.dims;
+};
 
 matrix::~matrix(){
     for(int i=0; i < dims.rows; i++){
