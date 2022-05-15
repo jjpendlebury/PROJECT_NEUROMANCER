@@ -202,7 +202,7 @@ matrix matrix::multiply(matrix matB) {
         for (i = 0; i < r1; ++i)
             for (j = 0; j < c2; ++j)
                 for (k = 0; k < c1; ++k) {
-                    product.data[product.index(i,j)] += this->data[this->index(i,j)] * matB.data[matB.index(i,j)];
+                    product.data[product.index(i,j)] += this->data[this->index(i,k)] * matB.data[matB.index(k,j)];
                 }
                 return product;
     
