@@ -183,6 +183,15 @@ void matrix::column_slice(matrix in_mat, int column){
     }
 }
 
+void matrix::data_copy(matrix in_mat){
+    for(int i = 0; i < in_mat.dims.rows; i++){
+        for(int j = 0; j < in_mat.dims.columns; j++){
+        //printf("row %d = %f\n",i,in_mat.data[index(i,column)]);
+            this->data[this->index(i,j)] = in_mat.data[in_mat.index(i,j)] ;
+        }
+    }
+}
+
 void matrix::set_data(float *data_in, dimensions dimensions_in){
     delete[] this->data; // clear data.
     this -> data = new float[dimensions_in.total]; //declare new array

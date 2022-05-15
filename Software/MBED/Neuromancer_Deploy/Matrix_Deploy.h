@@ -41,6 +41,7 @@ class matrix {
 
     void print();
     void column_slice(matrix in_mat, int column);
+    void data_copy(matrix in_mat);
     
 
 //     //a pointer to an array. This will be the matrix once the dma is done
