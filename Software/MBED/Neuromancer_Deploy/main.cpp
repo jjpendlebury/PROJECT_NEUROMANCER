@@ -49,4 +49,6 @@ int main()
     boopslice.column_slice(boop,1);
     printf("slice\n");
     boopslice.print();
+    boop.data_copy(boopslice);
+    boop.print();
 }
