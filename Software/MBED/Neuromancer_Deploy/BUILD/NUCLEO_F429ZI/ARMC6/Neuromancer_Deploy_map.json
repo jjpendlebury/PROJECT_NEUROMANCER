@@ -2,10 +2,10 @@
     {
         "module": "Matrix_Deploy.o",
         "size": {
-            ".text": 938,
+            ".text": 478,
             ".data": 0,
             ".bss": 0,
-            ".text-delta": 84,
+            ".text-delta": 0,
             ".data-delta": 0,
             ".bss-delta": 0
         }
@@ -13,10 +13,10 @@
     {
         "module": "[lib]\\c_w.l",
         "size": {
-            ".text": 11209,
+            ".text": 11189,
             ".data": 16,
             ".bss": 348,
-            ".text-delta": 0,
+            ".text-delta": 64,
             ".data-delta": 0,
             ".bss-delta": 0
         }
@@ -25,17 +25,6 @@
         "module": "[lib]\\fz_wm.l",
         "size": {
             ".text": 272,
-            ".data": 0,
-            ".bss": 0,
-            ".text-delta": 0,
-            ".data-delta": 0,
-            ".bss-delta": 0
-        }
-    },
-    {
-        "module": "[lib]\\libcpp_w.l",
-        "size": {
-            ".text": 4,
             ".data": 0,
             ".bss": 0,
             ".text-delta": 0,
@@ -68,10 +57,10 @@
     {
         "module": "main.o",
         "size": {
-            ".text": 21648,
+            ".text": 180,
             ".data": 0,
-            ".bss": 204,
-            ".text-delta": 32,
+            ".bss": 180,
+            ".text-delta": 0,
             ".data-delta": 0,
             ".bss-delta": 0
         }
@@ -134,7 +123,7 @@
     {
         "module": "mbed-os\\platform",
         "size": {
-            ".text": 5952,
+            ".text": 5876,
             ".data": 64,
             ".bss": 281,
             ".text-delta": 0,
@@ -167,20 +156,20 @@
     {
         "module": "neuromancer_deploy.o",
         "size": {
-            ".text": 520,
-            ".data": 0,
+            ".text": 700,
+            ".data": 12000,
             ".bss": 0,
-            ".text-delta": 0,
-            ".data-delta": 0,
+            ".text-delta": 68,
+            ".data-delta": 12000,
             ".bss-delta": 0
         }
     },
     {
         "summary": {
-            "static_ram": 25612,
-            "static_ram_delta": 0,
-            "total_flash": 69256,
-            "total_flash_delta": 116
+            "static_ram": 37588,
+            "static_ram_delta": 12000,
+            "total_flash": 59408,
+            "total_flash_delta": 12132
         }
     }
 ]

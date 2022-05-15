@@ -4,7 +4,7 @@
  */
 
 #include "mbed.h"
-#include "NetworkWeights.h"
+//#include "NetworkWeights.h"
 #include "neuromancer_deploy.h"
 //#include "Matrix_Deploy.h"
 #define BLINKING_RATE     500ms
@@ -31,24 +31,24 @@ int main()
     test_mat2.set_data(cheese, test);
     test_mat2.print();
     test_mat2.dims.print_dims();
-    matrix test_mat3(test_mat2);
-    //test_mat3.sigmoid();
-    printf("testmat 3\n");
-    test_mat3.print();
-    matrix mult_result = test_mat2.multiply(test_mat3);
-    printf("result \n");
-    mult_result.print();
-    matrix boop(2,2,5);
-    printf("boop:\n");
-    boop.print();
-    boop=mult_result;
-    printf("boop again:\n");
-    boop.print();
-    matrix boopslice(2,1);
-    //boopslice = boop.column_slice(1);
-    boopslice.column_slice(boop,1);
-    printf("slice\n");
-    boopslice.print();
-    boop.data_copy(boopslice);
-    boop.print();
+    // matrix test_mat3(test_mat2);
+    // //test_mat3.sigmoid();
+    // printf("testmat 3\n");
+    // test_mat3.print();
+    // matrix mult_result = test_mat2.multiply(test_mat3);
+    // printf("result \n");
+    // mult_result.print();
+    // matrix boop(2,2,5);
+    // printf("boop:\n");
+    // boop.print();
+    // boop=mult_result;
+    // printf("boop again:\n");
+    // boop.print();
+    // matrix boopslice(2,1);
+    // //boopslice = boop.column_slice(1);
+    // boopslice.column_slice(boop,1);
+    // printf("slice\n");
+    // boopslice.print();
+    // boop.data_copy(boopslice);
+    // boop.print();
 }

@@ -2,7 +2,7 @@
 #define __NEUROMANCER_DEPLOY_H__
 
 #include "Matrix_Deploy.h"
-#include "output.h"
+//#include "network_output.h"
 
 enum class layer_type {
 	LINEAR,
@@ -21,11 +21,13 @@ class neuromancer {
 
 	public:
 	matrix inputs,targets;
-	int episodes= 1000;
+	int episodes= 1;
 	neuromancer();	//default params
 	void display_network();
 	void execute();
-	void loadsetup();
+	void load_setup();
+    dimensions input_dims;
+    dimensions output_dims;
 };
 
 

@@ -6,7 +6,6 @@
 #endif
 
 #include "mbed.h"
-#include "string"
 struct dimensions{
     int rows = 0;
     int columns = 0;
