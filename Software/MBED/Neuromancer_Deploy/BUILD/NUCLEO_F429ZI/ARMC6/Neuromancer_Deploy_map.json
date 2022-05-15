@@ -2,7 +2,7 @@
     {
         "module": "Matrix_Deploy.o",
         "size": {
-            ".text": 478,
+            ".text": 822,
             ".data": 0,
             ".bss": 0,
             ".text-delta": 0,
@@ -13,10 +13,10 @@
     {
         "module": "[lib]\\c_w.l",
         "size": {
-            ".text": 11189,
+            ".text": 11211,
             ".data": 16,
             ".bss": 348,
-            ".text-delta": 64,
+            ".text-delta": 0,
             ".data-delta": 0,
             ".bss-delta": 0
         }
@@ -35,7 +35,7 @@
     {
         "module": "[lib]\\m_wm.l",
         "size": {
-            ".text": 48,
+            ".text": 664,
             ".data": 0,
             ".bss": 0,
             ".text-delta": 0,
@@ -57,10 +57,10 @@
     {
         "module": "main.o",
         "size": {
-            ".text": 180,
-            ".data": 0,
-            ".bss": 180,
-            ".text-delta": 0,
+            ".text": 820,
+            ".data": 20208,
+            ".bss": 144,
+            ".text-delta": 60,
             ".data-delta": 0,
             ".bss-delta": 0
         }
@@ -154,22 +154,11 @@
         }
     },
     {
-        "module": "neuromancer_deploy.o",
-        "size": {
-            ".text": 700,
-            ".data": 12000,
-            ".bss": 0,
-            ".text-delta": 68,
-            ".data-delta": 12000,
-            ".bss-delta": 0
-        }
-    },
-    {
         "summary": {
-            "static_ram": 37588,
-            "static_ram_delta": 12000,
-            "total_flash": 59408,
-            "total_flash_delta": 12132
+            "static_ram": 45760,
+            "static_ram_delta": 0,
+            "total_flash": 68538,
+            "total_flash_delta": 60
         }
     }
 ]

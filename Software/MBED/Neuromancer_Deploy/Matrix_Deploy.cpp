@@ -238,9 +238,9 @@ void matrix::sine() {
 
 void matrix::sigmoid(){
     for (int i = 0; i < (this->dims.rows*this->dims.columns); i++) {
-        printf("index %d: %f\n",i,this->data[i]);
+        //printf("index %d: %f\n",i,this->data[i]);
         this->data[i] = sig(this->data[i]);
-        printf("index %d: %f\n",i,this->data[i]);
+        //printf("index %d: %f\n",i,this->data[i]);
     }
 }
 
