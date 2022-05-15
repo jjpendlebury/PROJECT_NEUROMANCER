@@ -690,10 +690,10 @@ void	Neuromancer::output_network() {
 	write_mat_csv(network[5], output_path);
 	//Write to Header
 	create_header("output.h");
-	write_mat_header(network[1], "W1_output", "output.h");
-	write_mat_header(network[5], "W2_output", "output.h");
-	write_mat_header(inputs, "Inputs_output", "output.h");
-	write_mat_header(targets, "Targets_outputs", "output.h");
+	write_mat_header_array(network[1], "W1_output", "output.h");
+	write_mat_header_array(network[5], "W2_output", "output.h");
+	write_mat_header_array(inputs, "Inputs_output", "output.h");
+	write_mat_header_array(targets, "Targets_outputs", "output.h");
 	close_header("output.h");
 
 }
@@ -818,6 +818,22 @@ int write_mat_header(Matrix in_mat, std::string vec_name, std::string filename) 
 				myfile << "},"<< endl;
 			}
 		}
+	}
+	myfile << "};" << endl;
+	myfile.close();
+	return 0;
+}
+
+int write_mat_header_array(Matrix in_mat, std::string vec_name, std::string filename) {
+	std::ofstream myfile;
+	myfile.open(filename, std::ios_base::app);
+	myfile << "float " << vec_name << "["<<(in_mat.dims.columns*in_mat.dims.rows)<<"] = {";
+	for (int i = 0; i < in_mat.dims.rows; i++) {
+		for (int j = 0; j < in_mat.dims.columns; j++) {
+			myfile << in_mat(i, j);
+			myfile << ',';
+		}
+		myfile << endl;
 	}
 	myfile << "};" << endl;
 	myfile.close();

@@ -12,7 +12,6 @@ using namespace std;
 
 Neuromancer test_network(0);
 
-
 int main()
 {
     string path = "../../MATLAB/ModelTrainingData.csv";
