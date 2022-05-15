@@ -40,7 +40,7 @@ class matrix {
     ~matrix();
 
     void print();
-
+    void column_slice(matrix in_mat, int column);
     
 
 //     //a pointer to an array. This will be the matrix once the dma is done

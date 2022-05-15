@@ -9,10 +9,22 @@ enum class layer_type {
 	RELU
 };
 
-class Neuromancer {
+class neuromancer {
     private:
-    
-}
+    matrix network[7];
+	layer_type* layout;
+	int layer_count = 3;
+	
+	void init_network_351();
+	void forward_pass();
+
+	public:
+	matrix inputs,targets;
+	int episodes= 1000;
+	neuromancer();	//default params
+	void display_network();
+	void execute();
+};
 
 
 #endif

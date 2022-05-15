@@ -2,10 +2,10 @@
     {
         "module": "Matrix_Deploy.o",
         "size": {
-            ".text": 714,
+            ".text": 854,
             ".data": 0,
             ".bss": 0,
-            ".text-delta": 12,
+            ".text-delta": -66,
             ".data-delta": 0,
             ".bss-delta": 0
         }
@@ -68,10 +68,10 @@
     {
         "module": "main.o",
         "size": {
-            ".text": 21456,
+            ".text": 21616,
             ".data": 0,
-            ".bss": 48,
-            ".text-delta": 0,
+            ".bss": 204,
+            ".text-delta": 12,
             ".data-delta": 0,
             ".bss-delta": 0
         }
@@ -165,11 +165,22 @@
         }
     },
     {
+        "module": "neuromancer_deploy.o",
+        "size": {
+            ".text": 520,
+            ".data": 0,
+            ".bss": 0,
+            ".text-delta": 0,
+            ".data-delta": 0,
+            ".bss-delta": 0
+        }
+    },
+    {
         "summary": {
-            "static_ram": 25456,
+            "static_ram": 25612,
             "static_ram_delta": 0,
-            "total_flash": 68320,
-            "total_flash_delta": 12
+            "total_flash": 69140,
+            "total_flash_delta": -54
         }
     }
 ]

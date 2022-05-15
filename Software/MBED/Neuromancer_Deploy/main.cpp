@@ -5,9 +5,11 @@
 
 #include "mbed.h"
 #include "NetworkWeights.h"
-#include "Matrix_Deploy.h"
+#include "neuromancer_deploy.h"
+//#include "Matrix_Deploy.h"
 #define BLINKING_RATE     500ms
 
+neuromancer Case;
 
 int main()
 {
@@ -36,18 +38,15 @@ int main()
     matrix mult_result = test_mat2.multiply(test_mat3);
     printf("result \n");
     mult_result.print();
-    // printf("%f\n",sin(0));
-    // printf("mat 2 again \n");
-    // test_mat2.print();
-    // matrix sin_result(test_mat2);
-    // sin_result.sine();
-    // sin_result.print();
-    // matrix cos_result(test_mat2);
-    // cos_result.cosine();
-    // cos_result.print();
-    // matrix sig_result(test_mat2);
-    // sig_result.sigmoid();
-    // printf("sigmoid\n");
-    // sig_result.print();
-    // printf("%f\n",sig(1.0));
+    matrix boop(2,2,5);
+    printf("boop:\n");
+    boop.print();
+    boop=mult_result;
+    printf("boop again:\n");
+    boop.print();
+    matrix boopslice(2,1);
+    //boopslice = boop.column_slice(1);
+    boopslice.column_slice(boop,1);
+    printf("slice\n");
+    boopslice.print();
 }
