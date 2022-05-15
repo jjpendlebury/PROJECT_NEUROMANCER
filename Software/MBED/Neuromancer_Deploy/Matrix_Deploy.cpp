@@ -58,133 +58,119 @@ void dimensions::operator*=(dimensions& input_dims) {
 void dimensions::operator=(int input[2]) {
     this->set_dims(input[0], input[1]);
 }
-
+//-------------------------------------------------------------------//
 matrix::matrix(){
     //default to 1x1
     printf("fleaugh\n");
-    data = new float* [1];
-    data[0] = new float[1];
-    memset(data[0], 0, sizeof(float));
+    data = new float[1];
+    memset(data, 0, sizeof(float));
 }
 
 matrix::matrix(int m, int n){
-    //default to 1x1
-    data = new float* [m];
-    //data[0] = new float[n];
-    for(int i = 0; i < m; i++){
-        data[i] = new float[n];
-        memset(data[i], 0, n*sizeof(float)); 
-    }
+    data = new float [m*n];
     dims.set_dims(m,n);
+    memset(data, 0, (m*n)*sizeof(float));
 }
 
 matrix::matrix(int m, int n, float x){
     //default to 1x1
-    printf("%f\n",x);
-    data = new float* [m];
-    //data[0] = new float[n];
-    for(int i = 0; i < m; i++){
-        data[i] = new float[n];
-        memset(data[i], x, n*sizeof(float)); 
-    }
+    data = new float [m*n];
     dims.set_dims(m,n);
+    memset(data, 0, (m*n)*sizeof(float));
     for(int i = 0; i < dims.rows; i++){
         for(int j = 0; j < dims.columns; j++){
-            data[i][j] = x;
+            data[this->index(i,j)] = x;
         }
     }
 }
 
-matrix::matrix(int m, int n, int x){
-    float val = (float)x;
-    printf("%f\n",val);
-    //default to 1x1
-    data = new float* [m];
-    //data[0] = new float[n];
-    for(int i = 0; i < m; i++){
-        data[i] = new float[n];
-        memset(data[i], val, n*sizeof(float)); 
-    }
-    dims.set_dims(m,n);
-    for(int i = 0; i < dims.rows; i++){
-        for(int j = 0; j < dims.columns; j++){
-            data[i][j]=val;
-        }
-    }
-}
+// matrix::matrix(int m, int n, int x){
+//     float val = (float)x;
+//     printf("%f\n",val);
+//     //default to 1x1
+//     data = new float* [m];
+//     //data[0] = new float[n];
+//     for(int i = 0; i < m; i++){
+//         data[i] = new float[n];
+//         memset(data[i], val, n*sizeof(float)); 
+//     }
+//     dims.set_dims(m,n);
+//     for(int i = 0; i < dims.rows; i++){
+//         for(int j = 0; j < dims.columns; j++){
+//             data[i][j]=val;
+//         }
+//     }
+// }
 
-matrix::matrix(dimensions input_dims){
-    int m = input_dims.rows;
-    int n = input_dims.columns;
-    //default to 1x1
-    data = new float* [m];
-    //data[0] = new float[n];
-    for(int i = 0; i < m; i++){
-        data[i] = new float[n];
-        memset(data[i], 0, n*sizeof(float)); 
-    }
-    dims.set_dims(m,n);
-}
+// matrix::matrix(dimensions input_dims){
+//     int m = input_dims.rows;
+//     int n = input_dims.columns;
+//     //default to 1x1
+//     data = new float* [m];
+//     //data[0] = new float[n];
+//     for(int i = 0; i < m; i++){
+//         data[i] = new float[n];
+//         memset(data[i], 0, n*sizeof(float)); 
+//     }
+//     dims.set_dims(m,n);
+// }
 
-matrix::matrix(dimensions input_dims, float x){
-    int m = input_dims.rows;
-    int n = input_dims.columns;
-    //default to 1x1
-    data = new float* [m];
-    //data[0] = new float[n];
-    for(int i = 0; i < m; i++){
-        data[i] = new float[n];
-        memset(data[i], x, n*sizeof(float)); 
-    }
-    dims.set_dims(m,n);
-    for(int i = 0; i < dims.rows; i++){
-        for(int j = 0; j < dims.columns; j++){
-            data[i][j]=x;
-        }
-    }
-}
+// matrix::matrix(dimensions input_dims, float x){
+//     int m = input_dims.rows;
+//     int n = input_dims.columns;
+//     //default to 1x1
+//     data = new float* [m];
+//     //data[0] = new float[n];
+//     for(int i = 0; i < m; i++){
+//         data[i] = new float[n];
+//         memset(data[i], x, n*sizeof(float)); 
+//     }
+//     dims.set_dims(m,n);
+//     for(int i = 0; i < dims.rows; i++){
+//         for(int j = 0; j < dims.columns; j++){
+//             data[i][j]=x;
+//         }
+//     }
+// }
 
-matrix::matrix(dimensions input_dims, int x){
-    float val = (float)x;
-    int m = input_dims.rows;
-    int n = input_dims.columns;
-    //default to 1x1
-    data = new float* [m];
-    //data[0] = new float[n];
-    for(int i = 0; i < m; i++){
-        data[i] = new float[n];
-        memset(data[i], val, n*sizeof(float)); 
-    }
-    dims.set_dims(m,n);
-    for(int i = 0; i < dims.rows; i++){
-        for(int j = 0; j < dims.columns; j++){
-            data[i][j]=val;
-        }
-    }
-}
+// matrix::matrix(dimensions input_dims, int x){
+//     float val = (float)x;
+//     int m = input_dims.rows;
+//     int n = input_dims.columns;
+//     //default to 1x1
+//     data = new float* [m];
+//     //data[0] = new float[n];
+//     for(int i = 0; i < m; i++){
+//         data[i] = new float[n];
+//         memset(data[i], val, n*sizeof(float)); 
+//     }
+//     dims.set_dims(m,n);
+//     for(int i = 0; i < dims.rows; i++){
+//         for(int j = 0; j < dims.columns; j++){
+//             data[i][j]=val;
+//         }
+//     }
+// }
 
-matrix::matrix(const matrix& obj) { //blank matrix
-    data = obj.data;
-    dims = obj.dims;
-};
+// matrix::matrix(const matrix& obj) { //blank matrix
+//     data = obj.data;
+//     dims = obj.dims;
+// };
 
 matrix::~matrix(){
-    for(int i=0; i < dims.rows; i++){
-        delete[] data[i];
-    }
     delete[] data;
 }
 void matrix::print(){
     for(int i = 0; i < dims.rows; i++){
         printf("Row %d\n",i);
         for(int j = 0; j < dims.columns; j++){
-            printf("%f\n", data[i][j]);
+            printf("%f\n", data[this->index(i,j)]);
             
         }
     }
 }
 
-void matrix::set_data(float **data_in, dimensions dimensions_in){
+void matrix::set_data(float *data_in, dimensions dimensions_in){
     this->data = data_in;
     this->dims = dimensions_in;
 }
@@ -204,13 +190,9 @@ matrix matrix::multiply(matrix matB) {
     else {
         matrix product(r1,c2);
         for (i = 0; i < r1; ++i)
-            for (j = 0; j < c2; ++j) {
-                product.data[i][j] = 0;
-            }
-        for (i = 0; i < r1; ++i)
             for (j = 0; j < c2; ++j)
                 for (k = 0; k < c1; ++k) {
-                    product.data[i][j] += this->data[i][k] * matB.data[k][j];
+                    product.data[product.index(i,j)] += this->data[this->index(i,j)] * matB.data[matB.index(i,j)];
                 }
                 return product;
     
@@ -219,18 +201,22 @@ matrix matrix::multiply(matrix matB) {
     return error;
 }
 
-matrix matrix::sine() {
-    //matrix output(this->get_dims());
-    printf("input\n");
-    this->print();
-    matrix output;
-    output.set_data(this->data,this->get_dims());
-    output.dims.print_dims();
-    for (int i = 0; i < output.dims.rows; i++) {
-        for (int it = 0; it < output.dims.columns; it++){
-            printf("%f\n", output.data[i][it]);
-            output.data[i][it]=sin(output.data[i][it]);
-        }
-    }
-    return output;
+// matrix matrix::sine() {
+//     //matrix output(this->get_dims());
+//     printf("input\n");
+//     this->print();
+//     matrix output;
+//     output.set_data(this->data,this->get_dims());
+//     output.dims.print_dims();
+//     for (int i = 0; i < output.dims.rows; i++) {
+//         for (int it = 0; it < output.dims.columns; it++){
+//             printf("%f\n", output.data[i][it]);
+//             output.data[i][it]=sin(output.data[i][it]);
+//         }
+//     }
+//     return output;
+// }
+
+int matrix::index(int row, int col){
+    return (row *this->dims.columns + col);
 }

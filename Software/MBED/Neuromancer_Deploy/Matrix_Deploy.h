@@ -29,24 +29,25 @@ class matrix {
     matrix();
     matrix(int m, int n);
     matrix(int m, int n, float x);			//fill value
-    matrix(int m, int n, int x);			//fill value
-    matrix(dimensions input_dims);
-    matrix(dimensions input_dims, float x);	//fill value
-    matrix(dimensions input_dims, int x);	//fill value
-    matrix(const matrix& obj);				//copy constructor
-    virtual ~matrix();
+    // matrix(int m, int n, int x);			//fill value
+    // matrix(dimensions input_dims);
+    // matrix(dimensions input_dims, float x);	//fill value
+    // matrix(dimensions input_dims, int x);	//fill value
+    // matrix(const matrix& obj);				//copy constructor
+    ~matrix();
 
     void print();
 
     
 
 //     //a pointer to pointers. This will be the matrix once the dma is done
-    float **data;
+    float *data;
 
-    void    set_data(float **data_in, dimensions dimensions_in);
+    void    set_data(float *data_in, dimensions dimensions_in);
     dimensions  get_dims();
     matrix	multiply(matrix matB);						//standard
-    matrix  sine();
+    // matrix  sine();
+    int index(int row, int col);
 };
 
 
