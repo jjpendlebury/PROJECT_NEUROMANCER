@@ -201,21 +201,14 @@ matrix matrix::multiply(matrix matB) {
     return error;
 }
 
-// matrix matrix::sine() {
-//     //matrix output(this->get_dims());
-//     printf("input\n");
-//     this->print();
-//     matrix output;
-//     output.set_data(this->data,this->get_dims());
-//     output.dims.print_dims();
-//     for (int i = 0; i < output.dims.rows; i++) {
-//         for (int it = 0; it < output.dims.columns; it++){
-//             printf("%f\n", output.data[i][it]);
-//             output.data[i][it]=sin(output.data[i][it]);
-//         }
-//     }
-//     return output;
-// }
+
+void matrix::sine() {
+    for (int i = 0; i < (this->dims.rows*this->dims.columns); i++) {
+        //printf("index %d: %f\n",i,this->data[i]);
+        this->data[i] = sin(this->data[i]);
+        //printf("index %d: %f\n",i,this->data[i]);
+    }
+}
 
 int matrix::index(int row, int col){
     return (row *this->dims.columns + col);

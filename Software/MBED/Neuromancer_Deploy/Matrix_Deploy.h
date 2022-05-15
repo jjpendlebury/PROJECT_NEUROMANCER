@@ -40,13 +40,13 @@ class matrix {
 
     
 
-//     //a pointer to pointers. This will be the matrix once the dma is done
+//     //a pointer to an array. This will be the matrix once the dma is done
     float *data;
 
     void    set_data(float *data_in, dimensions dimensions_in);
     dimensions  get_dims();
     matrix	multiply(matrix matB);						//standard
-    // matrix  sine();
+    void    sine();
     int index(int row, int col);
 };
 
