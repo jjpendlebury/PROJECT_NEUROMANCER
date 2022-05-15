@@ -5,16 +5,19 @@
 dimensions::dimensions(){ 
     rows = 1;
     columns = 1;
+    total = 1;
 }
 
 dimensions::dimensions(int row_input, int col_input){
     this->rows = row_input;
     this->columns = col_input;
+    update_total();
 }
 
 void dimensions::set_dims(int row_input, int col_input) {
     this->rows = row_input;
     this->columns = col_input;
+    update_total();
 }
 dimensions dimensions::mult_size(dimensions input_dims) {
     dimensions output;
@@ -28,6 +31,10 @@ dimensions dimensions::mult_size(dimensions input_dims) {
         output.columns = input_dims.columns;
         return output;
     }
+}
+
+void dimensions::update_total(){
+    total = rows*columns;
 }
 
 int dimensions::square_check() {
@@ -152,10 +159,9 @@ matrix::matrix(int m, int n, float x){
 //     }
 // }
 
-// matrix::matrix(const matrix& obj) { //blank matrix
-//     data = obj.data;
-//     dims = obj.dims;
-// };
+matrix::matrix(const matrix& obj) { //blank matrix
+     this->set_data(obj.data, obj.dims);
+};
 
 matrix::~matrix(){
     delete[] data;
@@ -171,8 +177,12 @@ void matrix::print(){
 }
 
 void matrix::set_data(float *data_in, dimensions dimensions_in){
-    this->data = data_in;
-    this->dims = dimensions_in;
+    delete[] this->data; // clear data.
+    this -> data = new float[dimensions_in.total]; //declare new array
+    this -> dims = dimensions_in;   //update dims
+    for(int i = 0; i < this->dims.total; i++){  //copy data across
+        data[i] = data_in[i];
+    }
 }
 dimensions matrix::get_dims(){
     return this->dims;
@@ -210,6 +220,26 @@ void matrix::sine() {
     }
 }
 
+void matrix::sigmoid(){
+    for (int i = 0; i < (this->dims.rows*this->dims.columns); i++) {
+        printf("index %d: %f\n",i,this->data[i]);
+        this->data[i] = sig(this->data[i]);
+        printf("index %d: %f\n",i,this->data[i]);
+    }
+}
+
+void matrix::cosine() {
+    for (int i = 0; i < (this->dims.rows*this->dims.columns); i++) {
+        //printf("index %d: %f\n",i,this->data[i]);
+        this->data[i] = cos(this->data[i]);
+        //printf("index %d: %f\n",i,this->data[i]);
+    }
+}
+
 int matrix::index(int row, int col){
     return (row *this->dims.columns + col);
+}
+
+float sig(float input){
+    return 1/(1+exp(-1 * input));
 }

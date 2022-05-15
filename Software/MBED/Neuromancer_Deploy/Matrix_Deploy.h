@@ -10,10 +10,12 @@
 struct dimensions{
     int rows = 0;
     int columns = 0;
+    int total = 0;
     dimensions();
     dimensions(int row_input, int col_input);
     void set_dims(int row_input, int col_input);
     dimensions mult_size(dimensions input_dims);
+    void update_total();
     int square_check();
     void print_dims();
 
@@ -24,8 +26,9 @@ struct dimensions{
 
 class matrix {
     private:
-    dimensions dims;
+    
     public:
+    dimensions dims;
     matrix();
     matrix(int m, int n);
     matrix(int m, int n, float x);			//fill value
@@ -33,7 +36,7 @@ class matrix {
     // matrix(dimensions input_dims);
     // matrix(dimensions input_dims, float x);	//fill value
     // matrix(dimensions input_dims, int x);	//fill value
-    // matrix(const matrix& obj);				//copy constructor
+    matrix(const matrix& obj);				//copy constructor
     ~matrix();
 
     void print();
@@ -47,9 +50,11 @@ class matrix {
     dimensions  get_dims();
     matrix	multiply(matrix matB);						//standard
     void    sine();
+    void    sigmoid();
+    void    cosine(); //untested
     int index(int row, int col);
 };
 
-
+float sig(float input);
 
 #endif
