@@ -31,6 +31,7 @@ int main()
     test_mat2.print();
     test_mat2.dims.print_dims();
     matrix test_mat3(test_mat2);
+    test_mat3.sigmoid();
     printf("testmat 3\n");
     test_mat3.print();
     //matrix mult_result = test_mat.multiply(test_mat2);
