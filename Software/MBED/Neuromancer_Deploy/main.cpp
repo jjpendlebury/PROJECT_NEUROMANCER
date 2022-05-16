@@ -46,6 +46,7 @@ void display_network();
 void grab_input(int column);
 void first_layer();
 void forward_pass();
+void clear_matrix(matrix mat_in);
 
 
 
@@ -58,31 +59,44 @@ int main()
     printf("load inputs\n");
     inputs.set_data(Inputs_output,dimensions(3,10));
     targets.set_data(Targets_outputs,dimensions(2,10));
-    grab_input(0);
-    forward_pass();
-    first_layer();
-    W2.dims.print_dims();
-    printf("no crash\n");
-    a2hat.dims.print_dims();
-    net2.dims.print_dims();
-    display_network();
+    for(int i = 0;i < 5; i++){
+        grab_input(0);
+        forward_pass();
+        first_layer();
+        printf("\ninput %d:\n",i);
+        input_slice.print();
+        printf("\noutput %d:\n",i);
+        net2.print();
+        //net1.clear_data();
+        //net2.clear_data();
+        display_network();
+    }
+    printf("W1:\n");
+    W1.print();
+    printf("W2: \n");
+    W2.print();
+    // W2.dims.print_dims();
+    // printf("no crash\n");
+    // a2hat.dims.print_dims();
+    // net2.dims.print_dims();
+    // display_network();
 
 }
 
 void display_network(){
-    printf("matrix 0\n");
+    printf("\nmatrix 0\n");
     input_slice.print();
-    printf("matrix 1\n");
+    printf("\nmatrix 1\n");
     W1.print();
-    printf("matrix 2\n");
+    printf("\nmatrix 2\n");
     net1.print();
-    printf("matrix 3\n");
+    printf("\nmatrix 3\n");
     a2.print();
-    printf("matrix 4\n");
+    printf("\nmatrix 4\n");
     a2hat.print();
-    printf("matrix 5\n");
+    printf("\nmatrix 5\n");
     W2.print();
-    printf("matrix 6\n");
+    printf("\nmatrix 6\n");
     net2.print();
 }
 
@@ -107,7 +121,6 @@ void forward_pass(){
     for(int i = 0; i<10;i++){
         a2hat.data[i]=a2.data[i];
     }
-    printf("crash here:\n");
     //net2=W2.multiply(a2hat);
     //net1 = W1.multiply(input_slice);
 }

@@ -200,6 +200,9 @@ void matrix::set_data(float *data_in, dimensions dimensions_in){
         data[i] = data_in[i];
     }
 }
+void matrix::clear_data(){
+    memset(data, 0, (dims.rows*dims.columns)*sizeof(float));
+}
 dimensions matrix::get_dims(){
     return this->dims;
 }

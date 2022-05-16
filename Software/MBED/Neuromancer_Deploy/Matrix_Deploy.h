@@ -47,6 +47,7 @@ class matrix {
     float *data;
 
     void    set_data(float *data_in, dimensions dimensions_in);
+    void    clear_data();
     dimensions  get_dims();
     matrix	multiply(matrix matB);						//standard
     void    mult(matrix *matA, matrix *matB);
