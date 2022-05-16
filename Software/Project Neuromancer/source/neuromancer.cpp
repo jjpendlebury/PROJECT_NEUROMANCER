@@ -280,7 +280,40 @@ Matrix Neuromancer::fast_sigmoid(Matrix input, int debug) {
 
 }
 
-Matrix Neuromancer::sigmoid(Matrix input, int debug) {
+Matrix Neuromancer::fast_sigmoid(Matrix input, int debug) {
+	Matrix output;
+	Matrix inputMat = input;
+#if DEBUG_MODE == 1
+	cout << "Input :" << endl << inputMat << endl;
+#endif
+	vector<vector<float>> dataA = input.data;
+	vector<vector<float>> dataB;
+#if DEBUG_MODE == 1
+	cout << "Sigmoid" << endl;
+#endif
+	dataB = dataA;
+	//this layer is the layer before, sigmoid-ed 
+	for (auto i = 0; i < dataA.size(); i++) {
+		for (auto it = 0; it < dataA[i].size(); it++) {
+#if DEBUG_MODE == 1
+			cout << "Accessing (" << i << "," << it << ")" << endl;
+#endif
+			dataB[i][it] = i * it;
+#if DEBUG_MODE == 1
+			cout << dataB[i][it] << endl;
+#endif
+			dataB[i][it] = dataA[i][it] / (1 + abs(dataA[i][it]));
+#if DEBUG_MODE == 1
+			cout << i << "," << it << " = " << dataB[i][it] << endl;
+#endif
+		}
+	}
+	output.set_data(dataB);
+	return output;
+
+}
+
+Matrix Neuromancer::ReLU(Matrix input, int debug) {
 	Matrix output;
 	Matrix inputMat = input;
 	#if DEBUG_MODE == 1
@@ -302,7 +335,7 @@ Matrix Neuromancer::sigmoid(Matrix input, int debug) {
 			#if DEBUG_MODE == 1
 			cout << dataB[i][it] << endl;
 			#endif
-			dataB[i][it] = 1 / (1 + exp(-(dataA[i][it])));
+			dataB[i][it] = (0 < dataA[i][it]) ? b : a;;
 #if DEBUG_MODE == 1
 			cout << i << "," << it << " = " << dataB[i][it] << endl;
 #endif

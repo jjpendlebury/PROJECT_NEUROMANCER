@@ -43,7 +43,7 @@ private:
 
 	void	Test();													//test routine
 
-	vector<layer_type> network_layout = { layer_type::LINEAR, layer_type::SIGMOID, layer_type::LINEAR };
+	vector<layer_type> network_layout = { layer_type::LINEAR, layer_type::FAST_SIGMOID, layer_type::LINEAR };
 	vector<Matrix> network;					//forward network
 	vector<Matrix> back_network;			//backwards network
 
@@ -57,6 +57,7 @@ private:
 	void sigmoid(Matrix* input, Matrix* output, int debug);	//debug
 	Matrix sigmoid(Matrix input, int debug);	//debug
 	Matrix fast_sigmoid(Matrix input, int debug);
+	Matrix ReLU(Matrix input, int debug);
 
 	//forward pass
 	void forward_pass();
