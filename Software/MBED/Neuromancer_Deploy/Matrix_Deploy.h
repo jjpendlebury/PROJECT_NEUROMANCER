@@ -49,6 +49,7 @@ class matrix {
     void    set_data(float *data_in, dimensions dimensions_in);
     dimensions  get_dims();
     matrix	multiply(matrix matB);						//standard
+    void    mult(matrix *matA, matrix *matB);
     void    sine();
     void    sigmoid();
     void    cosine(); //untested

@@ -227,6 +227,17 @@ matrix matrix::multiply(matrix matB) {
     return error;
 }
 
+void matrix::mult(matrix *matA, matrix *matB){
+    float temp;
+        for (int i = 0; i < matA->dims.rows; ++i)
+            for (int j = 0; j < matB->dims.columns; ++j)
+            
+                for (int k = 0; k < matA->dims.columns; ++k) {
+                    temp = matA->data[matA->index(i,k)] * matB->data[matB->index(k,j)];
+                    this->data[this->index(i,j)] += temp;
+                }
+}
+
 
 void matrix::sine() {
     for (int i = 0; i < (this->dims.rows*this->dims.columns); i++) {
