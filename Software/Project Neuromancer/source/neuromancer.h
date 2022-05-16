@@ -37,13 +37,13 @@ private:
 	dimensions InputDims = { 3,1 }, OutputDims = { 2,1 };			//default values for testing
 	Matrix targets, target_slice, inputs, input_slice;
 	float error;
-	vector<float> error_vec;
-	std::string setup_path,model_path,output_path;
+	vector<float> error_vec;										//vector to hold trial errors
+	std::string setup_path,model_path,output_path;					//file paths
 	network_mode	current_mode = network_mode::TRAINING;
 
 	void	Test();													//test routine
 
-	vector<layer_type> network_layout = { layer_type::LINEAR, layer_type::RELU, layer_type::LINEAR };
+	vector<layer_type> network_layout = { layer_type::LINEAR, layer_type::SIGMOID, layer_type::LINEAR };
 	vector<Matrix> network;					//forward network
 	vector<Matrix> back_network;			//backwards network
 

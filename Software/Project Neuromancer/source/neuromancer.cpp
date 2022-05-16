@@ -298,7 +298,7 @@ Matrix Neuromancer::fast_sigmoid(Matrix input, int debug) {
 #if DEBUG_MODE == 1
 			cout << "Accessing (" << i << "," << it << ")" << endl;
 #endif
-			dataB[i][it] = i * it;
+			//dataB[i][it] = i * it;
 #if DEBUG_MODE == 1
 			cout << dataB[i][it] << endl;
 #endif
@@ -325,13 +325,13 @@ Matrix Neuromancer::ReLU(Matrix input, int debug) {
 	cout << "Sigmoid" << endl;
 	#endif
 	dataB = dataA;
-	//this layer is the layer before, sigmoid-ed 
+	//this layer is the layer before, ReLU 
 	for (auto i = 0; i < dataA.size(); i++) {
 		for (auto it = 0; it < dataA[i].size(); it++) {
 			#if DEBUG_MODE == 1
 			cout << "Accessing (" << i << "," << it << ")" << endl;
 			#endif
-			dataB[i][it] = i * it;
+			//dataB[i][it] = i * it;
 			#if DEBUG_MODE == 1
 			cout << dataB[i][it] << endl;
 			#endif
@@ -691,9 +691,6 @@ void Neuromancer::execute() {
 	}
 	disp_vec(err_avg);
 	cout << "Complete." << endl;
-	if (current_mode == network_mode::TRAINING) {
-		back_propogation_351(1);
-	}
 
 }
 

@@ -22,7 +22,6 @@ episodes = 1000;
 %differentials
 DeDw1= zeros(3,2);
 DeDw2= zeros(1,3);
-
 %initialise weights to non-zero
 
 % randomize data
