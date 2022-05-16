@@ -59,10 +59,10 @@ int main()
     printf("load inputs\n");
     inputs.set_data(Inputs_output,dimensions(3,10));
     targets.set_data(Targets_outputs,dimensions(2,10));
-    for(int i = 0;i < 5; i++){
-        grab_input(0);
+    for(int i = 0;i < 2; i++){
+        grab_input(i);
         forward_pass();
-        first_layer();
+        //first_layer();
         printf("\ninput %d:\n",i);
         input_slice.print();
         printf("\noutput %d:\n",i);
@@ -107,8 +107,8 @@ void grab_input(int column){
 }
 
 void first_layer(){
-    //net2=W2.multiply(a2hat);
-    net2.mult(&W2, &a2hat);
+    net2=W2.multiply(a2hat);
+    //net2.mult(&W2, &a2hat);
 }
 
 void forward_pass(){
@@ -121,7 +121,7 @@ void forward_pass(){
     for(int i = 0; i<10;i++){
         a2hat.data[i]=a2.data[i];
     }
-    //net2=W2.multiply(a2hat);
-    //net1 = W1.multiply(input_slice);
+    a2hat.data[10]=1;
+    net2.mult(&W2, &a2hat);
 }
 

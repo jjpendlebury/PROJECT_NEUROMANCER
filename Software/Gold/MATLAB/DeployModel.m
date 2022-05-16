@@ -41,7 +41,7 @@ i = 1;
 fprintf("Starting training...\n");
 % errorvec = zeros(2,trials); 
 % error1=0;
-for i = 1:1
+for i = 1:2
         x = Inputs(:,i);                          %extract input
         %t = T(:,i);                             %extract target
         net = W1 *x;                            %generate first net

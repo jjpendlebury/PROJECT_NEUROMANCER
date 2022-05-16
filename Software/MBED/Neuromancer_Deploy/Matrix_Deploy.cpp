@@ -232,6 +232,10 @@ matrix matrix::multiply(matrix matB) {
 
 void matrix::mult(matrix *matA, matrix *matB){
     float temp;
+    printf("MAT A :\n");
+matA->print();
+printf("MAT B :\n");
+matB->print();
         for (int i = 0; i < matA->dims.rows; ++i)
             for (int j = 0; j < matB->dims.columns; ++j)
             
