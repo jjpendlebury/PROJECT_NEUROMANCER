@@ -17,7 +17,7 @@ Xhat = [X; ones(1,episodes);];                                            %Augme
 T = Theta;                                                                  %Set correct joint angles as targets
 output_vec = zeros(2,episodes);                                           %Preallocate the output vector
 
-trials = 10000;
+trials = 5000;
 episodes = 1000;
 %differentials
 DeDw1= zeros(3,2);

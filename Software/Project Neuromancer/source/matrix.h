@@ -49,15 +49,15 @@ public:
 
 	dimensions dims;
 
-	vector<vector<float>> data;	//a vector of vectors of floats. Because that's not confusing at all
-	void set_data(vector< vector<float> >& inputData);
-	void set_data(vector<float> inputVec);
-	vector<vector<float>> get_data();
-	void		disp_data();
-	void		update_dims();
-	dimensions	get_dims();
-	int			get_rows();
-	int			get_cols();
+	vector<vector<float>> data;	//a vector of vectors of floats.
+	void set_data(vector< vector<float> >& inputData);	//set data using 2d array
+	void set_data(vector<float> inputVec);				//set data as a row vector
+	vector<vector<float>> get_data();					//return data
+	void		disp_data();							//print the matrix using cout
+	void		update_dims();							//update the dimensions
+	dimensions	get_dims();								//return dimensions 
+	int			get_rows();								//return # of rows
+	int			get_cols();								//return # of cols
 	
 	//access methods
 	float			access(int i, int j);
