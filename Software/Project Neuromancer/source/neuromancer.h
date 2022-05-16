@@ -43,7 +43,7 @@ private:
 
 	void	Test();													//test routine
 
-	vector<layer_type> network_layout = { layer_type::LINEAR, layer_type::FAST_SIGMOID, layer_type::LINEAR };
+	vector<layer_type> network_layout = { layer_type::LINEAR, layer_type::RELU, layer_type::LINEAR };
 	vector<Matrix> network;					//forward network
 	vector<Matrix> back_network;			//backwards network
 

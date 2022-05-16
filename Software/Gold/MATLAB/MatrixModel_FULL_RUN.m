@@ -34,6 +34,8 @@ for c = 1:trials
         net = W1 *x;                            %generate first net
         %a2 = 1./(1+exp(-net));                  %calculate A2
         a2 = net ./ (1+abs(net));               %FAST SIGMOID
+        %a2 = zeros(10,1);
+        %a2 = max(a2,0);                        %ReLU
         a2hat = [a2;1;];                        %a2 augmented
         %Second Layer
         net2 = W2 * a2hat;

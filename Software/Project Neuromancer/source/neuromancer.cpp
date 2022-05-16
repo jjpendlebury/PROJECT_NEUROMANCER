@@ -247,7 +247,7 @@ void Neuromancer::sigmoid(Matrix* input, Matrix* output, int debug) {
 	}
 }
 
-Matrix Neuromancer::fast_sigmoid(Matrix input, int debug) {
+Matrix Neuromancer::sigmoid(Matrix input, int debug) {
 	Matrix output;
 	Matrix inputMat = input;
 #if DEBUG_MODE == 1
@@ -269,7 +269,7 @@ Matrix Neuromancer::fast_sigmoid(Matrix input, int debug) {
 #if DEBUG_MODE == 1
 			cout << dataB[i][it] << endl;
 #endif
-			dataB[i][it] = dataA[i][it] / (1+ abs(dataA[i][it]));
+			dataB[i][it] = 1 / (1 + exp(-(dataA[i][it])));
 #if DEBUG_MODE == 1
 			cout << i << "," << it << " = " << dataB[i][it] << endl;
 #endif
@@ -335,7 +335,7 @@ Matrix Neuromancer::ReLU(Matrix input, int debug) {
 			#if DEBUG_MODE == 1
 			cout << dataB[i][it] << endl;
 			#endif
-			dataB[i][it] = (0 < dataA[i][it]) ? b : a;;
+			dataB[i][it] = max(0.0f,dataA[i][it]);
 #if DEBUG_MODE == 1
 			cout << i << "," << it << " = " << dataB[i][it] << endl;
 #endif
@@ -380,12 +380,26 @@ void Neuromancer::forward_pass() {
 		}
 		else if (network_layout[i] == layer_type::FAST_SIGMOID) {
 #if DEBUG_MODE == 1
-			cout << "Layer #" << i << " LAYER TYPE - SIGMOID" << endl;
+			cout << "Layer #" << i << " LAYER TYPE - FAST SIGMOID" << endl;
 			cout << "Network Index = " << network_index << endl;
 			cout << network[network_index] << endl << endl << network[network_index - 1] << endl;
 #endif
 			network[network_index - 1] = network[network_index - 2];
 			network[network_index] = fast_sigmoid(network[network_index - 1], 1);
+			//sigmoid(&network[network_index - 1], &network[network_index]);
+			//re-add removed bias term.
+			vector<float> bias(network[network_index].dims.columns, 1);
+			network[network_index].data.push_back(bias);
+			network[network_index].update_dims();
+		}
+		else if (network_layout[i] == layer_type::RELU) {
+#if DEBUG_MODE == 1
+			cout << "Layer #" << i << " LAYER TYPE - ReLU" << endl;
+			cout << "Network Index = " << network_index << endl;
+			cout << network[network_index] << endl << endl << network[network_index - 1] << endl;
+#endif
+			network[network_index - 1] = network[network_index - 2];
+			network[network_index] = ReLU(network[network_index - 1], 1);
 			//sigmoid(&network[network_index - 1], &network[network_index]);
 			//re-add removed bias term.
 			vector<float> bias(network[network_index].dims.columns, 1);
