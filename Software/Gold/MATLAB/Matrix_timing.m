@@ -12,7 +12,7 @@ for k = 1:20
     output_row = k;
     for m = 1:3
     tic;
-    for i = 1:10000
+    for i = 1:100000
         test * test2;
     end
     output_row = [output_row toc];

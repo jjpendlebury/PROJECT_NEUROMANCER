@@ -369,6 +369,16 @@ Matrix Matrix::multiply(int factor) {
     return blank;
 }
 
+void	Matrix::multiply_place(Matrix* matA, Matrix* matB) {
+    Matrix product(matA->dims.rows, matB->dims.columns);
+    for (int i = 0; i < matA->dims.rows; ++i)
+        for (int j = 0; j < matB->dims.columns; ++j)
+            for (int k = 0; k < matA->dims.columns; ++k) {
+                product.data[i][j] += matA->data[i][k] * matB->data[k][j];
+            }
+    this->set_data(product.data);
+}
+
 Matrix Matrix::mult_element(Matrix matB) {
     vector<vector<float>> dataA = this->get_data();
     vector<vector<float>> dataB = matB.get_data();

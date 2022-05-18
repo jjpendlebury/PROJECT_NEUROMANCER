@@ -12,10 +12,11 @@ using namespace std;
 
 Matrix Create_test_vector(dimensions dims_in);
 void test_routine();
+void test_routine_inplace();
 
 int main()
 {
-    test_routine();
+    test_routine_inplace();
 }
 
 Matrix Create_test_vector(dimensions dims_in) {
@@ -47,6 +48,8 @@ void test_routine() {
             Matrix result = test.multiply(test2);
         }
         auto stop = chrono::high_resolution_clock::now();
+
+
         auto duration = chrono::duration_cast<chrono::microseconds>(stop - start);
         auto duration_ms = chrono::duration_cast<chrono::milliseconds>(stop - start);
         auto duration_s = chrono::duration_cast<chrono::seconds>(duration);
@@ -64,4 +67,42 @@ void test_routine() {
     myfile.close();
     //write relevant matrices
     write_mat_csv(outputs, "test_results.csv");
+}
+
+void test_routine_inplace() {
+    int iterations = 21;
+    int trials = 100000;
+
+    Matrix outputs(dimensions(iterations - 1, 4));
+    for (int k = 1; k < iterations; k++) {
+        Matrix test;
+        test = Create_test_vector(dimensions(k, k));
+        cout << test << endl;
+        Matrix test2 = Create_test_vector(dimensions(k, k));
+        Matrix result(k, k);
+        
+        auto start = chrono::high_resolution_clock::now();
+        for (int i = 0; i <= trials; i++) {
+            result.multiply_place(&test, &test2);
+        }
+        auto stop = chrono::high_resolution_clock::now();
+        cout << result << endl;
+
+        auto duration = chrono::duration_cast<chrono::microseconds>(stop - start);
+        auto duration_ms = chrono::duration_cast<chrono::milliseconds>(stop - start);
+        auto duration_s = chrono::duration_cast<chrono::seconds>(duration);
+        cout << k << "x" << k << " duration: " << duration.count() << "ms" << endl << duration_s.count() << "s" << endl;
+        vector<float> output_row;
+        output_row.push_back(k);
+        output_row.push_back(float(duration.count()));
+        output_row.push_back(float(duration_ms.count()));
+        output_row.push_back(float(duration_s.count()));
+        outputs.data[k - 1] = output_row;
+    }
+    cout << "OUTPUT:" << endl << outputs << endl;
+    std::ofstream myfile;
+    myfile.open("test_results_in_place.csv");
+    myfile.close();
+    //write relevant matrices
+    write_mat_csv(outputs, "test_results_in_place.csv");
 }

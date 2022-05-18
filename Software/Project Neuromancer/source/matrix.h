@@ -71,6 +71,8 @@ public:
 	Matrix	multiply(int int_factor);					//multiply by scalar (int)
 	void	multiply(Matrix matB, int debug);			//debug
 
+	void	multiply_place(Matrix *matA, Matrix *matB);						//standard
+
 	Matrix mult_element(Matrix matB);
 	
 
