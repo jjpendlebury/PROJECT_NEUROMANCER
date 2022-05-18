@@ -670,6 +670,10 @@ void Neuromancer::execute() {
 			if (current_mode == network_mode::TRAINING) {
 				back_propogation_351(1);
 			}
+			if (j == trials - 1) {
+				output_vec1.push_back(network[6].data[0][0]);
+				output_vec2.push_back(network[6].data[1][0]);
+			}
 			#if DEBUG_MODE == 1
 			display_network();
 			display_back_network();
@@ -690,6 +694,10 @@ void Neuromancer::execute() {
 		}
 	}
 	disp_vec(err_avg);
+	cout << "output 1" << endl;
+	disp_vec(output_vec1);
+	cout << "output 2" << endl;
+	disp_vec(output_vec2);
 	cout << "Complete." << endl;
 
 }
@@ -771,6 +779,10 @@ void	Neuromancer::set_output_path(std::string new_path) {
 	output_path = new_path;
 }
 void	Neuromancer::output_network() {
+	//construct output
+	Matrix output_mat(2, episodes);
+	output_mat.data[0] = output_vec1;
+	output_mat.data[1] = output_vec2;
 	//clear the file
 	std::ofstream myfile;
 	myfile.open(output_path);
@@ -778,12 +790,14 @@ void	Neuromancer::output_network() {
 	//write relevant matrices
 	write_mat_csv(network[1], output_path);
 	write_mat_csv(network[5], output_path);
+	write_mat_csv(output_mat, output_path);
 	//Write to Header
 	create_header("output.h");
 	write_mat_header(network[1], "W1_output", "output.h");
 	write_mat_header(network[5], "W2_output", "output.h");
 	write_mat_header(inputs, "Inputs_output", "output.h");
 	write_mat_header(targets, "Targets_outputs", "output.h");
+	write_mat_header(output_mat, "network_outputs", "output.h");
 	close_header("output.h");
 
 }

@@ -37,7 +37,7 @@ private:
 	dimensions InputDims = { 3,1 }, OutputDims = { 2,1 };			//default values for testing
 	Matrix targets, target_slice, inputs, input_slice;
 	float error;
-	vector<float> error_vec;										//vector to hold trial errors
+	vector<float> error_vec, output_vec1,output_vec2;										//vector to hold trial errors
 	std::string setup_path,model_path,output_path;					//file paths
 	network_mode	current_mode = network_mode::TRAINING;
 
