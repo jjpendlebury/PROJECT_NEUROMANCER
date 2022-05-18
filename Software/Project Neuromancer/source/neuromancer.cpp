@@ -928,6 +928,22 @@ int write_mat_header(Matrix in_mat, std::string vec_name, std::string filename) 
 	return 0;
 }
 
+int write_mat_header_array(Matrix in_mat, std::string vec_name, std::string filename) {
+	std::ofstream myfile;
+	myfile.open(filename, std::ios_base::app);
+	myfile << "float " << vec_name << "[" << (in_mat.dims.columns * in_mat.dims.rows) << "] = {";
+	for (int i = 0; i < in_mat.dims.rows; i++) {
+		for (int j = 0; j < in_mat.dims.columns; j++) {
+			myfile << in_mat(i, j);
+			myfile << ',';
+		}
+		myfile << endl;
+	}
+	myfile << "};" << endl;
+	myfile.close();
+	return 0;
+}
+
 int write_vec_csv(vector<float> in_vec, std::string filename) {
 	std::ofstream myfile;
 	myfile.open(filename, std::ios_base::app);
