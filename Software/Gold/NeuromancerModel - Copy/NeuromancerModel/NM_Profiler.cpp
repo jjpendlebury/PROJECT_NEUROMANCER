@@ -10,27 +10,23 @@
 using namespace std;
 //csv read test
 
-Neuromancer test_network(0);
-
+Matrix Create_test_vector(dimensions dims_in);
 
 int main()
 {
-    string path = "../../MATLAB/ModelTrainingData.csv";
-    string output = "output.csv";
-    Matrix test(2, 2, 10);
-    vector<float> test_vec = { 1,2,3 };
-    write_mat_csv(test, output);
-    write_vec_csv(test_vec, output);
-    test_network.set_setup_path(path);
-    test_network.load_setup();
-    test_network.display_network();
-    test_network.set_episodes(1000);
-    test_network.set_trials(20);
-    test_network.set_output_path(output);
-    auto start = chrono::high_resolution_clock::now();
-    test_network.execute();
-    auto stop = chrono::high_resolution_clock::now();
-    test_network.output_network();
-    auto duration = chrono::duration_cast<chrono::seconds>(stop - start);
-    cout << "duration: " << duration.count()<< " seconds " << endl;
+    Matrix test;
+    test = Create_test_vector(dimensions(4, 4));
+    cout << test << endl;
+}
+
+Matrix Create_test_vector(dimensions dims_in) {
+    Matrix output(dims_in);
+    int count = 1;
+    for (int i = 0; i < dims_in.rows; i++) {
+        for (int j = 0; j < dims_in.columns; j++) {
+            output.data[i][j] = count;
+            count++;
+        }
+    }
+    return output;
 }
