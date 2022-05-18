@@ -377,6 +377,7 @@ void	Matrix::multiply_place(Matrix* matA, Matrix* matB) {
                 product.data[i][j] += matA->data[i][k] * matB->data[k][j];
             }
     this->set_data(product.data);
+    int a = 0;
 }
 
 Matrix Matrix::mult_element(Matrix matB) {
