@@ -45,3 +45,8 @@
 *.exe.recipe
 *.recipe
 *.user
+
+.build
+.mbed
+projectfiles
+*.py*

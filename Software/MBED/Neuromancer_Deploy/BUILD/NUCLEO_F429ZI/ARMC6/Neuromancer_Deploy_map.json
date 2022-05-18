@@ -2,10 +2,10 @@
     {
         "module": "Matrix_Deploy.o",
         "size": {
-            ".text": 1020,
+            ".text": 638,
             ".data": 0,
             ".bss": 0,
-            ".text-delta": -182,
+            ".text-delta": 0,
             ".data-delta": 0,
             ".bss-delta": 0
         }
@@ -13,10 +13,10 @@
     {
         "module": "[lib]\\c_w.l",
         "size": {
-            ".text": 11209,
+            ".text": 11179,
             ".data": 16,
             ".bss": 348,
-            ".text-delta": -22,
+            ".text-delta": 0,
             ".data-delta": 0,
             ".bss-delta": 0
         }
@@ -33,23 +33,12 @@
         }
     },
     {
-        "module": "[lib]\\libcpp_w.l",
+        "module": "[lib]\\m_wm.l",
         "size": {
-            ".text": 4,
+            ".text": 664,
             ".data": 0,
             ".bss": 0,
             ".text-delta": 0,
-            ".data-delta": 0,
-            ".bss-delta": 0
-        }
-    },
-    {
-        "module": "[lib]\\m_wm.l",
-        "size": {
-            ".text": 48,
-            ".data": 0,
-            ".bss": 0,
-            ".text-delta": -848,
             ".data-delta": 0,
             ".bss-delta": 0
         }
@@ -68,10 +57,10 @@
     {
         "module": "main.o",
         "size": {
-            ".text": 21464,
-            ".data": 0,
-            ".bss": 48,
-            ".text-delta": -48,
+            ".text": 890,
+            ".data": 308,
+            ".bss": 144,
+            ".text-delta": 8,
             ".data-delta": 0,
             ".bss-delta": 0
         }
@@ -134,7 +123,7 @@
     {
         "module": "mbed-os\\platform",
         "size": {
-            ".text": 5952,
+            ".text": 5876,
             ".data": 64,
             ".bss": 281,
             ".text-delta": 0,
@@ -166,10 +155,10 @@
     },
     {
         "summary": {
-            "static_ram": 25456,
+            "static_ram": 25860,
             "static_ram_delta": 0,
-            "total_flash": 68634,
-            "total_flash_delta": -1100
+            "total_flash": 48492,
+            "total_flash_delta": 8
         }
     }
 ]
