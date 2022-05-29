@@ -18,7 +18,8 @@ enum class layer_type {
 	LINEAR,
 	SIGMOID,
 	RELU,
-	FAST_SIGMOID
+	FAST_SIGMOID,
+	TANH
 };
 
 enum class network_mode {
@@ -58,6 +59,7 @@ private:
 	Matrix sigmoid(Matrix input, int debug);	//debug
 	Matrix fast_sigmoid(Matrix input, int debug);
 	Matrix ReLU(Matrix input, int debug);
+	Matrix TANH(Matrix input);
 
 	//forward pass
 	void forward_pass();

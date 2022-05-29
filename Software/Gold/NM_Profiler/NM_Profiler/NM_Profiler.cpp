@@ -21,7 +21,7 @@ matrix_m test_m;
 int main()
 {
     //Neuromancer matrices
-    Matrix test(20, 20);
+    /*Matrix test(20, 20);
     test = Create_test_vector(dimensions(20, 20));
     Matrix test2(20, 20);
     test2 = Create_test_vector(dimensions(20, 20));
@@ -38,7 +38,10 @@ int main()
     matrix_m resultm(20, 20);
     c = 0;
     resultm.mult(&testm, &testm2);
-    c = 0;
+    c = 0;*/
+    int a = 0;
+    matrix_m test(20, 20);
+    return 0;
 }
 
 Matrix Create_test_vector(dimensions dims_in) {

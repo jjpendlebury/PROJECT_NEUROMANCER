@@ -45,6 +45,11 @@ void Neuromancer::Test() {
 	result4.disp_data();
 	result4 = matC + matD;
 	result4.disp_data();
+	cout << endl << "subtraction test" << endl;
+	result4 = matA - matB;
+	result4.disp_data();
+	result4 = matC - matD;
+	result4.disp_data();
 	Matrix result4t = result4.transpose();
 	result4t.disp_data();
 	Matrix test2(10, 3);
@@ -178,8 +183,6 @@ void Neuromancer::init_network_351() {
 	Matrix net2(2, 1);              //6
 	network.push_back(W2);
 	network.push_back(net2);
-	//init_weights();
-	//display_network();
 }
 
 void Neuromancer::init_weights() {
@@ -346,6 +349,39 @@ Matrix Neuromancer::ReLU(Matrix input, int debug) {
 
 }
 
+Matrix Neuromancer::TANH(Matrix input) {
+	Matrix output;
+	Matrix inputMat = input;
+#if DEBUG_MODE == 1
+	cout << "Input :" << endl << inputMat << endl;
+#endif
+	vector<vector<float>> dataA = input.data;
+	vector<vector<float>> dataB;
+#if DEBUG_MODE == 1
+	cout << "Sigmoid" << endl;
+#endif
+	dataB = dataA;
+	//this layer is the layer before, ReLU 
+	for (auto i = 0; i < dataA.size(); i++) {
+		for (auto it = 0; it < dataA[i].size(); it++) {
+#if DEBUG_MODE == 1
+			cout << "Accessing (" << i << "," << it << ")" << endl;
+#endif
+			//dataB[i][it] = i * it;
+#if DEBUG_MODE == 1
+			cout << dataB[i][it] << endl;
+#endif
+			dataB[i][it] = tanh(dataA[i][it]);
+#if DEBUG_MODE == 1
+			cout << i << "," << it << " = " << dataB[i][it] << endl;
+#endif
+		}
+	}
+	output.set_data(dataB);
+	return output;
+
+}
+
 void Neuromancer::forward_pass() {
 	//iterate through the network, performing multiplications
 	for (int i = 0; i < network_layout.size(); i++) {
@@ -400,6 +436,20 @@ void Neuromancer::forward_pass() {
 #endif
 			network[network_index - 1] = network[network_index - 2];
 			network[network_index] = ReLU(network[network_index - 1], 1);
+			//sigmoid(&network[network_index - 1], &network[network_index]);
+			//re-add removed bias term.
+			vector<float> bias(network[network_index].dims.columns, 1);
+			network[network_index].data.push_back(bias);
+			network[network_index].update_dims();
+		}
+		else if (network_layout[i] == layer_type::TANH) {
+#if DEBUG_MODE == 1
+			cout << "Layer #" << i << " LAYER TYPE - ReLU" << endl;
+			cout << "Network Index = " << network_index << endl;
+			cout << network[network_index] << endl << endl << network[network_index - 1] << endl;
+#endif
+			network[network_index - 1] = network[network_index - 2];
+			network[network_index] = TANH(network[network_index - 1]);
 			//sigmoid(&network[network_index - 1], &network[network_index]);
 			//re-add removed bias term.
 			vector<float> bias(network[network_index].dims.columns, 1);
@@ -573,6 +623,7 @@ void Neuromancer::load_setup() {
 
 		}
 		Mat_Pointers[i]->set_data(temp);
+		Mat_Pointers[i]->update_dims();
 		linecount += input_rows[i];
 	}
 	cout << "Load Complete" << endl << "Displaying Matrices:" << endl;

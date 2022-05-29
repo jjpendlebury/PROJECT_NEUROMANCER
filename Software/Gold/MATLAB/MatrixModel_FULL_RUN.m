@@ -17,7 +17,7 @@ Xhat = [X; ones(1,episodes);];                                            %Augme
 T = Theta;                                                                  %Set correct joint angles as targets
 output_vec = zeros(2,episodes);                                           %Preallocate the output vector
 
-trials =2000;
+trials =100;
 episodes = 1000;
 %differentials
 DeDw1= zeros(3,2);
@@ -30,10 +30,11 @@ for c = 1:trials
         x = Xhat(:,i);                          %extract input
         t = T(:,i);                             %extract target
         net = W1 *x;                            %generate first net
-        a2 = 1./(1+exp(-net));                  %calculate A2
+        %a2 = 1./(1+exp(-net));                  %calculate A2
         %a2 = net ./ (1+abs(net));               %FAST SIGMOID
         %a2 = zeros(10,1);
         %a2 = max(a2,0);                        %ReLU
+        a2 = tanh(net);
         a2hat = [a2;1;];                        %a2 augmented
         %Second Layer
         net2 = W2 * a2hat;

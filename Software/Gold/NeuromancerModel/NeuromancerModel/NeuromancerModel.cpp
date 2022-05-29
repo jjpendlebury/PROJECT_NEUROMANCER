@@ -24,7 +24,7 @@ int main()
     test_network.load_setup();
     test_network.display_network();
     test_network.set_episodes(1000);
-    test_network.set_trials(20);
+    test_network.set_trials(100);
     test_network.set_output_path(output);
     auto start = chrono::high_resolution_clock::now();
     test_network.execute();
